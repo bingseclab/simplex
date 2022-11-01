@@ -1,0 +1,6 @@
+[submodule "hayai"]
+	path = hayai
+	url = git@github.com:nickbruun/hayai.git
+[submodule "cunit"]
+	path = cunit
+	url = git@gitlab.com:cunity/cunit.git
