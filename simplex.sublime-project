@@ -1,0 +1,155 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"follow_symlinks": true,
+		},
+	],
+	"settings":
+	{
+		"cmake":
+		{
+			"build_folder": "$folder/build",
+			"env": 
+			{
+				"CC": "/usr/bin/gcc",
+				"CXX": "/usr/bin/g++",
+			},
+			"command_line_overrides": 
+			{
+				"CMAKE_INSTALL_PREFIX": "$project_path/install",
+				"CMAKE_BUILD_TYPE": "Debug",
+				"CMAKE_EXPORT_COMPILE_COMMANDS": true,
+				// "SIMPLEX_BUILD_EVALS": true,
+				// "SIMPLEX_BUILD_TESTS": true
+			},
+			"generator": "Ninja",
+		},
+		"DoxyDoxygen": 
+		{
+            // Preferred command prefix (``@`` is more common and shouldn't be change,
+    		// but can be ``\\`` if you use QT Doc).
+    		"doxygen_command_prefix": "\\",
+
+            // List of possible styles for comments (first match is better).
+            "preferred_comments_styles": [
+                [
+                    ["///","/","///"],      // <=> ////////////////////////// 
+                    "///",                  // <=> ///
+                    ["///","/","///"],      // <=> //////////////////////////
+				],
+		        [
+            		"///",
+            		"///"
+				],
+			],
+			
+			"block_layout": {
+	        	"Doxygen": [
+		            // Auto-filled description for file header
+		            {
+		                "tags": [
+		                    "\\file         {file_name}",
+		                    "\\brief        This file implements {file_base_name:doxy_words();}.",
+		                    "\\author       {user_name:doxy_capitalize();}",
+		                    "\\date \t\t{now:%Y-%m-%dT%H:%M:%S%z}",
+		                    "\\copyright    GNU Lesser General Public License v2.1 or later",
+		                    "SPDX-License-Identifier: LGPL-2.1-or-later",
+		                    ""
+						],
+		                "context": [
+		                    { "key": "row",      "operator": "equal",          "operand": "0", },
+		                    { "key": "kind",     "operator": "equal",          "operand": "", }
+						],
+		            }
+				],
+			},
+        }, 
+    },
+	"build_systems":
+	[
+		{
+			"file_regex": "(.+[^:]):(\\d+):(\\d+): (?:fatal )?((?:error|warning): .+)$",
+			"name": "simplex (Linux)",
+			"shell_cmd": "cmake --build .",
+			"syntax": "Packages/CMakeBuilder/Syntax/Ninja.sublime-syntax",
+			"variants":
+			[
+				{
+					"name": "rebuild_cache",
+					"shell_cmd": "cmake --build . --target rebuild_cache",
+				},
+				{
+					"name": "list_install_components",
+					"shell_cmd": "cmake --build . --target list_install_components",
+				},
+				{
+					"name": "install",
+					"shell_cmd": "cmake --build . --target install",
+				},
+				{
+					"name": "install/local",
+					"shell_cmd": "cmake --build . --target install/local",
+				},
+				{
+					"name": "install/strip",
+					"shell_cmd": "cmake --build . --target install/strip",
+				},
+				{
+					"name": "simplex/rebuild_cache",
+					"shell_cmd": "cmake --build . --target simplex/rebuild_cache"
+				},
+				{
+					"name": "simplex/list_install_components",
+					"shell_cmd": "cmake --build . --target simplex/list_install_components"
+				},
+				{
+					"name": "simplex/install",
+					"shell_cmd": "cmake --build . --target simplex/install"
+				},
+				{
+					"name": "simplex/install/local",
+					"shell_cmd": "cmake --build . --target simplex/install/local"
+				},
+				{
+					"name": "simplex/install/strip",
+					"shell_cmd": "cmake --build . --target simplex/install/strip"
+				},
+				{
+					"name": "simplex/lib/rebuild_cache",
+					"shell_cmd": "cmake --build . --target simplex/lib/rebuild_cache"
+				},
+				{
+					"name": "simplex/lib/list_install_components",
+					"shell_cmd": "cmake --build . --target simplex/lib/list_install_components"
+				},
+				{
+					"name": "simplex/lib/install",
+					"shell_cmd": "cmake --build . --target simplex/lib/install"
+				},
+				{
+					"name": "simplex/lib/install/local",
+					"shell_cmd": "cmake --build . --target simplex/lib/install/local"
+				},
+				{
+					"name": "simplex/lib/install/strip",
+					"shell_cmd": "cmake --build . --target simplex/lib/install/strip"
+				},
+				{
+					"name": "libsimplex.a",
+					"shell_cmd": "cmake --build . --target libsimplex.a"
+				},
+				{
+					"name": "simplex",
+					"shell_cmd": "cmake --build . --target simplex"
+				},
+				{
+					"name": "clean",
+					"shell_cmd": "cmake --build . --target clean"
+				},
+			],
+			"working_dir": "$folder/build",
+		}
+	],
+}
