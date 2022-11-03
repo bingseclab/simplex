@@ -1,0 +1,518 @@
+runcpu v5825 started at 2018-02-05 21:17:48 on "roundtop"
+runcpu is: /home/matthew/github/bingseclab/simplex/cpu2017/bin/harness/runcpu
+runcpu: runcpu --config gcc-linux-x86.cfg --action build 505.mcf_r
+toolset: linux-x86_64
+
+Locating benchmarks...found 47 benchmarks in 53 benchsets.
+Reading config file '/home/matthew/github/bingseclab/simplex/cpu2017/config/gcc-linux-x86.cfg'
+Reading included config file '/home/matthew/github/bingseclab/simplex/cpu2017/config/SUT.inc'
+
+1 configuration selected:
+
+Action   Benchmarks
+------   ----------------------------------------------------------------------
+build    505.mcf_r                                                             
+-------------------------------------------------------------------------------
+
+Setting up environment for running 505.mcf_r...
+Starting runcpu for 505.mcf_r...
+Running "specperl /home/matthew/github/bingseclab/simplex/cpu2017/bin/sysinfo" to gather system information.
+sysinfo: r5797 of 2017-06-14 (96c45e4568ad54c135fd618bcc091c0f)
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...trying to get DIMM info from dmidecode
+Read 105 info lines from the sysinfo program.
+Retrieving flags file (/home/matthew/github/bingseclab/simplex/cpu2017/config/flags/gcc.xml)...
+Verbosity = 5
+Action    = build
+Tune      = base
+Label     = gcc-linux-x86-m64
+Size      = refrate
+benchmarks= 505.mcf_r
+outputs   = rsf,txt,csv
+username  = matthew
+Environment settings:
+LD_LIBRARY_PATH = "%{gcc_dir}/lib/:/lib64"
+
+Benchmarks selected: 505.mcf_r
+When checking executables (/home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/505.mcf_r/exe/mcf_r_base.gcc-linux-x86-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/505.mcf_r/exe/mcf_r_base.gcc-linux-x86-m64), no checksums were
+  found in the config file.  They will be installed after build.
+Compiling Binaries
+------------------------------------------------------------------------
+When checking options for /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/505.mcf_r/exe/mcf_r_base.gcc-linux-x86-m64, no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/505.mcf_r/exe/mcf_r_base.gcc-linux-x86-m64), no checksums were
+  found in the config file.  They will be installed after build.
+  Building 505.mcf_r base gcc-linux-x86-m64: (build_base_gcc-linux-x86-m64.0000) [2018-02-05 21:17:49]
+Wrote to makefile '/home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/505.mcf_r/build/build_base_gcc-linux-x86-m64.0000/Makefile.deps':
+# End dependencies
+# These are the build dependencies
+Wrote to makefile '/home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/505.mcf_r/build/build_base_gcc-linux-x86-m64.0000/Makefile.spec':
+TUNE=base
+LABEL=gcc-linux-x86-m64
+NUMBER=505
+NAME=mcf_r
+SOURCES= mcf.c mcfutil.c readmin.c implicit.c pstart.c output.c treeup.c \
+	 pbla.c pflowup.c psimplex.c pbeampp.c spec_qsort/spec_qsort.c
+EXEBASE=mcf_r
+NEED_MATH=yes
+BENCHLANG=C
+BENCH_CFLAGS     = -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP
+CC               = $(SPECLANG)gcc     -std=c99   -m64
+CC_VERSION_OPTION = -v
+CXX              = $(SPECLANG)g++                -m64
+CXX_VERSION_OPTION = -v
+EXTRA_COPTIMIZE  = -fno-strict-aliasing -fgnu89-inline
+EXTRA_PORTABILITY = -DSPEC_LP64
+FC               = $(SPECLANG)gfortran           -m64
+FC_VERSION_OPTION = -v
+LDCFLAGS         = -z muldefs
+OPTIMIZE         = -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize
+OS               = unix
+SPECLANG         = /usr/bin/
+absolutely_no_locking = 0
+abstol           = 
+action           = build
+allow_label_override = 0
+backup_config    = 1
+baseexe          = mcf_r
+basepeak         = 0
+benchdir         = benchspec
+benchmark        = 505.mcf_r
+binary           = 
+bindir           = exe
+builddir         = build
+bundleaction     = 
+bundlename       = 
+calctol          = 1
+changedhash      = 0
+check_version    = 0
+clean_between_builds = no
+command_add_redirect = 1
+commanderrfile   = speccmds.err
+commandexe       = mcf_r_base.gcc-linux-x86-m64
+commandfile      = speccmds.cmd
+commandoutfile   = speccmds.out
+commandstdoutfile = speccmds.stdout
+comparedir       = compare
+compareerrfile   = compare.err
+comparefile      = compare.cmd
+compareoutfile   = compare.out
+comparestdoutfile = compare.stdout
+compile_error    = 0
+compwhite        = 
+configdir        = config
+configfile       = gcc-linux-x86.cfg
+configpath       = /home/matthew/github/bingseclab/simplex/cpu2017/config/gcc-linux-x86.cfg
+copies           = 4
+current_range    = 
+datadir          = data
+default_size     = ref
+default_submit   = $command
+delay            = 0
+deletebinaries   = 0
+deletework       = 0
+dependent_workloads = 0
+device           = 
+difflines        = 10
+dirprot          = 511
+discard_power_samples = 0
+enable_monitor   = 1
+endian           = 12345678
+env_vars         = 0
+expand_notes     = 0
+expid            = 
+exthash_bits     = 256
+failflags        = 0
+fake             = 0
+feedback         = 1
+flag_url_base    = https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/
+floatcompare     = 
+force_monitor    = 0
+from_runcpu      = 2
+fw_bios          = 
+hostname         = roundtop
+http_proxy       = 
+http_timeout     = 30
+hw_avail         = May-2017
+hw_cpu_max_mhz   = 4500
+hw_cpu_name      = Intel Core i7-7700K
+hw_cpu_nominal_mhz = 4200
+hw_disk          = 3.9 TB
+hw_memory001     = 62.796 GB fixme: If using DDR3, format is:
+hw_memory002     = 'N GB (M x N GB nRxn PCn-nnnnnR-n, ECC)'
+hw_model         = Precision Tower 3620
+hw_nchips        = 1
+hw_ncores        = 4
+hw_ncpuorder     = 
+hw_nthreadspercore = 2
+hw_ocache        = 
+hw_other         = None
+hw_pcache        = 
+hw_scache        = 
+hw_tcache        = 
+hw_vendor        = Dell Computers
+idle_current_range = 
+idledelay        = 10
+idleduration     = 60
+ignore_errors    = 1
+ignore_sigint    = 0
+ignorecase       = 
+info_wrap_columns = 50
+inputdir         = input
+inputgenerrfile  = inputgen.err
+inputgenfile     = inputgen.cmd
+inputgenoutfile  = inputgen.out
+inputgenstdoutfile = inputgen.stdout
+iteration        = -1
+iterations       = 1
+keeptmp          = 0
+label            = gcc-linux-x86-m64
+license_num      = Academic
+line_width       = 1020
+link_input_files = 1
+locking          = 1
+log              = CPU2017
+log_line_width   = 1020
+log_timestamp    = 0
+logfile          = /home/matthew/github/bingseclab/simplex/cpu2017/tmp/CPU2017.001/templogs/preenv.intrate.001.0
+logname          = /home/matthew/github/bingseclab/simplex/cpu2017/tmp/CPU2017.001/templogs/preenv.intrate.001.0
+lognum           = 001.0
+mail_reports     = all
+mailcompress     = 0
+mailmethod       = smtp
+mailport         = 25
+mailserver       = 127.0.0.1
+mailto           = 
+make             = specmake
+make_no_clobber  = 0
+makefile_template = Makefile.YYYtArGeTYYYspec
+makeflags        = --jobs=8
+max_average_uncertainty = 1
+max_hum_limit    = 0
+max_report_runs  = 3
+max_unknown_uncertainty = 1
+mean_anyway      = 1
+meter_connect_timeout = 30
+meter_errors_default = 5
+meter_errors_percentage = 5
+min_report_runs  = 2
+min_temp_limit   = 20
+minimize_builddirs = 0
+minimize_rundirs = 0
+name             = mcf_r
+nansupport       = 
+need_math        = yes
+no_input_handler = close
+no_monitor       = 
+noratios         = 0
+note_preenv      = 1
+notes_plat_sysinfo_000 =  Sysinfo program /home/matthew/github/bingseclab/simplex/cpu2017/bin/sysinfo
+notes_plat_sysinfo_005 =  Rev: r5797 of 2017-06-14 96c45e4568ad54c135fd618bcc091c0f
+notes_plat_sysinfo_010 =  running on roundtop Mon Feb  5 21:17:49 2018
+notes_plat_sysinfo_015 = 
+notes_plat_sysinfo_020 =  SUT (System Under Test) info as seen by some common utilities.
+notes_plat_sysinfo_025 =  For more information on this section, see
+notes_plat_sysinfo_030 =     https://www.spec.org/cpu2017/Docs/config.html\#sysinfo
+notes_plat_sysinfo_035 = 
+notes_plat_sysinfo_040 =  From /proc/cpuinfo
+notes_plat_sysinfo_045 =     model name : Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+notes_plat_sysinfo_050 =        1  "physical id"s (chips)
+notes_plat_sysinfo_055 =        8 "processors"
+notes_plat_sysinfo_060 =     cores, siblings (Caution: counting these is hw and system dependent. The following
+notes_plat_sysinfo_065 =     excerpts from /proc/cpuinfo might not be reliable.  Use with caution.)
+notes_plat_sysinfo_070 =        cpu cores : 4
+notes_plat_sysinfo_075 =        siblings  : 8
+notes_plat_sysinfo_080 =        physical 0: cores 0 1 2 3
+notes_plat_sysinfo_085 = 
+notes_plat_sysinfo_090 =  From lscpu:
+notes_plat_sysinfo_095 =       Architecture:          x86_64
+notes_plat_sysinfo_100 =       CPU op-mode(s):        32-bit, 64-bit
+notes_plat_sysinfo_105 =       Byte Order:            Little Endian
+notes_plat_sysinfo_110 =       CPU(s):                8
+notes_plat_sysinfo_115 =       On-line CPU(s) list:   0-7
+notes_plat_sysinfo_120 =       Thread(s) per core:    2
+notes_plat_sysinfo_125 =       Core(s) per socket:    4
+notes_plat_sysinfo_130 =       Socket(s):             1
+notes_plat_sysinfo_135 =       NUMA node(s):          1
+notes_plat_sysinfo_140 =       Vendor ID:             GenuineIntel
+notes_plat_sysinfo_145 =       CPU family:            6
+notes_plat_sysinfo_150 =       Model:                 158
+notes_plat_sysinfo_155 =       Model name:            Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+notes_plat_sysinfo_160 =       Stepping:              9
+notes_plat_sysinfo_165 =       CPU MHz:               3799.851
+notes_plat_sysinfo_170 =       CPU max MHz:           4500.0000
+notes_plat_sysinfo_175 =       CPU min MHz:           800.0000
+notes_plat_sysinfo_180 =       BogoMIPS:              8399.85
+notes_plat_sysinfo_185 =       Virtualization:        VT-x
+notes_plat_sysinfo_190 =       L1d cache:             32K
+notes_plat_sysinfo_195 =       L1i cache:             32K
+notes_plat_sysinfo_200 =       L2 cache:              256K
+notes_plat_sysinfo_205 =       L3 cache:              8192K
+notes_plat_sysinfo_210 =       NUMA node0 CPU(s):     0-7
+notes_plat_sysinfo_215 =       Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov
+notes_plat_sysinfo_220 =       pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp
+notes_plat_sysinfo_225 =       lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc
+notes_plat_sysinfo_230 =       aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma
+notes_plat_sysinfo_235 =       cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave
+notes_plat_sysinfo_240 =       avx f16c rdrand lahf_lm abm 3dnowprefetch epb invpcid_single intel_pt kaiser
+notes_plat_sysinfo_245 =       tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2
+notes_plat_sysinfo_250 =       erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida
+notes_plat_sysinfo_255 =       arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+notes_plat_sysinfo_260 = 
+notes_plat_sysinfo_265 =  /proc/cpuinfo cache data
+notes_plat_sysinfo_270 =     cache size : 8192 KB
+notes_plat_sysinfo_275 = 
+notes_plat_sysinfo_280 =  From numactl --hardware  WARNING: a numactl 'node' might or might not correspond to a
+notes_plat_sysinfo_285 =  physical chip.
+notes_plat_sysinfo_290 = 
+notes_plat_sysinfo_295 =  From /proc/meminfo
+notes_plat_sysinfo_300 =     MemTotal:       65846212 kB
+notes_plat_sysinfo_305 =     HugePages_Total:       0
+notes_plat_sysinfo_310 =     Hugepagesize:       2048 kB
+notes_plat_sysinfo_315 = 
+notes_plat_sysinfo_320 =  /usr/bin/lsb_release -d
+notes_plat_sysinfo_325 =     Ubuntu 16.04.3 LTS
+notes_plat_sysinfo_330 = 
+notes_plat_sysinfo_335 =  From /etc/*release* /etc/*version*
+notes_plat_sysinfo_340 =     debian_version: stretch/sid
+notes_plat_sysinfo_345 =     os-release:
+notes_plat_sysinfo_350 =        NAME="Ubuntu"
+notes_plat_sysinfo_355 =        VERSION="16.04.3 LTS (Xenial Xerus)"
+notes_plat_sysinfo_360 =        ID=ubuntu
+notes_plat_sysinfo_365 =        ID_LIKE=debian
+notes_plat_sysinfo_370 =        PRETTY_NAME="Ubuntu 16.04.3 LTS"
+notes_plat_sysinfo_375 =        VERSION_ID="16.04"
+notes_plat_sysinfo_380 =        HOME_URL="http://www.ubuntu.com/"
+notes_plat_sysinfo_385 =        SUPPORT_URL="http://help.ubuntu.com/"
+notes_plat_sysinfo_390 = 
+notes_plat_sysinfo_395 =  uname -a:
+notes_plat_sysinfo_400 =     Linux roundtop 4.4.0-112-generic \#135-Ubuntu SMP Fri Jan 19 11:48:36 UTC 2018 x86_64
+notes_plat_sysinfo_405 =     x86_64 x86_64 GNU/Linux
+notes_plat_sysinfo_410 = 
+notes_plat_sysinfo_415 =  run-level 5 Jan 25 11:19
+notes_plat_sysinfo_420 = 
+notes_plat_sysinfo_425 =  SPEC is set to: /home/matthew/github/bingseclab/simplex/cpu2017
+notes_plat_sysinfo_430 =     Filesystem     Type  Size  Used Avail Use% Mounted on
+notes_plat_sysinfo_435 =     /dev/sda3      ext4  3.6T  215G  3.2T   7% /
+notes_plat_sysinfo_440 = 
+notes_plat_sysinfo_445 =  Additional information from dmidecode follows.  WARNING: Use caution when you interpret
+notes_plat_sysinfo_450 =  this section. The 'dmidecode' program reads system data which is "intended to allow
+notes_plat_sysinfo_455 =  hardware to be accurately determined", but the intent may not be met, as there are
+notes_plat_sysinfo_460 =  frequent changes to hardware, firmware, and the "DMTF SMBIOS" standard.
+notes_plat_sysinfo_465 = 
+notes_plat_sysinfo_470 =  (End of data from sysinfo program)
+notes_wrap_columns = 0
+notes_wrap_indent =   
+num              = 505
+obiwan           = 
+os_exe_ext       = 
+output_format    = rsf,txt,csv
+output_root      = 
+outputdir        = output
+parallel_test    = 4
+parallel_test_submit = 0
+parallel_test_workloads = 
+path             = /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/505.mcf_r
+plain_train      = 1
+platform         = 
+power            = 0
+preENV_LD_LIBRARY_PATH = %{gcc_dir}/lib/:/lib64
+preenv           = 0
+prefix           = 
+prepared_by      = Matthew Cole
+ranks            = 1
+rawhash_bits     = 256
+rebuild          = 0
+reftime          = reftime
+reltol           = 
+reportable       = 0
+resultdir        = result
+review           = 0
+run              = all
+runcpu           = /home/matthew/github/bingseclab/simplex/cpu2017/bin/harness/runcpu --configfile gcc-linux-x86.cfg --action build --noreportable --nopower --runmode rate --tune base --size refrate 505.mcf_r --nopreenv --note-preenv --logfile /home/matthew/github/bingseclab/simplex/cpu2017/tmp/CPU2017.001/templogs/preenv.intrate.001.0 --lognum 001.0 --from_runcpu 2
+rundir           = run
+runmode          = rate
+safe_eval        = 1
+save_build_files = 
+section_specifier_fatal = 1
+setprocgroup     = 1
+setup_error      = 0
+sigint           = 2
+size             = refrate
+size_class       = ref
+skipabstol       = 
+skipobiwan       = 
+skipreltol       = 
+skiptol          = 
+smarttune        = base
+specdiff         = specdiff
+specrun          = specinvoke
+srcalt           = 
+srcdir           = src
+srcsource        = /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/505.mcf_r/src
+stagger          = 10
+strict_rundir_verify = 1
+sw_avail         = Dec-2017
+sw_base_ptrsize  = 64-bit
+sw_compiler001   = C/C++/Fortran: Version 5.4.0 of GCC, the
+sw_compiler002   = GNU Compiler Collection
+sw_file          = ext4
+sw_os001         = Ubuntu 16.04.3 LTS
+sw_os002         = 4.4.0-112-generic
+sw_other         = None
+sw_peak_ptrsize  = 64-bit
+sw_state         = Run level 5 (add definition here)
+sysinfo_hash_bits = 256
+sysinfo_program  = specperl /home/matthew/github/bingseclab/simplex/cpu2017/bin/sysinfo
+sysinfo_program_hash = sysinfo:SHA:ecd2bef08f316af97f5a7768b641e2a3307c1b4b68efb5a57fa76367d790d233
+table            = 1
+teeout           = 0
+test_date        = Feb-2018
+test_sponsor     = Binghamton University
+tester           = Binghamton University
+threads          = 1
+top              = /home/matthew/github/bingseclab/simplex/cpu2017
+train_single_thread = 0
+train_with       = train
+tune             = base
+uid              = 1001
+unbuffer         = 1
+uncertainty_exception = 5
+update           = 0
+update_url       = http://www.spec.org/auto/cpu2017/updates/
+use_submit_for_compare = 0
+use_submit_for_speed = 0
+username         = matthew
+verbose          = 5
+verify_binaries  = 1
+version          = 0.905000
+version_url      = http://www.spec.org/auto/cpu2017/current_version
+voltage_range    = 
+worklist         = list
+OUTPUT_RMFILES   = inp.out mcf.out
+  Compile for '505.mcf_r' started at: 2018-02-05 21:17:49 (1517883469)
+Issuing make.clean command 'specmake --output-sync --jobs=8 clean'
+Start make.clean command: 2018-02-05 21:17:49 (1517883469.78471)
+rm -rf *.o  inp.out mcf.out
+find . \( -name \*.o -o -name '*.fppized.f*' -o -name '*.i' -o -name '*.mod' \) -print | xargs rm -rf
+rm -rf mcf_r
+rm -rf mcf_r.exe
+rm -rf core
+Stop make.clean command: 2018-02-05 21:17:49 (1517883469.94752)
+Elapsed time for make.clean command: 00:00:00 (0.162805080413818)
+Issuing make command 'specmake --output-sync --jobs=8 build'
+Start make command: 2018-02-05 21:17:49 (1517883469.95072)
+/usr/bin/gcc     -std=c99   -m64 -c -o pbla.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  pbla.c
+/usr/bin/gcc     -std=c99   -m64 -c -o pstart.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  pstart.c
+/usr/bin/gcc     -std=c99   -m64 -c -o mcf.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  mcf.c
+/usr/bin/gcc     -std=c99   -m64 -c -o output.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  output.c
+/usr/bin/gcc     -std=c99   -m64 -c -o treeup.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  treeup.c
+/usr/bin/gcc     -std=c99   -m64 -c -o pflowup.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  pflowup.c
+/usr/bin/gcc     -std=c99   -m64 -c -o readmin.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  readmin.c
+readmin.c: In function 'read_min':
+readmin.c:44:5: warning: ignoring return value of 'fgets', declared with attribute warn_unused_result [-Wunused-result]
+     fgets( instring, 200, in );
+     ^
+readmin.c:129:9: warning: ignoring return value of 'fgets', declared with attribute warn_unused_result [-Wunused-result]
+         fgets( instring, 200, in );
+         ^
+readmin.c:183:9: warning: ignoring return value of 'fgets', declared with attribute warn_unused_result [-Wunused-result]
+         fgets( instring, 200, in );
+         ^
+/usr/bin/gcc     -std=c99   -m64 -c -o mcfutil.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  mcfutil.c
+/usr/bin/gcc     -std=c99   -m64 -c -o pbeampp.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  pbeampp.c
+/usr/bin/gcc     -std=c99   -m64 -c -o psimplex.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  psimplex.c
+/usr/bin/gcc     -std=c99   -m64 -c -o spec_qsort/spec_qsort.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  spec_qsort/spec_qsort.c
+/usr/bin/gcc     -std=c99   -m64 -c -o implicit.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  implicit.c
+/usr/bin/gcc     -std=c99   -m64  -z muldefs    -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize         -fno-strict-aliasing -fgnu89-inline mcf.o mcfutil.o readmin.o implicit.o pstart.o output.o treeup.o pbla.o pflowup.o psimplex.o pbeampp.o spec_qsort/spec_qsort.o             -lm         -o mcf_r  
+Stop make command: 2018-02-05 21:17:50 (1517883470.60215)
+Elapsed time for make command: 00:00:00 (0.651434898376465)
+Issuing options command 'specmake --output-sync --jobs=8 options'
+Start options command: 2018-02-05 21:17:50 (1517883470.60564)
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS=""
+P: BENCH_CFLAGS="-Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP"
+O: OPTIMIZE="-g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize"
+O: COPTIMIZE=""
+P: PORTABILITY=""
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS=""
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE="-fno-strict-aliasing -fgnu89-inline"
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64  -z muldefs    -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize         -fno-strict-aliasing -fgnu89-inline <objects>   -lm         -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: LDCFLAGS="-z muldefs"
+O: OPTIMIZE="-g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize"
+O: EXTRA_COPTIMIZE="-fno-strict-aliasing -fgnu89-inline"
+C: MATH_LIBS="-lm"
+C: LDOUT="-o options"
+Stop options command: 2018-02-05 21:17:50 (1517883470.78089)
+Elapsed time for options command: 00:00:00 (0.175251007080078)
+Issuing compiler-version command 'specmake --output-sync --jobs=8 compiler-version'
+Start compiler-version command: 2018-02-05 21:17:50 (1517883470.78513)
+ CC_VERSION_OPTION:
+Using built-in specs.
+COLLECT_GCC=/usr/bin/gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.6' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with
+-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.6) 
+Stop compiler-version command: 2018-02-05 21:17:50 (1517883470.96474)
+Elapsed time for compiler-version command: 00:00:00 (0.179610013961792)
+  Compile for '505.mcf_r' ended at: 2018-02-05 21:17:50 (1517883470)
+  Elapsed compile for '505.mcf_r': 00:00:01 (1)
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize            -fno-strict-aliasing -fgnu89-inline   -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS=""
+P: BENCH_CFLAGS="-Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP"
+O: OPTIMIZE="-g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize"
+O: COPTIMIZE=""
+P: PORTABILITY=""
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS=""
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE="-fno-strict-aliasing -fgnu89-inline"
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64  -z muldefs    -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize         -fno-strict-aliasing -fgnu89-inline <objects>   -lm         -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: LDCFLAGS="-z muldefs"
+O: OPTIMIZE="-g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize"
+O: EXTRA_COPTIMIZE="-fno-strict-aliasing -fgnu89-inline"
+C: MATH_LIBS="-lm"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+Using built-in specs.
+COLLECT_GCC=/usr/bin/gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.6' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with
+-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.6) 
+
+Build successes for intrate: 505.mcf_r(base)
+Build errors for intrate: None
+
+Build Complete
+runcpu finished at 2018-02-05 21:17:51; 2 total seconds elapsed
+Info: file_tail(7419): file '/home/matthew/github/bingseclab/simplex/cpu2017/tmp/CPU2017.001/templogs/preenv.intrate.001.0.debug' was removed and will no longer be followed.  No action is required.
+The log for this run is in /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.001.log
+
+runcpu finished at 2018-02-05 21:17:51; 3 total seconds elapsed

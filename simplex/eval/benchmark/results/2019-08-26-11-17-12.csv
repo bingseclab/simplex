@@ -1,0 +1,5 @@
+"fixture","name","parameters","iterations_per_run","disabled","runs","mean","std_dev","median","quartile_1","quartile_3","minimum","maximum"
+"LoadStoreFixture","baseline_store","",10000,False,100,0.002089,0.001848,0.001881,0.001862,0.001904,0.000725,0.017312
+"LoadStoreFixture","mpx_store","",10000,False,100,0.001789,0.001193,0.002172,0.001044,0.002227,0.000757,0.011966
+"LoadStoreFixture","baseline_load","",10000,False,100,0.000744,0.000217,0.00073,0.000717,0.000744,3.1e-05,0.002776
+"LoadStoreFixture","mpx_load","",10000,False,100,0.003176,2.8e-05,0.003176,0.003156,0.00319,0.003118,0.003256

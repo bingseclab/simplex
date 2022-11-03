@@ -1,0 +1,252 @@
+runcpu v5825 started at 2018-02-13 14:43:31 on "roundtop"
+runcpu is: /home/matthew/github/bingseclab/simplex/cpu2017/bin/harness/runcpu
+runcpu: runcpu --config=gcc-linux-x86-simplex.cfg --size ref --iterations 3 --copies 4 --action validate deepsjeng_r
+toolset: linux-x86_64
+
+Locating benchmarks...found 47 benchmarks in 53 benchsets.
+Reading config file '/home/matthew/github/bingseclab/simplex/cpu2017/config/gcc-linux-x86-simplex.cfg'
+Reading included config file '/home/matthew/github/bingseclab/simplex/cpu2017/config/SUT.inc'
+
+1 configuration selected:
+
+ Action    Run Mode   Workload     Report Type      Benchmarks
+--------   --------   --------   ----------------   ---------------------------
+validate   rate       refrate    SPECrate2017_int   531.deepsjeng_r            
+-------------------------------------------------------------------------------
+
+Setting up environment for running 531.deepsjeng_r...
+Starting runcpu for 531.deepsjeng_r...
+Running "specperl /home/matthew/github/bingseclab/simplex/cpu2017/bin/sysinfo" to gather system information.
+sysinfo: r5797 of 2017-06-14 (96c45e4568ad54c135fd618bcc091c0f)
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...trying to get DIMM info from dmidecode
+Read 105 info lines from the sysinfo program.
+Retrieving flags file (/home/matthew/github/bingseclab/simplex/cpu2017/config/flags/gcc.xml)...
+Verbosity = 5
+Action    = validate
+Tune      = base
+Label     = gcc-linux-x86-simplex-m64
+Size      = refrate
+benchmarks= 531.deepsjeng_r
+outputs   = rsf,txt,csv
+username  = matthew
+Environment settings:
+LD_LIBRARY_PATH = "%{gcc_dir}/lib/:/lib64:%{ENV_LD_LIBRARY_PATH}"
+
+Benchmarks selected: 531.deepsjeng_r
+Compiling Binaries
+------------------------------------------------------------------------
+COMP: "/usr/bin/g++                -m64 -c -o options.o -DSPEC -DNDEBUG -DSMALL_MEMORY -DSPEC_AUTO_SUPPRESS_OPENMP  -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize      -I/home/matthew/github/bingseclab/simplex/incl -L/home/matthew/github/bingseclab/simplex/lib   -DSPEC_LP64  <source>"
+C: CXXC="/usr/bin/g++                -m64"
+C: CXXOBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-DSMALL_MEMORY -DSPEC_AUTO_SUPPRESS_OPENMP"
+P: BENCH_CXXFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize"
+O: CXXOPTIMIZE=""
+P: PORTABILITY=""
+P: CXXPORTABILITY=""
+O: EXTRA_CXXFLAGS="-I/home/matthew/github/bingseclab/simplex/incl -L/home/matthew/github/bingseclab/simplex/lib"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_CXXOPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CXXPORTABILITY=""
+LINK: "/usr/bin/g++                -m64   -I/home/matthew/github/bingseclab/simplex/incl -L/home/matthew/github/bingseclab/simplex/lib   -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize          <objects>        -lsimplex    -o options  "
+C: LD="/usr/bin/g++                -m64"
+O: EXTRA_LDFLAGS="-I/home/matthew/github/bingseclab/simplex/incl -L/home/matthew/github/bingseclab/simplex/lib"
+O: OPTIMIZE="-g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize"
+O: EXTRA_LIBS="-lsimplex"
+C: LDOUT="-o options"
+ CXXC_VERSION_OPTION:
+Using built-in specs.
+COLLECT_GCC=/usr/bin/g++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.6' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with
+-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.6) 
+  Up to date 531.deepsjeng_r base gcc-linux-x86-simplex-m64
+
+
+Setting Up Run Directories
+  Setting up 531.deepsjeng_r refrate (ref) base gcc-linux-x86-simplex-m64 (4 copies): run_base_refrate_gcc-linux-x86-simplex-m64.0000-0003
+-----------------------------------
+Running Benchmarks
+-----------------------------------
+  Running (#1) 531.deepsjeng_r refrate (ref) base gcc-linux-x86-simplex-m64 (4 copies) [2018-02-13 14:43:33]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0001
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0002
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0003
+    -o ref.out -e ref.err ../run_base_refrate_gcc-linux-x86-simplex-m64.0000/deepsjeng_r_base.gcc-linux-x86-simplex-m64 ref.txt > ref.out 2>> ref.err (timed)
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2018-02-13 14:43:33 (1518551013.71752)
+Stop command: 2018-02-13 14:48:31 (1518551311.18647)
+Elapsed time for command: 00:04:57 (297.468945980072)
+Workload elapsed time (copy 0 workload 1) = 296.514489 seconds
+Workload elapsed time (copy 3 workload 1) = 296.63797 seconds
+Workload elapsed time (copy 2 workload 1) = 296.873058 seconds
+Workload elapsed time (copy 1 workload 1) = 297.310773 seconds
+Copy 0 of 531.deepsjeng_r (base refrate) run 1 finished at 2018-02-13 14:48:30.  Total elapsed time: 296.514489
+Copy 1 of 531.deepsjeng_r (base refrate) run 1 finished at 2018-02-13 14:48:31.  Total elapsed time: 297.310773
+Copy 2 of 531.deepsjeng_r (base refrate) run 1 finished at 2018-02-13 14:48:30.  Total elapsed time: 296.873058
+Copy 3 of 531.deepsjeng_r (base refrate) run 1 finished at 2018-02-13 14:48:30.  Total elapsed time: 296.63797
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'ref.out' with obiwan=1
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2018-02-13 14:48:31 (1518551311.22879)
+Stop command: 2018-02-13 14:48:31 (1518551311.49591)
+Elapsed time for command: 00:00:00 (0.267122030258179)
+Benchmark Times:
+  Run Start:    2018-02-13 14:43:33 (1518551013)
+  Rate Start:   2018-02-13 14:43:33 (1518551013.72138)
+  Rate End:     2018-02-13 14:48:31 (1518551311.03221)
+  Run Stop:     2018-02-13 14:48:31 (1518551311)
+  Run Elapsed:  00:04:58 (298)
+  Run Reported: 00:04:57 (297 310825109 297.310825)
+ Success 531.deepsjeng_r base refrate ratio=15.42, runtime=297.310825, copies=4, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+-----------------------------------
+  Running (#2) 531.deepsjeng_r refrate (ref) base gcc-linux-x86-simplex-m64 (4 copies) [2018-02-13 14:48:31]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0001
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0002
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0003
+    -o ref.out -e ref.err ../run_base_refrate_gcc-linux-x86-simplex-m64.0000/deepsjeng_r_base.gcc-linux-x86-simplex-m64 ref.txt > ref.out 2>> ref.err (timed)
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2018-02-13 14:48:31 (1518551311.61268)
+Stop command: 2018-02-13 14:53:28 (1518551608.49934)
+Elapsed time for command: 00:04:56 (296.886664152145)
+Workload elapsed time (copy 1 workload 1) = 295.348683 seconds
+Workload elapsed time (copy 2 workload 1) = 296.029776 seconds
+Workload elapsed time (copy 0 workload 1) = 296.399039 seconds
+Workload elapsed time (copy 3 workload 1) = 296.726147 seconds
+Copy 0 of 531.deepsjeng_r (base refrate) run 2 finished at 2018-02-13 14:53:28.  Total elapsed time: 296.399039
+Copy 1 of 531.deepsjeng_r (base refrate) run 2 finished at 2018-02-13 14:53:26.  Total elapsed time: 295.348683
+Copy 2 of 531.deepsjeng_r (base refrate) run 2 finished at 2018-02-13 14:53:27.  Total elapsed time: 296.029776
+Copy 3 of 531.deepsjeng_r (base refrate) run 2 finished at 2018-02-13 14:53:28.  Total elapsed time: 296.726147
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'ref.out' with obiwan=1
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2018-02-13 14:53:28 (1518551608.56302)
+Stop command: 2018-02-13 14:53:28 (1518551608.83044)
+Elapsed time for command: 00:00:00 (0.267427206039429)
+Benchmark Times:
+  Run Start:    2018-02-13 14:48:31 (1518551311)
+  Rate Start:   2018-02-13 14:48:31 (1518551311.61842)
+  Rate End:     2018-02-13 14:53:28 (1518551608.34478)
+  Run Stop:     2018-02-13 14:53:28 (1518551608)
+  Run Elapsed:  00:04:57 (297)
+  Run Reported: 00:04:56 (296 726356029 296.726356)
+ Success 531.deepsjeng_r base refrate ratio=15.45, runtime=296.726356, copies=4, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+-----------------------------------
+  Running (#3) 531.deepsjeng_r refrate (ref) base gcc-linux-x86-simplex-m64 (4 copies) [2018-02-13 14:53:28]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0001
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0002
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0003
+    -o ref.out -e ref.err ../run_base_refrate_gcc-linux-x86-simplex-m64.0000/deepsjeng_r_base.gcc-linux-x86-simplex-m64 ref.txt > ref.out 2>> ref.err (timed)
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2018-02-13 14:53:28 (1518551608.91035)
+Stop command: 2018-02-13 14:58:24 (1518551904.24713)
+Elapsed time for command: 00:04:55 (295.33678984642)
+Workload elapsed time (copy 3 workload 1) = 292.752983 seconds
+Workload elapsed time (copy 2 workload 1) = 294.167032 seconds
+Workload elapsed time (copy 1 workload 1) = 294.859942 seconds
+Workload elapsed time (copy 0 workload 1) = 295.17881 seconds
+Copy 0 of 531.deepsjeng_r (base refrate) run 3 finished at 2018-02-13 14:58:24.  Total elapsed time: 295.17881
+Copy 1 of 531.deepsjeng_r (base refrate) run 3 finished at 2018-02-13 14:58:23.  Total elapsed time: 294.859942
+Copy 2 of 531.deepsjeng_r (base refrate) run 3 finished at 2018-02-13 14:58:23.  Total elapsed time: 294.167032
+Copy 3 of 531.deepsjeng_r (base refrate) run 3 finished at 2018-02-13 14:58:21.  Total elapsed time: 292.752983
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'ref.out' with obiwan=1
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2018-02-13 14:58:24 (1518551904.28953)
+Stop command: 2018-02-13 14:58:24 (1518551904.56496)
+Elapsed time for command: 00:00:00 (0.275430202484131)
+Benchmark Times:
+  Run Start:    2018-02-13 14:53:28 (1518551608)
+  Rate Start:   2018-02-13 14:53:28 (1518551608.91414)
+  Rate End:     2018-02-13 14:58:24 (1518551904.09296)
+  Run Stop:     2018-02-13 14:58:24 (1518551904)
+  Run Elapsed:  00:04:56 (296)
+  Run Reported: 00:04:55 (295 178810119 295.17881)
+ Success 531.deepsjeng_r base refrate ratio=15.53, runtime=295.178810, copies=4, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+Success: 3x531.deepsjeng_r
+Producing Raw Reports
+ label: gcc-linux-x86-simplex-m64
+  workload: refrate (ref)
+   benchset: intspeed
+   benchset: intrate
+   metric: SPECrate2017_int_base
+    format: raw -> /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.030.intrate.refrate.rsf
+Parsing flags for 531.deepsjeng_r base: done
+Doing flag reduction: done
+    format: CSV -> /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.030.intrate.refrate.csv
+    format: Text -> /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.030.intrate.refrate.txt
+   benchset: fpspeed
+   benchset: fprate
+runcpu finished at 2018-02-13 14:58:26; 894 total seconds elapsed
+Info: file_tail(13296): file '/home/matthew/github/bingseclab/simplex/cpu2017/tmp/CPU2017.030/templogs/preenv.intrate.030.0.debug' was removed and will no longer be followed.  No action is required.
+The log for this run is in /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.030.log
+
+runcpu finished at 2018-02-13 14:58:27; 895 total seconds elapsed

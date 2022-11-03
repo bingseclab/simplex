@@ -1,0 +1,125 @@
+diff -Naurb /home/matthew/cpu2017/benchspec/CPU/519.lbm_r/src/lbm.c benchspec/CPU/519.lbm_r/src/lbm.c
+--- /home/matthew/cpu2017/benchspec/CPU/519.lbm_r/src/lbm.c	2016-11-17 16:57:46.000000000 -0500
++++ benchspec/CPU/519.lbm_r/src/lbm.c	2018-02-28 16:10:52.617985819 -0500
+@@ -11,6 +11,8 @@
+ #include <omp.h>
+ #endif
+ 
++#include "simplex.h"
++
+ /*############################################################################*/
+ 
+ #define DFL1 (1.0/ 3.0)
+diff -Naurb /home/matthew/cpu2017/benchspec/CPU/519.lbm_r/src/main.c benchspec/CPU/519.lbm_r/src/main.c
+--- /home/matthew/cpu2017/benchspec/CPU/519.lbm_r/src/main.c	2011-10-17 12:38:35.000000000 -0400
++++ benchspec/CPU/519.lbm_r/src/main.c	2018-03-05 11:34:24.706165833 -0500
+@@ -16,9 +16,11 @@
+ 
+ #include <sys/stat.h>
+ 
++#include "simplex.h"
++
+ /*############################################################################*/
+ 
+-static LBM_GridPtr srcGrid, dstGrid;
++/*static LBM_GridPtr srcGrid, dstGrid;*/ //Now in BND0, BND1
+ 
+ /*############################################################################*/
+ 
+@@ -38,15 +40,21 @@
+ 
+ 	for( t = 1; t <= param.nTimeSteps; t++ ) {
+ 		if( param.simType == CHANNEL ) {
+-			LBM_handleInOutFlow( *srcGrid );
++			LBM_handleInOutFlow(*((LBM_GridPtr)qgetbndl(BND0)));
+ 		}
+ 
+-		LBM_performStreamCollideTRT( *srcGrid, *dstGrid );
+-		LBM_swapGrids( &srcGrid, &dstGrid );
++		LBM_performStreamCollideTRT( *((LBM_GridPtr)qgetbndl(BND0)), *((LBM_GridPtr)qgetbndl(BND1)) );
++		LBM_GridPtr p0 = (LBM_GridPtr)qgetbndl(BND0);
++		LBM_GridPtr p1 = (LBM_GridPtr)qgetbndl(BND1);
++		LBM_swapGrids( &p0, &p1 );
++		qsetbndl(BND0, (uint64_t) p0);
++		qsetbndl(BND1, (uint64_t) p1);
++		p0 = 0;
++		p1 = 0;
+ 
+ 		if( (t & 63) == 0 ) {
+ 			printf( "timestep: %i\n", t );
+-			LBM_showGridStatistics( *srcGrid );
++			LBM_showGridStatistics( *((LBM_GridPtr)qgetbndl(BND0)) );
+ 		}
+ 	}
+ 
+@@ -122,41 +130,54 @@
+ /*############################################################################*/
+ 
+ void MAIN_initialize( const MAIN_Param* param ) {
+-	LBM_allocateGrid( (double**) &srcGrid );
+-	LBM_allocateGrid( (double**) &dstGrid );
++	process_specific_init();
++
++	double* ptr;
++	LBM_allocateGrid(&ptr);
++	qsetbndl(BND0, (uint64_t) ptr);
++	ptr = 0;
++	LBM_allocateGrid(&ptr);
++	qsetbndl(BND1, (uint64_t) ptr);
++	ptr = 0;
+ 
+-	LBM_initializeGrid( *srcGrid );
+-	LBM_initializeGrid( *dstGrid );
++	LBM_initializeGrid( *((LBM_GridPtr)qgetbndl(BND0)) );
++	LBM_initializeGrid( *((LBM_GridPtr)qgetbndl(BND1)) );
+ 
+ 	if( param->obstacleFilename != NULL ) {
+-		LBM_loadObstacleFile( *srcGrid, param->obstacleFilename );
+-		LBM_loadObstacleFile( *dstGrid, param->obstacleFilename );
++		LBM_loadObstacleFile( *((LBM_GridPtr)qgetbndl(BND0)), param->obstacleFilename );
++		LBM_loadObstacleFile( *((LBM_GridPtr)qgetbndl(BND1)), param->obstacleFilename );
+ 	}
+ 
+ 	if( param->simType == CHANNEL ) {
+-		LBM_initializeSpecialCellsForChannel( *srcGrid );
+-		LBM_initializeSpecialCellsForChannel( *dstGrid );
++		LBM_initializeSpecialCellsForChannel( *((LBM_GridPtr)qgetbndl(BND0)));
++		LBM_initializeSpecialCellsForChannel( *((LBM_GridPtr)qgetbndl(BND1)));
+ 	}
+ 	else {
+-		LBM_initializeSpecialCellsForLDC( *srcGrid );
+-		LBM_initializeSpecialCellsForLDC( *dstGrid );
++		LBM_initializeSpecialCellsForLDC( *((LBM_GridPtr)qgetbndl(BND0)) );
++		LBM_initializeSpecialCellsForLDC( *((LBM_GridPtr)qgetbndl(BND1)) );
+ 	}
+ 
+-	LBM_showGridStatistics( *srcGrid );
++	LBM_showGridStatistics( *((LBM_GridPtr)qgetbndl(BND0)) );
+ }
+ 
+ /*############################################################################*/
+ 
+ void MAIN_finalize( const MAIN_Param* param ) {
+-	LBM_showGridStatistics( *srcGrid );
++	LBM_showGridStatistics( *((LBM_GridPtr)qgetbndl(BND0)) );
+ 
+ 	if( param->action == COMPARE )
+-		LBM_compareVelocityField( *srcGrid, param->resultFilename, TRUE );
++		LBM_compareVelocityField( *((LBM_GridPtr)qgetbndl(BND0)), param->resultFilename, TRUE );
+ 	if( param->action == STORE )
+-	LBM_storeVelocityField( *srcGrid, param->resultFilename, TRUE );
++	LBM_storeVelocityField( *((LBM_GridPtr)qgetbndl(BND0)), param->resultFilename, TRUE );
++
++	double* p0 = (double*) qgetbndl(BND0);
++	double* p1 = (double*) qgetbndl(BND1);
++	LBM_freeGrid(&p0);
++	p0 = 0;
++	LBM_freeGrid(&p1);
++	p1 = 0;
+ 
+-	LBM_freeGrid( (double**) &srcGrid );
+-	LBM_freeGrid( (double**) &dstGrid );
++	process_specific_finish();
+ }
+ 
+ #if !defined(SPEC)

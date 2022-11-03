@@ -1,0 +1,829 @@
+diff -rupN /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_cbc.c openssl-1.1.0g/crypto/bf/bf_cbc.c
+--- /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_cbc.c	2017-11-02 10:29:02.000000000 -0400
++++ openssl-1.1.0g/crypto/bf/bf_cbc.c	2018-03-26 11:29:11.623262000 -0400
+@@ -9,7 +9,9 @@
+ 
+ #include <openssl/blowfish.h>
+ #include "bf_locl.h"
++#include "simplex.h"
+ 
++//const BF_KEY *schedule is now in BND0
+ void BF_cbc_encrypt(const unsigned char *in, unsigned char *out, long length,
+                     const BF_KEY *schedule, unsigned char *ivec, int encrypt)
+ {
+@@ -58,7 +60,7 @@ void BF_cbc_encrypt(const unsigned char
+             n2l(in, tin1);
+             tin[0] = tin0;
+             tin[1] = tin1;
+-            BF_decrypt(tin, schedule);
++            BF_decrypt(tin, NULL);
+             tout0 = tin[0] ^ xor0;
+             tout1 = tin[1] ^ xor1;
+             l2n(tout0, out);
+@@ -71,7 +73,7 @@ void BF_cbc_encrypt(const unsigned char
+             n2l(in, tin1);
+             tin[0] = tin0;
+             tin[1] = tin1;
+-            BF_decrypt(tin, schedule);
++            BF_decrypt(tin, NULL);
+             tout0 = tin[0] ^ xor0;
+             tout1 = tin[1] ^ xor1;
+             l2nn(tout0, tout1, out, l + 8);
+diff -rupN /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_cfb64.c openssl-1.1.0g/crypto/bf/bf_cfb64.c
+--- /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_cfb64.c	2017-11-02 10:29:02.000000000 -0400
++++ openssl-1.1.0g/crypto/bf/bf_cfb64.c	2018-03-26 11:29:09.903247000 -0400
+@@ -9,6 +9,7 @@
+ 
+ #include <openssl/blowfish.h>
+ #include "bf_locl.h"
++#include "simplex.h"
+ 
+ /*
+  * The input and output encrypted as though 64bit cfb mode is being used.
+@@ -16,6 +17,7 @@
+  * used is contained in *num;
+  */
+ 
++//const BF_KEY *schedule is now in BND0,
+ void BF_cfb64_encrypt(const unsigned char *in, unsigned char *out,
+                       long length, const BF_KEY *schedule,
+                       unsigned char *ivec, int *num, int encrypt)
+@@ -34,6 +36,7 @@ void BF_cfb64_encrypt(const unsigned cha
+                 ti[0] = v0;
+                 n2l(iv, v1);
+                 ti[1] = v1;
++
+                 BF_encrypt((BF_LONG *)ti, schedule);
+                 iv = (unsigned char *)ivec;
+                 t = ti[0];
+diff -rupN /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_ecb.c openssl-1.1.0g/crypto/bf/bf_ecb.c
+--- /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_ecb.c	2017-11-02 10:29:02.000000000 -0400
++++ openssl-1.1.0g/crypto/bf/bf_ecb.c	2018-03-26 11:29:37.207494000 -0400
+@@ -10,6 +10,7 @@
+ #include <openssl/blowfish.h>
+ #include "bf_locl.h"
+ #include <openssl/opensslv.h>
++#include "simplex.h"
+ 
+ /*
+  * Blowfish as implemented from 'Blowfish: Springer-Verlag paper' (From
+@@ -22,6 +23,7 @@ const char *BF_options(void)
+     return ("blowfish(ptr)");
+ }
+ 
++// const BF_KEY *key is now in BND0
+ void BF_ecb_encrypt(const unsigned char *in, unsigned char *out,
+                     const BF_KEY *key, int encrypt)
+ {
+diff -rupN /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_enc.c openssl-1.1.0g/crypto/bf/bf_enc.c
+--- /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_enc.c	2017-11-02 10:29:02.000000000 -0400
++++ openssl-1.1.0g/crypto/bf/bf_enc.c	2018-03-26 11:30:56.212210000 -0400
+@@ -9,6 +9,7 @@
+ 
+ #include <openssl/blowfish.h>
+ #include "bf_locl.h"
++#include "simplex.h"
+ 
+ /*
+  * Blowfish as implemented from 'Blowfish: Springer-Verlag paper' (From
+@@ -21,13 +22,14 @@
+ to modify the code.
+ #endif
+ 
++//const BF_KEY *key is now in BND0,
+ void BF_encrypt(BF_LONG *data, const BF_KEY *key)
+ {
+     register BF_LONG l, r;
+     register const BF_LONG *p, *s;
+ 
+-    p = key->P;
+-    s = &(key->S[0]);
++    p = (*(BF_KEY*) qgetbndl(BND0)).P;
++    s = &((*(BF_KEY*) qgetbndl(BND0)).S[0]);
+     l = data[0];
+     r = data[1];
+ 
+@@ -62,13 +64,14 @@ void BF_encrypt(BF_LONG *data, const BF_
+ 
+ #ifndef BF_DEFAULT_OPTIONS
+ 
++//const BF_KEY *key is now in BND0
+ void BF_decrypt(BF_LONG *data, const BF_KEY *key)
+ {
+     register BF_LONG l, r;
+     register const BF_LONG *p, *s;
+ 
+-    p = key->P;
+-    s = &(key->S[0]);
++    p = (*(BF_KEY*) qgetbndl(BND0)).P;
++    s = &((*(BF_KEY*) qgetbndl(BND0)).S[0]);
+     l = data[0];
+     r = data[1];
+ 
+@@ -101,6 +104,7 @@ void BF_decrypt(BF_LONG *data, const BF_
+     data[0] = r & 0xffffffffU;
+ }
+ 
++//const BF_KEY *schedule is now in BND0,
+ void BF_cbc_encrypt(const unsigned char *in, unsigned char *out, long length,
+                     const BF_KEY *schedule, unsigned char *ivec, int encrypt)
+ {
+@@ -120,7 +124,7 @@ void BF_cbc_encrypt(const unsigned char
+             tin1 ^= tout1;
+             tin[0] = tin0;
+             tin[1] = tin1;
+-            BF_encrypt(tin, schedule);
++            BF_encrypt(tin, (BF_KEY*) qgetbndl(BND0));
+             tout0 = tin[0];
+             tout1 = tin[1];
+             l2n(tout0, out);
+@@ -132,7 +136,7 @@ void BF_cbc_encrypt(const unsigned char
+             tin1 ^= tout1;
+             tin[0] = tin0;
+             tin[1] = tin1;
+-            BF_encrypt(tin, schedule);
++            BF_encrypt(tin, (BF_KEY*) qgetbndl(BND0));
+             tout0 = tin[0];
+             tout1 = tin[1];
+             l2n(tout0, out);
+@@ -149,7 +153,7 @@ void BF_cbc_encrypt(const unsigned char
+             n2l(in, tin1);
+             tin[0] = tin0;
+             tin[1] = tin1;
+-            BF_decrypt(tin, schedule);
++            BF_decrypt(tin, (BF_KEY*) qgetbndl(BND0));
+             tout0 = tin[0] ^ xor0;
+             tout1 = tin[1] ^ xor1;
+             l2n(tout0, out);
+@@ -162,7 +166,7 @@ void BF_cbc_encrypt(const unsigned char
+             n2l(in, tin1);
+             tin[0] = tin0;
+             tin[1] = tin1;
+-            BF_decrypt(tin, schedule);
++            BF_decrypt(tin, (BF_KEY*) qgetbndl(BND0));
+             tout0 = tin[0] ^ xor0;
+             tout1 = tin[1] ^ xor1;
+             l2nn(tout0, tout1, out, l + 8);
+diff -rupN /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_ofb64.c openssl-1.1.0g/crypto/bf/bf_ofb64.c
+--- /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_ofb64.c	2017-11-02 10:29:02.000000000 -0400
++++ openssl-1.1.0g/crypto/bf/bf_ofb64.c	2018-03-26 11:31:27.208491000 -0400
+@@ -9,12 +9,14 @@
+ 
+ #include <openssl/blowfish.h>
+ #include "bf_locl.h"
++#include "simplex.h"
+ 
+ /*
+  * The input and output encrypted as though 64bit ofb mode is being used.
+  * The extra state information to record how much of the 64bit block we have
+  * used is contained in *num;
+  */
++//const BF_KEY *schedule is now in BND0,
+ void BF_ofb64_encrypt(const unsigned char *in, unsigned char *out,
+                       long length, const BF_KEY *schedule,
+                       unsigned char *ivec, int *num)
+@@ -38,6 +40,8 @@ void BF_ofb64_encrypt(const unsigned cha
+     l2n(v1, dp);
+     while (l--) {
+         if (n == 0) {
++	    //const BF_KEY *schedule is now in BND0,
++	    //callee will retrieve, do not pass as argument.
+             BF_encrypt((BF_LONG *)ti, schedule);
+             dp = (char *)d;
+             t = ti[0];
+diff -rupN /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_skey.c openssl-1.1.0g/crypto/bf/bf_skey.c
+--- /home/matthew/Downloads/openssl-1.1.0g/crypto/bf/bf_skey.c	2017-11-02 10:29:02.000000000 -0400
++++ openssl-1.1.0g/crypto/bf/bf_skey.c	2018-03-26 11:32:40.985159000 -0400
+@@ -12,7 +12,9 @@
+ #include <openssl/blowfish.h>
+ #include "bf_locl.h"
+ #include "bf_pi.h"
++#include "simplex.h"
+ 
++//const BF_KEY *key is now in BND0,
+ void BF_set_key(BF_KEY *key, int len, const unsigned char *data)
+ {
+     int i;
+@@ -58,7 +60,7 @@ void BF_set_key(BF_KEY *key, int len, co
+         p[i + 1] = in[1];
+     }
+ 
+-    p = key->S;
++    p = (*(BF_KEY*) qgetbndl(BND0)).S;
+     for (i = 0; i < 4 * 256; i += 2) {
+         BF_encrypt(in, key);
+         p[i] = in[0];
+diff -rupN /home/matthew/Downloads/openssl-1.1.0g/.gitignore openssl-1.1.0g/.gitignore
+--- /home/matthew/Downloads/openssl-1.1.0g/.gitignore	2017-11-02 10:29:01.000000000 -0400
++++ openssl-1.1.0g/.gitignore	2018-03-26 21:43:41.472213484 -0400
+@@ -1,174 +1,181 @@
+-# Ignore editor artefacts
+-/.dir-locals.el
+-
+-# Top level excludes
+-/Makefile.orig
+-/MINFO
+-/TABLE
+-/*.a
+-/*.pc
+-/rehash.time
+-/inc.*
+-/makefile.*
+-/out.*
+-/tmp.*
+-/configdata.pm
+-
+-# *all* Makefiles
+-Makefile
+-# ... except in demos
+-!/demos/*/Makefile
+-
+-# Links under apps
+-/apps/CA.pl
+-/apps/tsget
+-/apps/tsget.pl
+-/apps/md4.c
+-
+-# Auto generated headers
+-/crypto/buildinf.h
+-/apps/progs.h
+-/crypto/include/internal/*_conf.h
+-/openssl/include/opensslconf.h
+-/util/domd
+-
+-# Executables
+-/apps/openssl
+-/test/sha256t
+-/test/sha512t
+-/test/gost2814789t
+-/test/ssltest_old
+-/test/*test
+-/test/fips_aesavs
+-/test/fips_desmovs
+-/test/fips_dhvs
+-/test/fips_drbgvs
+-/test/fips_dssvs
+-/test/fips_ecdhvs
+-/test/fips_ecdsavs
+-/test/fips_rngvs
+-/test/fips_test_suite
+-/test/ssltest_old
+-/test/x509aux
+-/test/v3ext
+-
+-# Certain files that get created by tests on the fly
+-/test/test-runs
+-/test/buildtest_*
+-
+-# Fuzz stuff.
+-# Anything without an extension is an executable on Unix, so we keep files
+-# with extensions.  And we keep the corpora subddir versioned as well.
+-# Anything more generic with extensions that should be ignored will be taken
+-# care of by general ignores for those extensions (*.o, *.obj, *.exe, ...)
+-/fuzz/*
+-!/fuzz/README*
+-!/fuzz/corpora
+-!/fuzz/*.*
+-
+-# Misc auto generated files
+-/include/openssl/opensslconf.h
+-/tools/c_rehash
+-/tools/c_rehash.pl
+-/util/shlib_wrap.sh
+-/tags
+-/TAGS
+-/crypto.map
+-/ssl.map
+-
+-# Windows (legacy)
+-/tmp32
+-/tmp32.dbg
+-/tmp32dll
+-/tmp32dll.dbg
+-/out32
+-/out32.dbg
+-/out32dll
+-/out32dll.dbg
+-/inc32
+-/MINFO
+-/ms/.rnd
+-/ms/bcb.mak
+-/ms/libeay32.def
+-/ms/nt.mak
+-/ms/ntdll.mak
+-/ms/ssleay32.def
+-/ms/version32.rc
+-
+-# Files created on other branches that are not held in git, and are not
+-# needed on this branch
+-/include/openssl/asn1_mac.h
+-/include/openssl/des_old.h
+-/include/openssl/fips.h
+-/include/openssl/fips_rand.h
+-/include/openssl/krb5_asn.h
+-/include/openssl/kssl.h
+-/include/openssl/pq_compat.h
+-/include/openssl/ssl23.h
+-/include/openssl/tmdiff.h
+-/include/openssl/ui_compat.h
+-/test/fips_aesavs.c
+-/test/fips_desmovs.c
+-/test/fips_dsatest.c
+-/test/fips_dssvs.c
+-/test/fips_hmactest.c
+-/test/fips_randtest.c
+-/test/fips_rngvs.c
+-/test/fips_rsagtest.c
+-/test/fips_rsastest.c
+-/test/fips_rsavtest.c
+-/test/fips_shatest.c
+-/test/fips_test_suite.c
+-/test/shatest.c
+-
+-##### Generic patterns
+-# Auto generated assembly language source files
+-*.s
+-!/crypto/*/asm/*.s
+-/crypto/arm*.S
+-/crypto/*/*.S
+-*.asm
+-!/crypto/*/asm/*.asm
+-
+-# Object files
+-*.o
+-*.obj
+-
+-# editor artefacts
+-*.swp
+-.#*
+-\#*#
+-*~
+-
+-# Certificate symbolic links
+-*.0
+-
+-# All kinds of executables
+-*.so
+-*.so.*
+-*.dylib
+-*.dylib.*
+-*.dll
+-*.dll.*
+-*.exe
+-*.pyc
+-*.exp
+-*.lib
+-*.pdb
+-*.ilk
+-*.def
+-*.rc
+-*.res
+-
+-# Misc generated stuff
+-Makefile.save
+-/crypto/**/lib
+-/engines/**/lib
+-/ssl/**/lib
+-*.bak
+-cscope.*
+-*.d
+-pod2htmd.tmp
+-
+-# Windows manifest files
+-*.manifest
++*
++!.gitignore
++!bf.patch
++!README.md
++
++# ###### Original contents follow below #####
++#
++# # Ignore editor artefacts
++# /.dir-locals.el
++#
++# # Top level excludes
++# /Makefile.orig
++# /MINFO
++# /TABLE
++# /*.a
++# /*.pc
++# /rehash.time
++# /inc.*
++# /makefile.*
++# /out.*
++# /tmp.*
++# /configdata.pm
++#
++# # *all* Makefiles
++# Makefile
++# # ... except in demos
++# !/demos/*/Makefile
++#
++# # Links under apps
++# /apps/CA.pl
++# /apps/tsget
++# /apps/tsget.pl
++# /apps/md4.c
++#
++# # Auto generated headers
++# /crypto/buildinf.h
++# /apps/progs.h
++# /crypto/include/internal/*_conf.h
++# /openssl/include/opensslconf.h
++# /util/domd
++#
++# # Executables
++# /apps/openssl
++# /test/sha256t
++# /test/sha512t
++# /test/gost2814789t
++# /test/ssltest_old
++# /test/*test
++# /test/fips_aesavs
++# /test/fips_desmovs
++# /test/fips_dhvs
++# /test/fips_drbgvs
++# /test/fips_dssvs
++# /test/fips_ecdhvs
++# /test/fips_ecdsavs
++# /test/fips_rngvs
++# /test/fips_test_suite
++# /test/ssltest_old
++# /test/x509aux
++# /test/v3ext
++#
++# # Certain files that get created by tests on the fly
++# /test/test-runs
++# /test/buildtest_*
++#
++# # Fuzz stuff.
++# # Anything without an extension is an executable on Unix, so we keep files
++# # with extensions.  And we keep the corpora subddir versioned as well.
++# # Anything more generic with extensions that should be ignored will be taken
++# # care of by general ignores for those extensions (*.o, *.obj, *.exe, ...)
++# /fuzz/*
++# !/fuzz/README*
++# !/fuzz/corpora
++# !/fuzz/*.*
++#
++# # Misc auto generated files
++# /include/openssl/opensslconf.h
++# /tools/c_rehash
++# /tools/c_rehash.pl
++# /util/shlib_wrap.sh
++# /tags
++# /TAGS
++# /crypto.map
++# /ssl.map
++#
++# # Windows (legacy)
++# /tmp32
++# /tmp32.dbg
++# /tmp32dll
++# /tmp32dll.dbg
++# /out32
++# /out32.dbg
++# /out32dll
++# /out32dll.dbg
++# /inc32
++# /MINFO
++# /ms/.rnd
++# /ms/bcb.mak
++# /ms/libeay32.def
++# /ms/nt.mak
++# /ms/ntdll.mak
++# /ms/ssleay32.def
++# /ms/version32.rc
++#
++# # Files created on other branches that are not held in git, and are not
++# # needed on this branch
++# /include/openssl/asn1_mac.h
++# /include/openssl/des_old.h
++# /include/openssl/fips.h
++# /include/openssl/fips_rand.h
++# /include/openssl/krb5_asn.h
++# /include/openssl/kssl.h
++# /include/openssl/pq_compat.h
++# /include/openssl/ssl23.h
++# /include/openssl/tmdiff.h
++# /include/openssl/ui_compat.h
++# /test/fips_aesavs.c
++# /test/fips_desmovs.c
++# /test/fips_dsatest.c
++# /test/fips_dssvs.c
++# /test/fips_hmactest.c
++# /test/fips_randtest.c
++# /test/fips_rngvs.c
++# /test/fips_rsagtest.c
++# /test/fips_rsastest.c
++# /test/fips_rsavtest.c
++# /test/fips_shatest.c
++# /test/fips_test_suite.c
++# /test/shatest.c
++#
++# ##### Generic patterns
++# # Auto generated assembly language source files
++# *.s
++# !/crypto/*/asm/*.s
++# /crypto/arm*.S
++# /crypto/*/*.S
++# *.asm
++# !/crypto/*/asm/*.asm
++#
++# # Object files
++# *.o
++# *.obj
++#
++# # editor artefacts
++# *.swp
++# .#*
++# \#*#
++# *~
++#
++# # Certificate symbolic links
++# *.0
++#
++# # All kinds of executables
++# *.so
++# *.so.*
++# *.dylib
++# *.dylib.*
++# *.dll
++# *.dll.*
++# *.exe
++# *.pyc
++# *.exp
++# *.lib
++# *.pdb
++# *.ilk
++# *.def
++# *.rc
++# *.res
++#
++# # Misc generated stuff
++# Makefile.save
++# /crypto/**/lib
++# /engines/**/lib
++# /ssl/**/lib
++# *.bak
++# cscope.*
++# *.d
++# pod2htmd.tmp
++#
++# # Windows manifest files
++# *.manif
+\ No newline at end of file
+diff -rupN /home/matthew/Downloads/openssl-1.1.0g/README.md openssl-1.1.0g/README.md
+--- /home/matthew/Downloads/openssl-1.1.0g/README.md	1969-12-31 19:00:00.000000000 -0500
++++ openssl-1.1.0g/README.md	2018-03-26 21:16:26.245898069 -0400
+@@ -0,0 +1,53 @@
++# OpenSSL Evaluation
++
++This directory contains a patch to convert the OpenSSL implementation of the Blowfish cipher into a Simplex-enabled Blowfish cipher.
++The key and/or schedule is stored within global memory (as in the original sources), but all references are passed through the BND0 bounds register.
++
++## Installation and Evaluation
++The following instructions presume your working directory is the directory containing [bf.patch](simplex/openssl/bf.patch).
++They also make use of the following two "variables" as shorthand for absolute paths to project components:
++
++| Variable       | Meaning                                                |
++|----------------|--------------------------------------------------------|
++| `$OPENSSL_DIR` | Path to the top level of the unpacked OpenSSL sources. |
++| `$SIMPLEX`     | Path to the top level of the Simplex source tree.      |
++
++Finally, we presume that you have already [completed the build](simplex/README.md) for the Simplex libraries themselves.
++
++1. Download [OpenSSL 1.1.0g](https://www.openssl.org/source/).
++  ```Shell
++  $ curl -O https://www.openssl.org/source/openssl-1.1.0g.tar.gz -O https://www.openssl.org/source/openssl-1.1.0g.tar.gz.sha256
++  ```
++
++2. Verify the download. If the download is correct, a single SHA256 hash will be displayed, followed by the filename that verified.
++  ```Shell
++  $ sha256sum openssl-1.1.0g.tar.gz
++  ```
++
++3. Extract the files.
++  ```Shell
++  $ tar -xvzf openssl-1.1.0g.tar.gz
++  ```
++
++4. Apply the patch to the sources.
++  ```Shell
++  ```
++
++5. Configure for installation. __Do not use the OpenSSL "getting on with it" installation directions.__
++  ```Shell
++  $ mkdir build
++  $ ./config -d no-threads --prefix=$OPENSSL_DIR/build --openssldir=$OPENSSL_DIR/build -I$SIMPLEX/incl -L$SIMPLEX/lib -lsimplex
++  ```
++
++6. Build OpenSSL, and run the Blowfish test, demonstrating correctness of the patch. 
++  ```Shell
++  $ make test TESTS=test_bf V1
++  ```
++
++Note that since we have not completely patched the entire tree, the `openssl` binary will not work in Blowfish mode, and therefore the `20-test_enc` test would report 10 dubious (failed) subtests: specifically, subtests 16-25. These are not germane to the patched source code. This would be observable by running the entire test suite:
++
++```Shell
++$ make tests
++```
++
++The reason that these tests fail is that the `openssl` has not performed initialization using `process_specific_init` as part of the test battery; upon encountering the `qgetbndl` and `qsetbndl` functions, the MPX instructions inlined are processed as NOPs.
+\ No newline at end of file
+diff -rupN /home/matthew/Downloads/openssl-1.1.0g/test/bftest.c openssl-1.1.0g/test/bftest.c
+--- /home/matthew/Downloads/openssl-1.1.0g/test/bftest.c	2017-11-02 10:29:05.000000000 -0400
++++ openssl-1.1.0g/test/bftest.c	2018-03-26 11:46:19.708582000 -0400
+@@ -32,6 +32,8 @@ int main(int argc, char *argv[])
+ #  include <openssl/ebcdic.h>
+ # endif
+ 
++#include "simplex.h"
++
+ static char bf_key[2][30] = {
+     "abcdefghijklmnopqrstuvwxyz",
+     "Who is John Galt?"
+@@ -235,11 +237,21 @@ int main(int argc, char *argv[])
+ {
+     int ret;
+ 
++    if (!process_specific_init()){
++	printf("Simplex failed to initialize\n");
++	return (0);
++    }
++
+     if (argc > 1)
+         ret = print_test_data();
+     else
+         ret = test();
+ 
++    if (!process_specific_finish()){
++	printf("Simplex failed to finish\n");
++	return(0);
++    }
++
+     EXIT(ret);
+ }
+ 
+@@ -317,6 +329,9 @@ static int test(void)
+     unsigned char out[8];
+     BF_LONG len;
+ 
++    // Store the address of the BF_KEY in BND0 register
++    qsetbndl(BND0, (uint64_t) &key);
++
+ # ifdef CHARSET_EBCDIC
+     ebcdic2ascii(cbc_data, cbc_data, strlen(cbc_data));
+ # endif
+@@ -326,11 +341,15 @@ static int test(void)
+ # ifdef CHARSET_EBCDIC
+         ebcdic2ascii(bf_key[n], bf_key[n], strlen(bf_key[n]));
+ # endif
+-        BF_set_key(&key, strlen(bf_key[n]), (unsigned char *)bf_key[n]);
++
++	      //const BF_KEY *key is now in BND0
++        BF_set_key((BF_KEY*) qgetbndl(BND0), strlen(bf_key[n]), (unsigned char *)bf_key[n]);
+ 
+         data[0] = bf_plain[n][0];
+         data[1] = bf_plain[n][1];
+-        BF_encrypt(data, &key);
++
++        //const BF_KEY *key is now in BND0
++        BF_encrypt(data, (BF_KEY*) qgetbndl(BND0));
+         if (memcmp(&(bf_cipher[n][0]), &(data[0]), 8) != 0) {
+             printf("BF_encrypt error encrypting\n");
+             printf("got     :");
+@@ -344,7 +363,8 @@ static int test(void)
+             printf("\n");
+         }
+ 
+-        BF_decrypt(&(data[0]), &key);
++        //const BF_KEY *key is now in BND0
++        BF_decrypt(&(data[0]), (BF_KEY*) qgetbndl(BND0));
+         if (memcmp(&(bf_plain[n][0]), &(data[0]), 8) != 0) {
+             printf("BF_encrypt error decrypting\n");
+             printf("got     :");
+@@ -362,9 +382,11 @@ static int test(void)
+     printf("testing blowfish in ecb mode\n");
+ 
+     for (n = 0; n < NUM_TESTS; n++) {
+-        BF_set_key(&key, 8, ecb_data[n]);
++        //const BF_KEY *key is now in BND0,
++        BF_set_key((BF_KEY*) qgetbndl(BND0), 8, ecb_data[n]);
+ 
+-        BF_ecb_encrypt(&(plain_data[n][0]), out, &key, BF_ENCRYPT);
++        //const BF_KEY *key is now in BND0
++        BF_ecb_encrypt(&(plain_data[n][0]), out, (BF_KEY*) qgetbndl(BND0), BF_ENCRYPT);
+         if (memcmp(&(cipher_data[n][0]), out, 8) != 0) {
+             printf("BF_ecb_encrypt blowfish error encrypting\n");
+             printf("got     :");
+@@ -378,7 +400,8 @@ static int test(void)
+             printf("\n");
+         }
+ 
+-        BF_ecb_encrypt(out, out, &key, BF_DECRYPT);
++        //const BF_KEY *key is now in BND0
++        BF_ecb_encrypt(out, out, (BF_KEY*) qgetbndl(BND0), BF_DECRYPT);
+         if (memcmp(&(plain_data[n][0]), out, 8) != 0) {
+             printf("BF_ecb_encrypt error decrypting\n");
+             printf("got     :");
+@@ -395,8 +418,9 @@ static int test(void)
+ 
+     printf("testing blowfish set_key\n");
+     for (n = 1; n < KEY_TEST_NUM; n++) {
+-        BF_set_key(&key, n, key_test);
+-        BF_ecb_encrypt(key_data, out, &key, BF_ENCRYPT);
++        //const BF_KEY *key is now in BND0
++        BF_set_key((BF_KEY*) qgetbndl(BND0), n, key_test);
++        BF_ecb_encrypt(key_data, out, (BF_KEY*) qgetbndl(BND0), BF_ENCRYPT);
+         /* mips-sgi-irix6.5-gcc  vv  -mabi=64 bug workaround */
+         if (memcmp(out, &(key_out[i = n - 1][0]), 8) != 0) {
+             printf("blowfish setkey error\n");
+@@ -407,12 +431,14 @@ static int test(void)
+     printf("testing blowfish in cbc mode\n");
+     len = strlen(cbc_data) + 1;
+ 
+-    BF_set_key(&key, 16, cbc_key);
++    //const BF_KEY *key is now in BND0
++    BF_set_key((BF_KEY*) qgetbndl(BND0), 16, cbc_key);
+     memset(cbc_in, 0, sizeof(cbc_in));
+     memset(cbc_out, 0, sizeof(cbc_out));
+     memcpy(iv, cbc_iv, sizeof iv);
++    //const BF_KEY *key is now in BND0
+     BF_cbc_encrypt((unsigned char *)cbc_data, cbc_out, len,
+-                   &key, iv, BF_ENCRYPT);
++                   (BF_KEY*) qgetbndl(BND0), iv, BF_ENCRYPT);
+     if (memcmp(cbc_out, cbc_ok, 32) != 0) {
+         err = 1;
+         printf("BF_cbc_encrypt encrypt error\n");
+@@ -420,23 +446,23 @@ static int test(void)
+             printf("0x%02X,", cbc_out[i]);
+     }
+     memcpy(iv, cbc_iv, 8);
+-    BF_cbc_encrypt(cbc_out, cbc_in, len, &key, iv, BF_DECRYPT);
++    //const BF_KEY *key is now in BND0
++    BF_cbc_encrypt(cbc_out, cbc_in, len, (BF_KEY*) qgetbndl(BND0), iv, BF_DECRYPT);
+     if (memcmp(cbc_in, cbc_data, strlen(cbc_data) + 1) != 0) {
+         printf("BF_cbc_encrypt decrypt error\n");
+         err = 1;
+     }
+ 
+     printf("testing blowfish in cfb64 mode\n");
+-
+-    BF_set_key(&key, 16, cbc_key);
++    BF_set_key((BF_KEY*) qgetbndl(BND0), 16, cbc_key);
+     memset(cbc_in, 0, 40);
+     memset(cbc_out, 0, 40);
+     memcpy(iv, cbc_iv, 8);
+     n = 0;
+     BF_cfb64_encrypt((unsigned char *)cbc_data, cbc_out, (long)13,
+-                     &key, iv, &n, BF_ENCRYPT);
++                     (BF_KEY*) qgetbndl(BND0), iv, &n, BF_ENCRYPT);
+     BF_cfb64_encrypt((unsigned char *)&(cbc_data[13]), &(cbc_out[13]),
+-                     len - 13, &key, iv, &n, BF_ENCRYPT);
++                     len - 13, (BF_KEY*) qgetbndl(BND0), iv, &n, BF_ENCRYPT);
+     if (memcmp(cbc_out, cfb64_ok, (int)len) != 0) {
+         err = 1;
+         printf("BF_cfb64_encrypt encrypt error\n");
+@@ -445,9 +471,9 @@ static int test(void)
+     }
+     n = 0;
+     memcpy(iv, cbc_iv, 8);
+-    BF_cfb64_encrypt(cbc_out, cbc_in, 17, &key, iv, &n, BF_DECRYPT);
++    BF_cfb64_encrypt(cbc_out, cbc_in, 17, (BF_KEY*) qgetbndl(BND0), iv, &n, BF_DECRYPT);
+     BF_cfb64_encrypt(&(cbc_out[17]), &(cbc_in[17]), len - 17,
+-                     &key, iv, &n, BF_DECRYPT);
++                     (BF_KEY*) qgetbndl(BND0), iv, &n, BF_DECRYPT);
+     if (memcmp(cbc_in, cbc_data, (int)len) != 0) {
+         printf("BF_cfb64_encrypt decrypt error\n");
+         err = 1;
+@@ -455,15 +481,15 @@ static int test(void)
+ 
+     printf("testing blowfish in ofb64\n");
+ 
+-    BF_set_key(&key, 16, cbc_key);
++    BF_set_key((BF_KEY*) qgetbndl(BND0), 16, cbc_key);
+     memset(cbc_in, 0, 40);
+     memset(cbc_out, 0, 40);
+     memcpy(iv, cbc_iv, 8);
+     n = 0;
+-    BF_ofb64_encrypt((unsigned char *)cbc_data, cbc_out, (long)13, &key, iv,
++    BF_ofb64_encrypt((unsigned char *)cbc_data, cbc_out, (long)13, (BF_KEY*) qgetbndl(BND0), iv,
+                      &n);
+     BF_ofb64_encrypt((unsigned char *)&(cbc_data[13]), &(cbc_out[13]),
+-                     len - 13, &key, iv, &n);
++                     len - 13, (BF_KEY*) qgetbndl(BND0), iv, &n);
+     if (memcmp(cbc_out, ofb64_ok, (int)len) != 0) {
+         err = 1;
+         printf("BF_ofb64_encrypt encrypt error\n");
+@@ -472,8 +498,8 @@ static int test(void)
+     }
+     n = 0;
+     memcpy(iv, cbc_iv, 8);
+-    BF_ofb64_encrypt(cbc_out, cbc_in, 17, &key, iv, &n);
+-    BF_ofb64_encrypt(&(cbc_out[17]), &(cbc_in[17]), len - 17, &key, iv, &n);
++    BF_ofb64_encrypt(cbc_out, cbc_in, 17, (BF_KEY*) qgetbndl(BND0), iv, &n);
++    BF_ofb64_encrypt(&(cbc_out[17]), &(cbc_in[17]), len - 17, (BF_KEY*) qgetbndl(BND0) , iv, &n);
+     if (memcmp(cbc_in, cbc_data, (int)len) != 0) {
+         printf("BF_ofb64_encrypt decrypt error\n");
+         err = 1;

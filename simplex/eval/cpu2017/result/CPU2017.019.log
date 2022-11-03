@@ -1,0 +1,253 @@
+runcpu v5825 started at 2018-02-06 17:43:09 on "roundtop"
+runcpu is: /home/matthew/github/bingseclab/simplex/cpu2017/bin/harness/runcpu
+runcpu: runcpu --config=gcc-linux-x86-simplex.cfg --copies=4 --iterations=3 --action=validate 519.lbm_r
+toolset: linux-x86_64
+
+Locating benchmarks...found 47 benchmarks in 53 benchsets.
+Reading config file '/home/matthew/github/bingseclab/simplex/cpu2017/config/gcc-linux-x86-simplex.cfg'
+Reading included config file '/home/matthew/github/bingseclab/simplex/cpu2017/config/SUT.inc'
+
+1 configuration selected:
+
+ Action    Run Mode   Workload     Report Type     Benchmarks
+--------   --------   --------   ---------------   ----------------------------
+validate   rate       refrate    SPECrate2017_fp   519.lbm_r                   
+-------------------------------------------------------------------------------
+
+Setting up environment for running 519.lbm_r...
+Starting runcpu for 519.lbm_r...
+Running "specperl /home/matthew/github/bingseclab/simplex/cpu2017/bin/sysinfo" to gather system information.
+sysinfo: r5797 of 2017-06-14 (96c45e4568ad54c135fd618bcc091c0f)
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...trying to get DIMM info from dmidecode
+Read 105 info lines from the sysinfo program.
+Retrieving flags file (/home/matthew/github/bingseclab/simplex/cpu2017/config/flags/gcc.xml)...
+Verbosity = 5
+Action    = validate
+Tune      = base
+Label     = gcc-linux-x86-simplex-m64
+Size      = refrate
+benchmarks= 519.lbm_r
+outputs   = rsf,txt,csv
+username  = matthew
+Environment settings:
+LD_LIBRARY_PATH = "%{gcc_dir}/lib/:/lib64:%{ENV_LD_LIBRARY_PATH}"
+
+Benchmarks selected: 519.lbm_r
+Compiling Binaries
+------------------------------------------------------------------------
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP  -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize          -I/home/matthew/github/bingseclab/simplex/incl -L/home/matthew/github/bingseclab/simplex/lib     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-DSPEC_AUTO_SUPPRESS_OPENMP"
+P: BENCH_CFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize"
+O: COPTIMIZE=""
+P: PORTABILITY=""
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-I/home/matthew/github/bingseclab/simplex/incl -L/home/matthew/github/bingseclab/simplex/lib"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64   -I/home/matthew/github/bingseclab/simplex/incl -L/home/matthew/github/bingseclab/simplex/lib   -g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize          <objects>   -lm     -lsimplex    -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: EXTRA_LDFLAGS="-I/home/matthew/github/bingseclab/simplex/incl -L/home/matthew/github/bingseclab/simplex/lib"
+O: OPTIMIZE="-g -O3 -march=native -fno-unsafe-math-optimizations  -fno-tree-loop-vectorize"
+C: MATH_LIBS="-lm"
+O: EXTRA_LIBS="-lsimplex"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+Using built-in specs.
+COLLECT_GCC=/usr/bin/gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.6' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with
+-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.6) 
+  Up to date 519.lbm_r base gcc-linux-x86-simplex-m64
+
+
+Setting Up Run Directories
+  Setting up 519.lbm_r refrate (ref) base gcc-linux-x86-simplex-m64 (4 copies): run_base_refrate_gcc-linux-x86-simplex-m64.0000-0003
+-----------------------------------
+Running Benchmarks
+-----------------------------------
+  Running (#1) 519.lbm_r refrate (ref) base gcc-linux-x86-simplex-m64 (4 copies) [2018-02-06 17:43:11]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0001
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0002
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0003
+    -o lbm.out -e lbm.err ../run_base_refrate_gcc-linux-x86-simplex-m64.0000/lbm_r_base.gcc-linux-x86-simplex-m64 3000 reference.dat 0 0 100_100_130_ldc.of > lbm.out 2>> lbm.err (timed)
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2018-02-06 17:43:11 (1517956991.95409)
+Stop command: 2018-02-06 17:53:21 (1517957601.83123)
+Elapsed time for command: 00:10:09 (609.877137184143)
+Workload elapsed time (copy 3 workload 1) = 608.122279 seconds
+Workload elapsed time (copy 1 workload 1) = 608.335231 seconds
+Workload elapsed time (copy 2 workload 1) = 609.074479 seconds
+Workload elapsed time (copy 0 workload 1) = 609.718764 seconds
+Copy 0 of 519.lbm_r (base refrate) run 1 finished at 2018-02-06 17:53:21.  Total elapsed time: 609.718764
+Copy 1 of 519.lbm_r (base refrate) run 1 finished at 2018-02-06 17:53:20.  Total elapsed time: 608.335231
+Copy 2 of 519.lbm_r (base refrate) run 1 finished at 2018-02-06 17:53:21.  Total elapsed time: 609.074479
+Copy 3 of 519.lbm_r (base refrate) run 1 finished at 2018-02-06 17:53:20.  Total elapsed time: 608.122279
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'lbm.out' with abstol=1e-07
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2018-02-06 17:53:21 (1517957601.89377)
+Stop command: 2018-02-06 17:53:22 (1517957602.18364)
+Elapsed time for command: 00:00:00 (0.289865016937256)
+Benchmark Times:
+  Run Start:    2018-02-06 17:43:11 (1517956991)
+  Rate Start:   2018-02-06 17:43:11 (1517956991.95851)
+  Rate End:     2018-02-06 17:53:21 (1517957601.67727)
+  Run Stop:     2018-02-06 17:53:21 (1517957601)
+  Run Elapsed:  00:10:10 (610)
+  Run Reported: 00:10:09 (609 718764066 609.718764)
+ Success 519.lbm_r base refrate ratio=6.91, runtime=609.718764, copies=4, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+-----------------------------------
+  Running (#2) 519.lbm_r refrate (ref) base gcc-linux-x86-simplex-m64 (4 copies) [2018-02-06 17:53:22]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0001
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0002
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0003
+    -o lbm.out -e lbm.err ../run_base_refrate_gcc-linux-x86-simplex-m64.0000/lbm_r_base.gcc-linux-x86-simplex-m64 3000 reference.dat 0 0 100_100_130_ldc.of > lbm.out 2>> lbm.err (timed)
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2018-02-06 17:53:22 (1517957602.26236)
+Stop command: 2018-02-06 18:03:26 (1517958206.70465)
+Elapsed time for command: 00:10:04 (604.442291975021)
+Workload elapsed time (copy 3 workload 1) = 599.026925 seconds
+Workload elapsed time (copy 2 workload 1) = 599.118724 seconds
+Workload elapsed time (copy 0 workload 1) = 602.204525 seconds
+Workload elapsed time (copy 1 workload 1) = 604.283686 seconds
+Copy 0 of 519.lbm_r (base refrate) run 2 finished at 2018-02-06 18:03:24.  Total elapsed time: 602.204525
+Copy 1 of 519.lbm_r (base refrate) run 2 finished at 2018-02-06 18:03:26.  Total elapsed time: 604.283686
+Copy 2 of 519.lbm_r (base refrate) run 2 finished at 2018-02-06 18:03:21.  Total elapsed time: 599.118724
+Copy 3 of 519.lbm_r (base refrate) run 2 finished at 2018-02-06 18:03:21.  Total elapsed time: 599.026925
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'lbm.out' with abstol=1e-07
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2018-02-06 18:03:26 (1517958206.74497)
+Stop command: 2018-02-06 18:03:27 (1517958207.01734)
+Elapsed time for command: 00:00:00 (0.2723708152771)
+Benchmark Times:
+  Run Start:    2018-02-06 17:53:22 (1517957602)
+  Rate Start:   2018-02-06 17:53:22 (1517957602.26652)
+  Rate End:     2018-02-06 18:03:26 (1517958206.55026)
+  Run Stop:     2018-02-06 18:03:26 (1517958206)
+  Run Elapsed:  00:10:04 (604)
+  Run Reported: 00:10:04 (604 283745765 604.283746)
+ Success 519.lbm_r base refrate ratio=6.98, runtime=604.283746, copies=4, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+-----------------------------------
+  Running (#3) 519.lbm_r refrate (ref) base gcc-linux-x86-simplex-m64 (4 copies) [2018-02-06 18:03:27]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0001
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0002
+    -C /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0003
+    -o lbm.out -e lbm.err ../run_base_refrate_gcc-linux-x86-simplex-m64.0000/lbm_r_base.gcc-linux-x86-simplex-m64 3000 reference.dat 0 0 100_100_130_ldc.of > lbm.out 2>> lbm.err (timed)
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2018-02-06 18:03:27 (1517958207.09059)
+Stop command: 2018-02-06 18:13:32 (1517958812.69929)
+Elapsed time for command: 00:10:05 (605.608694791794)
+Workload elapsed time (copy 3 workload 1) = 603.58431 seconds
+Workload elapsed time (copy 2 workload 1) = 604.722596 seconds
+Workload elapsed time (copy 1 workload 1) = 605.355879 seconds
+Workload elapsed time (copy 0 workload 1) = 605.451814 seconds
+Copy 0 of 519.lbm_r (base refrate) run 3 finished at 2018-02-06 18:13:32.  Total elapsed time: 605.451814
+Copy 1 of 519.lbm_r (base refrate) run 3 finished at 2018-02-06 18:13:32.  Total elapsed time: 605.355879
+Copy 2 of 519.lbm_r (base refrate) run 3 finished at 2018-02-06 18:13:31.  Total elapsed time: 604.722596
+Copy 3 of 519.lbm_r (base refrate) run 3 finished at 2018-02-06 18:13:30.  Total elapsed time: 603.58431
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'lbm.out' with abstol=1e-07
+Specinvoke: /home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/matthew/github/bingseclab/simplex/cpu2017/bin/specinvoke -d /home/matthew/github/bingseclab/simplex/cpu2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_gcc-linux-x86-simplex-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2018-02-06 18:13:32 (1517958812.75959)
+Stop command: 2018-02-06 18:13:33 (1517958813.04017)
+Elapsed time for command: 00:00:00 (0.28058385848999)
+Benchmark Times:
+  Run Start:    2018-02-06 18:03:27 (1517958207)
+  Rate Start:   2018-02-06 18:03:27 (1517958207.0938)
+  Rate End:     2018-02-06 18:13:32 (1517958812.54561)
+  Run Stop:     2018-02-06 18:13:32 (1517958812)
+  Run Elapsed:  00:10:05 (605)
+  Run Reported: 00:10:05 (605 451813936 605.451814)
+ Success 519.lbm_r base refrate ratio=6.96, runtime=605.451814, copies=4, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+Success: 3x519.lbm_r
+Producing Raw Reports
+ label: gcc-linux-x86-simplex-m64
+  workload: refrate (ref)
+   benchset: intspeed
+   benchset: intrate
+   benchset: fpspeed
+   benchset: fprate
+   metric: SPECrate2017_fp_base
+    format: raw -> /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.019.fprate.refrate.rsf
+Parsing flags for 519.lbm_r base: done
+Doing flag reduction: done
+    format: CSV -> /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.019.fprate.refrate.csv
+    format: Text -> /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.019.fprate.refrate.txt
+runcpu finished at 2018-02-06 18:13:35; 1824 total seconds elapsed
+Info: file_tail(31776): file '/home/matthew/github/bingseclab/simplex/cpu2017/tmp/CPU2017.019/templogs/preenv.fprate.019.0.debug' was removed and will no longer be followed.  No action is required.
+The log for this run is in /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.019.log
+
+runcpu finished at 2018-02-06 18:13:35; 1825 total seconds elapsed

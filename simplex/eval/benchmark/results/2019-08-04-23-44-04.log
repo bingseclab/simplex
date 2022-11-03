@@ -1,0 +1,170 @@
+[==========] Running 8 benchmarks.
+[ RUN      ] SimplexFixture.gpstore (10 runs, 10000 iterations per run)
+[     DONE ] SimplexFixture.gpstore (0.025457 ms)
+[   RUNS   ]        Average time: 2.546 us (~3.997 us)
+                    Fastest time: 1.118 us (-1.428 us / -56.083 %)
+                    Slowest time: 13.909 us (+11.363 us / +446.372 %)
+                     Median time: 1.173 us (1st quartile: 1.134 us | 3rd quartile: 1.552 us)
+                                  
+             Average performance: 392819.26386 runs/s
+                Best performance: 894454.38283 runs/s (+501635.11897 runs/s / +127.70125 %)
+               Worst performance: 71895.89474 runs/s (-320923.36911 runs/s / -81.69746 %)
+              Median performance: 852878.46482 runs/s (1st quartile: 881834.21517 | 3rd quartile: 644329.89691)
+                                  
+[ITERATIONS]        Average time: 0.000 us (~0.000 us)
+                    Fastest time: 0.000 us (-0.000 us / -56.083 %)
+                    Slowest time: 0.001 us (+0.001 us / +446.372 %)
+                     Median time: 0.000 us (1st quartile: 0.000 us | 3rd quartile: 0.000 us)
+                                  
+             Average performance: 3928192638.56700 iterations/s
+                Best performance: 8944543828.26476 iterations/s (+5016351189.69776 iterations/s / +127.70125 %)
+               Worst performance: 718958947.44410 iterations/s (-3209233691.12290 iterations/s / -81.69746 %)
+              Median performance: 8528784648.18763 iterations/s (1st quartile: 8818342151.67549 | 3rd quartile: 6443298969.07216)
+[ RUN      ] SimplexFixture.mpxstore (10 runs, 10000 iterations per run)
+[     DONE ] SimplexFixture.mpxstore (0.025361 ms)
+[   RUNS   ]        Average time: 2.536 us (~4.050 us)
+                    Fastest time: 1.124 us (-1.412 us / -55.680 %)
+                    Slowest time: 14.061 us (+11.525 us / +454.434 %)
+                     Median time: 1.266 us (1st quartile: 1.255 us | 3rd quartile: 1.282 us)
+                                  
+             Average performance: 394306.21821 runs/s
+                Best performance: 889679.71530 runs/s (+495373.49709 runs/s / +125.63167 %)
+               Worst performance: 71118.69711 runs/s (-323187.52110 runs/s / -81.96359 %)
+              Median performance: 789577.57600 runs/s (1st quartile: 796812.74900 | 3rd quartile: 780031.20125)
+                                  
+[ITERATIONS]        Average time: 0.000 us (~0.000 us)
+                    Fastest time: 0.000 us (-0.000 us / -55.680 %)
+                    Slowest time: 0.001 us (+0.001 us / +454.434 %)
+                     Median time: 0.000 us (1st quartile: 0.000 us | 3rd quartile: 0.000 us)
+                                  
+             Average performance: 3943062182.09061 iterations/s
+                Best performance: 8896797153.02491 iterations/s (+4953734970.93430 iterations/s / +125.63167 %)
+               Worst performance: 711186971.05469 iterations/s (-3231875211.03592 iterations/s / -81.96359 %)
+              Median performance: 7895775759.96842 iterations/s (1st quartile: 7968127490.03984 | 3rd quartile: 7800312012.48050)
+[ RUN      ] SimplexFixture.gpload (10 runs, 10000 iterations per run)
+[     DONE ] SimplexFixture.gpload (0.016023 ms)
+[   RUNS   ]        Average time: 1.602 us (~4.017 us)
+                    Fastest time: 0.292 us (-1.310 us / -81.776 %)
+                    Slowest time: 13.035 us (+11.433 us / +713.518 %)
+                     Median time: 0.336 us (1st quartile: 0.313 us | 3rd quartile: 0.358 us)
+                                  
+             Average performance: 624102.85215 runs/s
+                Best performance: 3424657.53425 runs/s (+2800554.68210 runs/s / +448.73288 %)
+               Worst performance: 76716.53241 runs/s (-547386.31974 runs/s / -87.70771 %)
+              Median performance: 2980625.93145 runs/s (1st quartile: 3194888.17891 | 3rd quartile: 2793296.08939)
+                                  
+[ITERATIONS]        Average time: 0.000 us (~0.000 us)
+                    Fastest time: 0.000 us (-0.000 us / -81.776 %)
+                    Slowest time: 0.001 us (+0.001 us / +713.518 %)
+                     Median time: 0.000 us (1st quartile: 0.000 us | 3rd quartile: 0.000 us)
+                                  
+             Average performance: 6241028521.50034 iterations/s
+                Best performance: 34246575342.46575 iterations/s (+28005546820.96541 iterations/s / +448.73288 %)
+               Worst performance: 767165324.12735 iterations/s (-5473863197.37300 iterations/s / -87.70771 %)
+              Median performance: 29806259314.45603 iterations/s (1st quartile: 31948881789.13738 | 3rd quartile: 27932960893.85475)
+[ RUN      ] SimplexFixture.mpxload (10 runs, 10000 iterations per run)
+[     DONE ] SimplexFixture.mpxload (0.047325 ms)
+[   RUNS   ]        Average time: 4.732 us (~4.035 us)
+                    Fastest time: 3.408 us (-1.325 us / -27.987 %)
+                    Slowest time: 16.216 us (+11.484 us / +242.652 %)
+                     Median time: 3.435 us (1st quartile: 3.418 us | 3rd quartile: 3.523 us)
+                                  
+             Average performance: 211304.80718 runs/s
+                Best performance: 293427.23005 runs/s (+82122.42286 runs/s / +38.86444 %)
+               Worst performance: 61667.48890 runs/s (-149637.31828 runs/s / -70.81586 %)
+              Median performance: 291120.81514 runs/s (1st quartile: 292568.75366 | 3rd quartile: 283848.99234)
+                                  
+[ITERATIONS]        Average time: 0.000 us (~0.000 us)
+                    Fastest time: 0.000 us (-0.000 us / -27.987 %)
+                    Slowest time: 0.002 us (+0.001 us / +242.652 %)
+                     Median time: 0.000 us (1st quartile: 0.000 us | 3rd quartile: 0.000 us)
+                                  
+             Average performance: 2113048071.84363 iterations/s
+                Best performance: 2934272300.46948 iterations/s (+821224228.62585 iterations/s / +38.86444 %)
+               Worst performance: 616674888.99852 iterations/s (-1496373182.84511 iterations/s / -70.81586 %)
+              Median performance: 2911208151.38282 iterations/s (1st quartile: 2925687536.57109 | 3rd quartile: 2838489923.36077)
+[ RUN      ] SimplexFixture.gptraverse(std::size_t sz = 4096) (10 runs, 1000 iterations per run)
+[     DONE ] SimplexFixture.gptraverse(std::size_t sz = 4096) (10.475997 ms)
+[   RUNS   ]        Average time: 1047.600 us (~23.665 us)
+                    Fastest time: 1033.748 us (-13.852 us / -1.322 %)
+                    Slowest time: 1105.900 us (+58.300 us / +5.565 %)
+                     Median time: 1035.776 us (1st quartile: 1034.121 us | 3rd quartile: 1062.757 us)
+                                  
+             Average performance: 954.56308 runs/s
+                Best performance: 967.35375 runs/s (+12.79066 runs/s / +1.33995 %)
+               Worst performance: 904.24089 runs/s (-50.32219 runs/s / -5.27175 %)
+              Median performance: 965.45971 runs/s (1st quartile: 967.00483 | 3rd quartile: 940.94887)
+                                  
+[ITERATIONS]        Average time: 1.048 us (~0.024 us)
+                    Fastest time: 1.034 us (-0.014 us / -1.322 %)
+                    Slowest time: 1.106 us (+0.058 us / +5.565 %)
+                     Median time: 1.036 us (1st quartile: 1.034 us | 3rd quartile: 1.063 us)
+                                  
+             Average performance: 954563.08359 iterations/s
+                Best performance: 967353.74579 iterations/s (+12790.66220 iterations/s / +1.33995 %)
+               Worst performance: 904240.88977 iterations/s (-50322.19382 iterations/s / -5.27175 %)
+              Median performance: 965459.71330 iterations/s (1st quartile: 967004.82826 | 3rd quartile: 940948.87166)
+[ RUN      ] SimplexFixture.gptraverse(std::size_t sz = 16777216) (10 runs, 1000 iterations per run)
+[     DONE ] SimplexFixture.gptraverse(std::size_t sz = 16777216) (42636.140832 ms)
+[   RUNS   ]        Average time: 4263614.083 us (~11469.893 us)
+                    Fastest time: 4251687.808 us (-11926.275 us / -0.280 %)
+                    Slowest time: 4284481.183 us (+20867.100 us / +0.489 %)
+                     Median time: 4258734.265 us (1st quartile: 4255229.848 us | 3rd quartile: 4275256.817 us)
+                                  
+             Average performance: 0.23454 runs/s
+                Best performance: 0.23520 runs/s (+0.00066 runs/s / +0.28051 %)
+               Worst performance: 0.23340 runs/s (-0.00114 runs/s / -0.48704 %)
+              Median performance: 0.23481 runs/s (1st quartile: 0.23500 | 3rd quartile: 0.23390)
+                                  
+[ITERATIONS]        Average time: 4263.614 us (~11.470 us)
+                    Fastest time: 4251.688 us (-11.926 us / -0.280 %)
+                    Slowest time: 4284.481 us (+20.867 us / +0.489 %)
+                     Median time: 4258.734 us (1st quartile: 4255.230 us | 3rd quartile: 4275.257 us)
+                                  
+             Average performance: 234.54280 iterations/s
+                Best performance: 235.20071 iterations/s (+0.65791 iterations/s / +0.28051 %)
+               Worst performance: 233.40049 iterations/s (-1.14232 iterations/s / -0.48704 %)
+              Median performance: 234.81155 iterations/s (1st quartile: 235.00493 | 3rd quartile: 233.90408)
+[ RUN      ] SimplexFixture.mpxtraverse(std::size_t sz = 4096) (10 runs, 1000 iterations per run)
+[     DONE ] SimplexFixture.mpxtraverse(std::size_t sz = 4096) (39.118328 ms)
+[   RUNS   ]        Average time: 3911.833 us (~51.271 us)
+                    Fastest time: 3864.122 us (-47.711 us / -1.220 %)
+                    Slowest time: 4035.149 us (+123.316 us / +3.152 %)
+                     Median time: 3898.797 us (1st quartile: 3887.163 us | 3rd quartile: 3913.574 us)
+                                  
+             Average performance: 255.63465 runs/s
+                Best performance: 258.79100 runs/s (+3.15635 runs/s / +1.23471 %)
+               Worst performance: 247.82232 runs/s (-7.81232 runs/s / -3.05605 %)
+              Median performance: 256.48937 runs/s (1st quartile: 257.25703 | 3rd quartile: 255.52091)
+                                  
+[ITERATIONS]        Average time: 3.912 us (~0.051 us)
+                    Fastest time: 3.864 us (-0.048 us / -1.220 %)
+                    Slowest time: 4.035 us (+0.123 us / +3.152 %)
+                     Median time: 3.899 us (1st quartile: 3.887 us | 3rd quartile: 3.914 us)
+                                  
+             Average performance: 255634.64778 iterations/s
+                Best performance: 258791.00091 iterations/s (+3156.35313 iterations/s / +1.23471 %)
+               Worst performance: 247822.32329 iterations/s (-7812.32449 iterations/s / -3.05605 %)
+              Median performance: 256489.37352 iterations/s (1st quartile: 257257.02781 | 3rd quartile: 255520.91260)
+[ RUN      ] SimplexFixture.mpxtraverse(std::size_t sz = 16777216) (10 runs, 1000 iterations per run)
+[     DONE ] SimplexFixture.mpxtraverse(std::size_t sz = 16777216) (160056.104609 ms)
+[   RUNS   ]        Average time: 16005610.461 us (~9934.931 us)
+                    Fastest time: 15996383.572 us (-9226.889 us / -0.058 %)
+                    Slowest time: 16028660.130 us (+23049.669 us / +0.144 %)
+                     Median time: 16003980.610 us (1st quartile: 15997673.116 us | 3rd quartile: 16009672.570 us)
+                                  
+             Average performance: 0.06248 runs/s
+                Best performance: 0.06251 runs/s (+0.00004 runs/s / +0.05768 %)
+               Worst performance: 0.06239 runs/s (-0.00009 runs/s / -0.14380 %)
+              Median performance: 0.06248 runs/s (1st quartile: 0.06251 | 3rd quartile: 0.06246)
+                                  
+[ITERATIONS]        Average time: 16005.610 us (~9.935 us)
+                    Fastest time: 15996.384 us (-9.227 us / -0.058 %)
+                    Slowest time: 16028.660 us (+23.050 us / +0.144 %)
+                     Median time: 16003.981 us (1st quartile: 15997.673 us | 3rd quartile: 16009.673 us)
+                                  
+             Average performance: 62.47809 iterations/s
+                Best performance: 62.51413 iterations/s (+0.03604 iterations/s / +0.05768 %)
+               Worst performance: 62.38825 iterations/s (-0.08985 iterations/s / -0.14380 %)
+              Median performance: 62.48445 iterations/s (1st quartile: 62.50909 | 3rd quartile: 62.46224)
+[==========] Ran 8 benchmarks.

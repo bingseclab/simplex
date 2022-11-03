@@ -1,0 +1,1186 @@
+diff -Naurb /home/matthew/cpu2017/benchspec/CPU/531.deepsjeng_r/src/search.cpp benchspec/CPU/531.deepsjeng_r/src/search.cpp
+--- /home/matthew/cpu2017/benchspec/CPU/531.deepsjeng_r/src/search.cpp	2009-07-08 10:13:21.000000000 -0400
++++ benchspec/CPU/531.deepsjeng_r/src/search.cpp	2018-02-28 17:15:56.149604840 -0500
+@@ -33,6 +33,8 @@
+ #include "squares.h"
+ #include "search.h"
+ 
++#include "simplex.h"
++
+ static const int rc_index[14] = {
+     0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 2, 2, 0
+ };
+@@ -155,8 +157,8 @@
+         prob -= 60;
+     }
+ 
+-    if (gamestate.i_depth < 5) {
+-        prob += (5 - gamestate.i_depth);
++    if (((gamestate_t*)qgetbndl(BND1))->i_depth < 5) {
++        prob += (5 - ((gamestate_t*)qgetbndl(BND1))->i_depth);
+     }
+ 
+     prob += s->ply * 2;
+@@ -231,7 +233,7 @@
+         promoted = PROMOTED(moves[i]);
+         captured = CAPTURED(moves[i]);
+ 
+-        if (uci_multipv > 1 && s->ply == 1 && gamestate.i_depth > 2) {
++        if (uci_multipv > 1 && s->ply == 1 && ((gamestate_t*)qgetbndl(BND1))->i_depth > 2) {
+             move_ordering[i] = 100000 + root_scores[i];
+             continue;
+         }
+@@ -316,7 +318,7 @@
+ 
+ static int search_time_check(state_t *s) {
+     int oldtime;
+-    gamestate_t *g = &gamestate;
++    gamestate_t *g = ((gamestate_t*)qgetbndl(BND1));
+ 
+     
+     if (!(s->nodes & ((1 << time_check_log) - 1))) {
+@@ -434,8 +436,8 @@
+         return 0;
+     }
+ 
+-    if (is_draw(&gamestate, s) || s->fifty > 99) {
+-        return (gamestate.comp_color == s->white_to_move ? contempt : -contempt);
++    if (is_draw((gamestate_t*) qgetbndl(BND1), s) || s->fifty > 99) {
++        return (((gamestate_t*) qgetbndl(BND1))->comp_color == s->white_to_move ? contempt : -contempt);
+     }
+ 
+     switch (ProbeTT(s, &bound, alpha, beta, &best, &xdummy, &xdummy, &xdummy, &xdummy, 0)) {
+@@ -459,10 +461,10 @@
+             break;
+     }   
+ 
+-    if ((qply > 2*gamestate.i_depth) || s->ply > MAXDEPTH) {
++    //CHANGED
++    if ((qply > 2*((gamestate_t*) qgetbndl(BND1))->i_depth) || s->ply > MAXDEPTH) {
+         return eval(s, alpha, beta, FALSE);
+     }
+-
+     incheck = s->checks[s->ply];
+ 
+     originalalpha = alpha;
+@@ -591,7 +593,7 @@
+         make(s, moves[i]);
+ 
+         if (check_legal(s, moves[i])) {
+-            s->hash_history[gamestate.move_number + s->ply - 1] = s->hash;
++            s->hash_history[((gamestate_t*) qgetbndl(BND1))->move_number + s->ply - 1] = s->hash;
+             s->path[s->ply - 1] = moves[i];
+ 
+             afterincheck = in_check(s);
+@@ -617,7 +619,7 @@
+ 
+         unmake(s, moves[i]);
+ 
+-        if (gamestate.time_exit) {
++        if (((gamestate_t*) qgetbndl(BND1))->time_exit) {
+             return 0;
+         }
+ 
+@@ -697,8 +699,8 @@
+         return 0;
+     }
+ 
+-    if (is_draw(&gamestate, s) || s->fifty > 99) {
+-        return (gamestate.comp_color == s->white_to_move ? contempt : -contempt);
++    if (is_draw((gamestate_t*) qgetbndl(BND1), s) || s->fifty > 99) {
++        return (((gamestate_t*) qgetbndl(BND1))->comp_color == s->white_to_move ? contempt : -contempt);
+     }
+ 
+     /*
+@@ -793,19 +795,19 @@
+         /*
+         * zugzwang detector
+         */
+-        if (gamestate.phase == ENDGAME) {
++        if (((gamestate_t*) qgetbndl(BND1))->phase == ENDGAME) {
+             int newdepth = depth - 6*PLY;
+             if (newdepth <= 0) {
+                 score = qsearch(s, beta - 1, beta, 0, 0);
+             } else {
+                 score = search(s, beta - 1, beta, newdepth, SINGLE, cutnode);
+             }
+-            if (gamestate.time_exit) {
++            if (((gamestate_t*) qgetbndl(BND1))->time_exit) {
+                 return 0;
+             }
+         }
+ 
+-        if (gamestate.phase != ENDGAME || score >= beta) {
++        if (((gamestate_t*) qgetbndl(BND1))->phase != ENDGAME || score >= beta) {
+             old_ep = s->ep_square;
+             s->ep_square = 0;
+             s->white_to_move ^= 1;
+@@ -833,7 +835,7 @@
+             s->white_to_move ^= 1;
+             s->ep_square = old_ep;
+ 
+-            if (gamestate.time_exit) {
++            if (((gamestate_t*) qgetbndl(BND1))->time_exit) {
+                 return 0;
+             }
+ 
+@@ -847,7 +849,8 @@
+     } else if (beta == alpha + 1 && depth <= 3*PLY
+         && escore < beta - 300) {
+         int rscore = qsearch(s, alpha, beta, 0, 0);
+-        if (gamestate.time_exit) {
++
++        if (((gamestate_t*) qgetbndl(BND1))->time_exit) {
+             return 0;
+         }
+         // can be < beta, store result score
+@@ -941,7 +944,7 @@
+             legal_move = FALSE;
+ 
+             if (check_legal(s, moves[i])) {
+-                s->hash_history[gamestate.move_number + s->ply - 1] = s->hash;
++                s->hash_history[((gamestate_t*) qgetbndl(BND1))->move_number + s->ply - 1] = s->hash;
+                 s->path[s->ply - 1] = moves[i];
+ 
+                 legal_move = TRUE;
+@@ -962,7 +965,7 @@
+ 
+             unmake(s, moves[i]);
+ 
+-            if (!gamestate.time_exit) {
++            if (!(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
+                 if (score >= beta && legal_move) {
+                     m_c++;
+ 
+@@ -991,7 +994,7 @@
+         && !threat
+         && depth >= 5 * PLY
+         && legalmoves > 1
+-        && (gamestate.phase != ENDGAME)) {
++        && (((gamestate_t*) qgetbndl(BND1))->phase != ENDGAME)) {
+ 
+         int prescore = search(s, alpha, beta, depth - 6*PLY, NONE, cutnode);
+ 
+@@ -1008,7 +1011,7 @@
+                 legal_move = FALSE;
+ 
+                 if (check_legal(s, moves[i])) {
+-                    s->hash_history[gamestate.move_number + s->ply - 1] = s->hash;
++                    s->hash_history[((gamestate_t*) qgetbndl(BND1))->move_number + s->ply - 1] = s->hash;
+                     s->path[s->ply - 1] = moves[i];
+ 
+                     s_c++;
+@@ -1045,7 +1048,7 @@
+         }
+     }
+ 
+-    fullext = (beta != alpha + 1) && !(s->ply > 2*gamestate.i_depth);
++    fullext = (beta != alpha + 1) && !(s->ply > 2*(((gamestate_t*) qgetbndl(BND1))->i_depth));
+ 
+     
+     first = TRUE;
+@@ -1195,7 +1198,7 @@
+             eval(s, -beta, -alpha+130, newdepth > 0 || afterincheck);
+ 
+             s->checks[s->ply] = afterincheck;
+-            s->hash_history[gamestate.move_number + s->ply - 1] = s->hash;
++            s->hash_history[((gamestate_t*) qgetbndl(BND1))->move_number + s->ply - 1] = s->hash;
+             s->path[s->ply - 1] = moves[i];
+ 
+             huber = 0;
+@@ -1226,8 +1229,9 @@
+                 } else {
+                     score = -search(s,-alpha-1,-alpha,newdepth,NONE, TRUE);
+                 }
++
+                 if (score > best_score
+-                    && !gamestate.time_exit) {
++                    && !(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
+                     if (score > alpha) {
+                         if (huber) {
+                             extend += huber;
+@@ -1251,7 +1255,7 @@
+ 
+         unmake(s, moves[i]);
+ 
+-        if (gamestate.time_exit) {
++        if (((gamestate_t*) qgetbndl(BND1))->time_exit) {
+             return 0;
+         }
+ 
+@@ -1280,7 +1284,8 @@
+         remoneflag = remove_one_fast(&i,move_ordering,moves,num_moves);
+     }    
+ 
+-    int validresult = !gamestate.time_exit;
++    int validresult = !(((gamestate_t*) qgetbndl(BND1))->time_exit);
++
+ 
+     /* check for mate / stalemate: */
+     if (no_moves && validresult) {
+@@ -1309,7 +1314,7 @@
+ 		   int is_null, int cutnode) {
+     int res;
+     res = search(s, alpha, beta, depth, is_null, cutnode);
+-    if (gamestate.time_exit) return 0;    
++    if (((gamestate_t*) qgetbndl(BND1))->time_exit) return 0;
+     return res;
+ }
+ 
+@@ -1337,7 +1342,8 @@
+     s->ply = 1;
+     num_moves = 0;
+     no_moves = TRUE;
+-    gamestate.cur_score = -MATE;
++    ((gamestate_t*) qgetbndl(BND1))->cur_score = -MATE;
++
+ 
+     incheck = s->checks[s->ply];
+     if (incheck) {
+@@ -1355,9 +1361,8 @@
+         num_moves = gen(s, moves);
+     }
+ 
+-    int movetotal = gamestate.legals;
+-
+-    order_moves(s, moves, move_ordering, num_moves, gamestate.pv_best);
++    int movetotal = ((gamestate_t*) qgetbndl(BND1))->legals;
++    order_moves(s, moves, move_ordering, num_moves, ((gamestate_t*) qgetbndl(BND1))->pv_best);
+ 
+     for (i = 0; i < MOVE_BUFF; i++) {
+         multipv_scores[i] = -MATE;
+@@ -1376,7 +1381,7 @@
+ 
+         legal_move = FALSE;
+ 
+-        s->hash_history[gamestate.move_number + s->ply - 1] = s->hash;
++        s->hash_history[((gamestate_t*) qgetbndl(BND1))->move_number + s->ply - 1] = s->hash;
+         s->path[s->ply - 1] = moves[i];
+ 
+         oldnodecount = s->nodes;
+@@ -1419,7 +1424,7 @@
+                 huber = 1*PLY;
+             }
+ 
+-            if (((first == TRUE) || gamestate.i_depth < 2 || uci_multipv > 1)) {
++            if (((first == TRUE) || ((gamestate_t*) qgetbndl(BND1))->i_depth < 2 || uci_multipv > 1)) {
+                 if (uci_multipv == 1) {
+                     root_score = -rootmovesearch(s, -beta, -alpha, depth + extend - PLY, NONE, FALSE);
+                 } else {
+@@ -1428,17 +1433,17 @@
+                 multipv_scores[mc] = root_score;
+                 root_scores[i] = root_score;                
+ 
+-                if (!gamestate.time_exit) {
++                if (!(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
+                     if (root_score >= beta) {
+                         post_fh_thinking(s, root_score, moves[i], searching_move, movetotal - moveleft);
+                     } else if (root_score <= alpha && first) {
+-                        gamestate.failed = 1;
++                        ((gamestate_t*) qgetbndl(BND1))->failed = 1;
+ 
+                         post_fl_thinking(s, root_score, moves[i], searching_move, movetotal - moveleft);
+ 
+                         root_score = -rootmovesearch(s, -beta, INF, depth + extend - PLY, NONE, FALSE);
+ 
+-                        if (!gamestate.time_exit) {
++                        if (!(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
+                             if (uci_multipv == 1) {
+                                 post_thinking(s, root_score, moves[i], searching_move, movetotal - moveleft);
+                             }
+@@ -1453,26 +1458,27 @@
+                         post_multipv_thinking(s, root_score, mc, moves[i]);
+                     }
+ 
+-                    if (root_score > gamestate.cur_score && !gamestate.time_exit) {
+-                        gamestate.cur_score = root_score;
++                    if (root_score > ((gamestate_t*) qgetbndl(BND1))->cur_score
++                        && !(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
++                        ((gamestate_t*) qgetbndl(BND1))->cur_score = root_score;
+                     }
+                 }
+             } else {
+                 root_score = -rootmovesearch(s,-alpha - 1, -alpha, depth + extend - PLY - huber, FALSE, TRUE);
+ 
+                 if ((root_score > alpha) && ((root_score < beta) || huber)
+-                    && !gamestate.time_exit) {
++                    && !(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
+                     /* was -root_score,-alpha */
+-                    gamestate.failedhigh = 1;
++                    ((gamestate_t*) qgetbndl(BND1))->failedhigh = 1;
+ 
+                     root_score = -rootmovesearch(s,-beta,-alpha,depth + extend - PLY, FALSE, FALSE);
+ 
+-                    gamestate.failedhigh = 0;
++                    ((gamestate_t*) qgetbndl(BND1))->failedhigh = 0;
+ 
+-                    if (root_score > alpha && !gamestate.time_exit) {
+-                        gamestate.cur_score = root_score;
++                    if (root_score > alpha && !(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
++                        ((gamestate_t*) qgetbndl(BND1))->cur_score = root_score;
+                         best_move = moves[i];
+-                        gamestate.pv_best = compact_move(best_move);
++                        ((gamestate_t*) qgetbndl(BND1))->pv_best = compact_move(best_move);
+ 
+                         if (root_score < beta) {
+                             post_thinking(s, root_score, moves[i], searching_move, movetotal - moveleft);
+@@ -1480,18 +1486,18 @@
+                     }
+                 }
+ 
+-                if (root_score >= beta && !gamestate.time_exit) {
++                if (root_score >= beta && !(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
+                     post_fh_thinking(s, root_score, moves[i], searching_move, movetotal - moveleft);
+                 }
+             }
+ 
+-            if (root_score > gamestate.cur_score && !gamestate.time_exit) {
+-                gamestate.cur_score = root_score;
++            if (root_score > ((gamestate_t*) qgetbndl(BND1))->cur_score && !((gamestate_t*) qgetbndl(BND1))->time_exit) {
++                ((gamestate_t*) qgetbndl(BND1))->cur_score = root_score;
+             }
+             
+-            if ((gamestate.time_exit) && (gamestate.cur_score == -MATE)) {
++            if ((((gamestate_t*) qgetbndl(BND1))->time_exit) && (((gamestate_t*) qgetbndl(BND1))->cur_score == -MATE)) {
+                 if (no_moves) {
+-                    gamestate.time_failure = TRUE;
++                    ((gamestate_t*) qgetbndl(BND1))->time_failure = TRUE;
+                 }
+             }
+ 
+@@ -1499,7 +1505,7 @@
+             legal_move = TRUE;
+         }
+ 
+-        if (uci_mode && gamestate.i_depth > 4 && (rdifftime(rtime(), gamestate.start_time) >= 150)
++        if (uci_mode && ((gamestate_t*) qgetbndl(BND1))->i_depth > 4 && (rdifftime(rtime(), ((gamestate_t*) qgetbndl(BND1))->start_time) >= 150)
+             && uci_showrefutations) {
+             myprintf("info refutation %s ", searching_move);
+             extract_current_bestline(s);
+@@ -1507,8 +1513,7 @@
+ 
+         unmake(s, moves[i]);
+ 
+-        /* if we've run out of time, return the best we have so far: */
+-        if (gamestate.time_exit) {
++        if (((gamestate_t*) qgetbndl(BND1))->time_exit) {
+             return best_move;
+         }
+ 
+@@ -1519,68 +1524,70 @@
+ 
+                 alpha = root_score;
+                 best_move = moves[i];
+-                gamestate.cur_score = alpha;
+-                gamestate.pv_best = compact_move(best_move);
++                ((gamestate_t*) qgetbndl(BND1))->cur_score = alpha;
++                ((gamestate_t*) qgetbndl(BND1))->pv_best = compact_move(best_move);
+ 
+-                if (gamestate.cur_score >= beta) {
+-                    StoreTT(s, gamestate.cur_score, originalalpha, originalbeta, gamestate.pv_best,
++                if (((gamestate_t*) qgetbndl(BND1))->cur_score >= beta) {
++                    StoreTT(s, ((gamestate_t*) qgetbndl(BND1))->cur_score, originalalpha, originalbeta, ((gamestate_t*) qgetbndl(BND1))->pv_best,
+                             FALSE, FALSE, FALSE, depth);
+                     return best_move;
+                 }
+             }
+ 
+              if (first) {
+-                gamestate.pvnodecount = s->nodes - oldnodecount;
++                ((gamestate_t*) qgetbndl(BND1))->pvnodecount = s->nodes - oldnodecount;
+                 first = FALSE;
+             }
+         }
+     }
+ 
+-    if (gamestate.i_depth == 4) {
++    if (((gamestate_t*) qgetbndl(BND1))->i_depth == 4) {
+         changes = 0;
+-    } else if (gamestate.i_depth > 4) {
++    } else if (((gamestate_t*) qgetbndl(BND1))->i_depth > 4) {
+         if (best_move != bmove) {
+             changes++;
+         }
+     }
+-    if ((((BITBOARD) (gamestate.pvnodecount * 100) / s->nodes) >= 75)
+-        && (gamestate.i_depth > 6)
+-        && !(gamestate.time_for_move == 99999999)
+-        && !gamestate.failed) {
+-        gamestate.time_for_move = gamestate.time_for_move / 2;
++    if ((((BITBOARD) (((gamestate_t*) qgetbndl(BND1))->pvnodecount * 100) / s->nodes) >= 75)
++        && (((gamestate_t*) qgetbndl(BND1))->i_depth > 6)
++        && !(((gamestate_t*) qgetbndl(BND1))->time_for_move == 99999999)
++        && !((gamestate_t*) qgetbndl(BND1))->failed) {
++        ((gamestate_t*) qgetbndl(BND1))->time_for_move = ((gamestate_t*) qgetbndl(BND1))->time_for_move / 2;
+     }
+     if (changes > 3) {
+-        gamestate.failedhigh = 1;
++        ((gamestate_t*) qgetbndl(BND1))->failedhigh = 1;
+         changes--;
+-    } else {
++    }
++    else {
+         /* one extra ply without changes, cancel time extension */
+-        if (gamestate.failedhigh) {
+-            gamestate.failedhigh = 0;
++        if (((gamestate_t*) qgetbndl(BND1))->failedhigh) {
++            ((gamestate_t*) qgetbndl(BND1))->failedhigh = 0;
+         }
+     }
+     
+     bmove = best_move;
+     /* check to see if we are mated / stalemated: */
+-    if (no_moves && !is_pondering && !gamestate.time_failure) {
++    if (no_moves && !is_pondering && !(((gamestate_t*) qgetbndl(BND1))->time_failure)) {
+         if (in_check(s)) {
+             if (s->white_to_move == 1) {
+-                gamestate.result = white_is_mated;
+-            } else {
+-                gamestate.result = black_is_mated;
++                ((gamestate_t*) qgetbndl(BND1))->result = white_is_mated;
++            }
++            else {
++                ((gamestate_t*) qgetbndl(BND1))->result = black_is_mated;
+             }
+         } else {
+-            gamestate.result = stalemate;
++            ((gamestate_t*) qgetbndl(BND1))->result = stalemate;
+         }
+     } else {
+         /* check for draw by the 50 move rule: */
+         if (s->fifty >= 99 && !is_pondering && !uci_mode) {
+-            gamestate.result = draw_by_fifty;
+-            gamestate.cur_score = 0;
++            ((gamestate_t*) qgetbndl(BND1))->result = draw_by_fifty;
++            ((gamestate_t*) qgetbndl(BND1))->cur_score = 0;
+         }
+     }
+ 
+-    StoreTT(s, gamestate.cur_score, originalalpha, originalbeta,
+-            gamestate.pv_best, FALSE, FALSE, FALSE, depth);
++    StoreTT(s, ((gamestate_t*) qgetbndl(BND1))->cur_score, originalalpha, originalbeta,
++            ((gamestate_t*) qgetbndl(BND1))->pv_best, FALSE, FALSE, FALSE, depth);
+     return best_move;
+ }
+ 
+@@ -1601,7 +1608,7 @@
+     s->TTStores = 0;
+     s->TTColls = 0;
+ 
+-    gamestate.extendedtime = 0;
++    ((gamestate_t*) qgetbndl(BND1))->extendedtime = 0;
+ }
+ 
+ void reset_search_data(state_t *s) {
+@@ -1618,11 +1625,11 @@
+         s->killerstack[i].killer4 = 0;
+     }
+ 
+-    gamestate.pvnodecount = 0;
+-    gamestate.pv_best = 0;
++    ((gamestate_t*) qgetbndl(BND1))->pvnodecount = 0;
++    ((gamestate_t*) qgetbndl(BND1))->pv_best = 0;
+ 
+     if (uci_limitstrength) {
+-        gamestate.maxdepth = std::min(gamestate.maxdepth, elo_to_depth(uci_elo));
++        ((gamestate_t*) qgetbndl(BND1))->maxdepth = std::min(((gamestate_t*) qgetbndl(BND1))->maxdepth, elo_to_depth(uci_elo));
+     }
+ }
+ 
+@@ -1646,7 +1653,7 @@
+     rs = 0;
+     true_i_depth = 0;
+ 
+-    gamestate.start_time = rtime();
++    ((gamestate_t*) qgetbndl(BND1))->start_time = rtime();
+ 
+     int legals = 0;
+ 
+@@ -1654,7 +1661,7 @@
+     /*
+         set up the search stack
+     */
+-    s->hash_history[gamestate.move_number] = s->hash;
++    s->hash_history[((gamestate_t*) qgetbndl(BND1))->move_number] = s->hash;
+ 
+     ic = in_check(s);
+     s->checks[s->ply] = ic;    
+@@ -1688,10 +1695,10 @@
+         }
+     }
+ 
+-    check_phase(&gamestate, s);
++    check_phase(((gamestate_t*) qgetbndl(BND1)), s);
+ 
+     if (!uci_mode) {
+-        switch (gamestate.phase) {
++        switch (((gamestate_t*) qgetbndl(BND1))->phase) {
+             case OPENING:
+                 myprintf("Opening phase.\n");
+                 break;
+@@ -1706,62 +1713,63 @@
+ 
+     /* allocate our time for this move: */
+     if (!is_pondering && !is_analyzing) {
+-        if (!gamestate.fixed_time) {
+-            gamestate.time_for_move = allocate_time(&gamestate, TRUE);
+-        } else {
+-            gamestate.time_for_move = gamestate.fixed_time;
++        if (!(((gamestate_t*) qgetbndl(BND1))->fixed_time)) {
++            ((gamestate_t*) qgetbndl(BND1))->time_for_move = allocate_time(((gamestate_t*) qgetbndl(BND1)), TRUE);
++        }
++        else {
++            ((gamestate_t*) qgetbndl(BND1))->time_for_move = ((gamestate_t*) qgetbndl(BND1))->fixed_time;
+         }
+     } else {
+-        gamestate.time_for_move = 99999999;
++        ((gamestate_t*) qgetbndl(BND1))->time_for_move = 99999999;
+     }
+ 
+ #if !defined COPYPROTECTION
+     if (!uci_mode) {
+-        myprintf("Time for move : %d\n", gamestate.time_for_move);
++        myprintf("Time for move : %d\n", ((gamestate_t*) qgetbndl(BND1))->time_for_move);
+     } else {
+-        if (gamestate.time_for_move != 99999999) {
++        if (((gamestate_t*) qgetbndl(BND1))->time_for_move != 99999999) {
+             myprintf("info string Time for move: %ds, early break: %ds\n",
+-                     gamestate.time_for_move / 100,
+-                     (int)((gamestate.time_for_move * 1.0 / 2.5) / 100));
++                     ((gamestate_t*) qgetbndl(BND1))->time_for_move / 100,
++                     (int)((((gamestate_t*) qgetbndl(BND1))->time_for_move * 1.0 / 2.5) / 100));
+         }
+     }
+ #endif
+  
+-    gamestate.time_exit = FALSE;
+-    gamestate.time_failure = FALSE;
++    ((gamestate_t*) qgetbndl(BND1))->time_exit = FALSE;
++    ((gamestate_t*) qgetbndl(BND1))->time_failure = FALSE;
+ 
+-    gamestate.failed = 0;
+-    gamestate.failedhigh = 0;
++    ((gamestate_t*) qgetbndl(BND1))->failed = 0;
++    ((gamestate_t*) qgetbndl(BND1))->failedhigh = 0;
+ 
+     comp_move = 0;
+     temp_score = 0;
+-    gamestate.cur_score = 0;
++    ((gamestate_t*) qgetbndl(BND1))->cur_score = 0;
+ 
+-    gamestate.i_depth = 1;
++    ((gamestate_t*) qgetbndl(BND1))->i_depth = 1;
+ 
+     for (;
+-         gamestate.i_depth <= std::min(40, gamestate.maxdepth);
+-         gamestate.i_depth++) {
++         ((gamestate_t*) qgetbndl(BND1))->i_depth <= std::min(40, ((gamestate_t*) qgetbndl(BND1))->maxdepth);
++         ((gamestate_t*) qgetbndl(BND1))->i_depth++) {
+ 
+         if (uci_mode) {
+             s->TTStores >>= 1;
+             s->TTColls >>= 1;
+         }
+ 
+-        if (gamestate.i_depth > s->maxply) {
+-            s->maxply = gamestate.i_depth;
++        if (((gamestate_t*) qgetbndl(BND1))->i_depth > s->maxply) {
++            s->maxply = ((gamestate_t*) qgetbndl(BND1))->i_depth;
+         }
+ 
+         /*
+             don't bother going deeper if we've already used 1/2 of our time, and we
+             haven't finished our mindepth search, since we likely won't finish
+         */
+-        elapsed = rdifftime(rtime(), gamestate.start_time);
++        elapsed = rdifftime(rtime(), ((gamestate_t*) qgetbndl(BND1))->start_time);
+ 
+-        if ((!gamestate.failed && !gamestate.failedhigh)
+-             && ((gamestate.extendedtime)
+-              || (!gamestate.fixed_time && (elapsed > gamestate.time_for_move * 1.0 / 2.5)))
+-            && (gamestate.i_depth > MINDEPTH)) {
++        if ((!(((gamestate_t*) qgetbndl(BND1))->failed) && !(((gamestate_t*) qgetbndl(BND1))->failedhigh))
++             && ((((gamestate_t*) qgetbndl(BND1))->extendedtime)
++              || (!(((gamestate_t*) qgetbndl(BND1))->fixed_time) && (elapsed > ((gamestate_t*) qgetbndl(BND1))->time_for_move * 1.0 / 2.5)))
++            && (((gamestate_t*) qgetbndl(BND1))->i_depth > MINDEPTH)) {
+             break;
+         }
+ 
+@@ -1772,53 +1780,54 @@
+         //alpha = -INF;
+         //beta = INF;
+ 
+-        temp_move = search_root(s, alpha, beta, (gamestate.i_depth * PLY));
++        temp_move = search_root(s, alpha, beta, (((gamestate_t*) qgetbndl(BND1))->i_depth * PLY));
+ 
+-        if (gamestate.result) {
++        if (((gamestate_t*) qgetbndl(BND1))->result) {
+             break;
+         }
+ 
+-        if (gamestate.cur_score <= alpha && !gamestate.time_exit) {
+-            gamestate.failed = 1;
++        if (((gamestate_t*) qgetbndl(BND1))->cur_score <= alpha && !(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
++            ((gamestate_t*) qgetbndl(BND1))->failed = 1;
+         } else {
+-            gamestate.failed = 0;
++            ((gamestate_t*) qgetbndl(BND1))->failed = 0;
+         }
+ 
+-        if (gamestate.cur_score <= alpha && !gamestate.time_exit) {
++        if (((gamestate_t*) qgetbndl(BND1))->cur_score <= alpha && !(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
+             /* fail low */
+             alpha = -INF;
+ 
+             rs++;
+ 
+-            temp_move = search_root(s, alpha, beta, (gamestate.i_depth * PLY));
++            temp_move = search_root(s, alpha, beta, (((gamestate_t*) qgetbndl(BND1))->i_depth * PLY));
+ 
+-            if (!gamestate.time_exit) {
+-                gamestate.failed = 0;
++            if (!((gamestate_t*) qgetbndl(BND1))->time_exit) {
++                ((gamestate_t*) qgetbndl(BND1))->failed = 0;
+             }
+ 
+-            if (gamestate.cur_score >= beta && !gamestate.time_exit) {
+-                temp_move = search_root(s, -INF, +INF, (gamestate.i_depth * PLY));
++            if (((gamestate_t*) qgetbndl(BND1))->cur_score >= beta && !((gamestate_t*) qgetbndl(BND1))->time_exit) {
++                temp_move = search_root(s, -INF, +INF, (((gamestate_t*) qgetbndl(BND1))->i_depth * PLY));
+ 
+-                if (!gamestate.time_exit) {
+-                    gamestate.failed = 0;
++                if (!((gamestate_t*) qgetbndl(BND1))->time_exit) {
++                    ((gamestate_t*) qgetbndl(BND1))->failed = 0;
++                }
+                 }
+             }
+-        } else if (gamestate.cur_score >= beta && !gamestate.time_exit) {
++        else if (((gamestate_t*) qgetbndl(BND1))->cur_score >= beta && !(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
+             /* fail high */
+             comp_move = temp_move;
+-            temp_score = gamestate.cur_score;
++            temp_score = ((gamestate_t*) qgetbndl(BND1))->cur_score;
+ 
+             beta = +INF;
+ 
+             rs++;
+ 
+-            temp_move = search_root(s, alpha, beta, (gamestate.i_depth * PLY));
++            temp_move = search_root(s, alpha, beta, (((gamestate_t*) qgetbndl(BND1))->i_depth * PLY));
+ 
+-            if (gamestate.cur_score <= alpha && !gamestate.time_exit) {
+-                gamestate.failed = 1;
+-                temp_move = search_root(s, -INF, +INF, (gamestate.i_depth * PLY));
+-                if (!gamestate.time_exit) {
+-                    gamestate.failed = 0;
++            if (((gamestate_t*) qgetbndl(BND1))->cur_score <= alpha && !(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
++                ((gamestate_t*) qgetbndl(BND1))->failed = 1;
++                temp_move = search_root(s, -INF, +INF, (((gamestate_t*) qgetbndl(BND1))->i_depth * PLY));
++                if (!(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
++                    ((gamestate_t*) qgetbndl(BND1))->failed = 0;
+                 }
+             };
+         };
+@@ -1831,11 +1840,11 @@
+             }
+         }
+ 
+-        if (!gamestate.time_failure
+-            && !gamestate.failed
++        if (!(((gamestate_t*) qgetbndl(BND1))->time_failure)
++            && !(((gamestate_t*) qgetbndl(BND1))->failed)
+             && temp_move == 0) {
+             myprintf("info string Nonsense in temp_move, time_failure %d failed %d time_exit %d result %d\n",
+-                      gamestate.time_failure, gamestate.failed, gamestate.time_exit, gamestate.result);
++                      ((gamestate_t*) qgetbndl(BND1))->time_failure, ((gamestate_t*) qgetbndl(BND1))->failed, ((gamestate_t*) qgetbndl(BND1))->time_exit, ((gamestate_t*) qgetbndl(BND1))->result);
+             myprintf("bestmove 0000\n");
+             return 0;
+         }
+@@ -1845,33 +1854,33 @@
+             set the computer's move
+             and post our thinking:
+         */
+-        if (!gamestate.time_failure) {
++        if (!(((gamestate_t*) qgetbndl(BND1))->time_failure)) {
+             /* accidentally pondering if mated */
+-            if (!uci_mode && gamestate.cur_score == -MATE) {
++            if (!uci_mode && ((gamestate_t*) qgetbndl(BND1))->cur_score == -MATE) {
+                 return 0;
+             }
+ 
+             comp_move = temp_move;
+-            temp_score = gamestate.cur_score;
++            temp_score = ((gamestate_t*) qgetbndl(BND1))->cur_score;
+ 
+-            if (!gamestate.time_exit) {
+-                true_i_depth = gamestate.i_depth;
++            if (!(((gamestate_t*) qgetbndl(BND1))->time_exit)) {
++                true_i_depth = ((gamestate_t*) qgetbndl(BND1))->i_depth;
+             }
+ 
+-            if (!gamestate.time_exit && !uci_mode && uci_multipv == 1) {
+-                post_thinking(s, gamestate.cur_score, comp_move, 0, 0);
++            if (!(((gamestate_t*) qgetbndl(BND1))->time_exit) && !uci_mode && uci_multipv == 1) {
++                post_thinking(s, ((gamestate_t*) qgetbndl(BND1))->cur_score, comp_move, 0, 0);
+             }
+ 
+-            if ((gamestate.i_depth > MINDEPTH)
++            if ((((gamestate_t*) qgetbndl(BND1))->i_depth > MINDEPTH)
+                  && temp_score > MATE - 500
+-                 && ((int)(MATE - gamestate.cur_score) < gamestate.i_depth)
+-                 && (!is_pondering || gamestate.time_for_move != 99999999)
++                 && ((int)(MATE - ((gamestate_t*) qgetbndl(BND1))->cur_score) < ((gamestate_t*) qgetbndl(BND1))->i_depth)
++                 && (!is_pondering || ((gamestate_t*) qgetbndl(BND1))->time_for_move != 99999999)
+                  ) {
+                 break;
+             }
+         }
+ 
+-        if (gamestate.time_exit) {
++        if (((gamestate_t*) qgetbndl(BND1))->time_exit) {
+             break;
+         }
+     }
+@@ -1881,8 +1890,8 @@
+         return 0;
+     }
+ 
+-    if (gamestate.i_depth >= 32 && is_pondering && uci_mode && !buffered_count) {
+-        while ((gamestate.time_for_move == 99999999) && !interrupt());
++    if (((gamestate_t*) qgetbndl(BND1))->i_depth >= 32 && is_pondering && uci_mode && !buffered_count) {
++        while ((((gamestate_t*) qgetbndl(BND1))->time_for_move == 99999999) && !interrupt());
+     }
+ 
+     if (uci_mode) {
+@@ -1903,10 +1912,10 @@
+ 
+     if (temp_score == MATE - 2 && !is_pondering) {
+         if (s->white_to_move) {
+-            gamestate.result = black_is_mated;
++            ((gamestate_t*) qgetbndl(BND1))->result = black_is_mated;
+             pondermove = 0;
+         } else {
+-            gamestate.result = white_is_mated;
++            ((gamestate_t*) qgetbndl(BND1))->result = white_is_mated;
+             pondermove = 0;
+         }
+     }
+@@ -1923,11 +1932,11 @@
+ 
+     if (!in_check(s)
+         && !is_pondering
+-        && (gamestate.result != white_is_mated)
+-        && (gamestate.result != black_is_mated)
+-        && (gamestate.result != stalemate)
+-        && (gamestate.result != draw_by_fifty)
+-        && (gamestate.result != draw_by_rep)
++        && (((gamestate_t*) qgetbndl(BND1))->result != white_is_mated)
++        && (((gamestate_t*) qgetbndl(BND1))->result != black_is_mated)
++        && (((gamestate_t*) qgetbndl(BND1))->result != stalemate)
++        && (((gamestate_t*) qgetbndl(BND1))->result != draw_by_fifty)
++        && (((gamestate_t*) qgetbndl(BND1))->result != draw_by_rep)
+         && (true_i_depth >= 5)) {
+         lastsearchscore = temp_score;
+     }
+diff -Naurb /home/matthew/cpu2017/benchspec/CPU/531.deepsjeng_r/src/sjeng.cpp benchspec/CPU/531.deepsjeng_r/src/sjeng.cpp
+--- /home/matthew/cpu2017/benchspec/CPU/531.deepsjeng_r/src/sjeng.cpp	2009-07-08 10:13:21.000000000 -0400
++++ benchspec/CPU/531.deepsjeng_r/src/sjeng.cpp	2018-02-28 17:21:41.376866967 -0500
+@@ -22,6 +22,9 @@
+ #include "search.h"
+ #include "draw.h"
+ 
++#include <stdlib.h>
++#include "simplex.h"
++
+ char buffered_command[20][BIG_BUFF];
+ int buffered_count;
+ int is_pondering, allow_pondering, is_analyzing;
+@@ -42,14 +45,19 @@
+ int EGTBProbes;
+ 
+ int main(int argc, char *argv[]) {
++    process_specific_init();
++    qsetbndl(BND0, (uint64_t) malloc(sizeof(state_t)));
++    qsetbndl(BND1, (uint64_t) malloc(sizeof(gamestate_t)));
++
+     setbuf(stdout, NULL);
+     setbuf(stdin, NULL);
+     
+     start_up();
+ 
+-    init_parameters(&gamestate);
++    init_parameters((gamestate_t*) qgetbndl(BND1));
++
++    initialize_zobrist((state_t*) qgetbndl(BND0));
+ 
+-    initialize_zobrist(&state);
+     SetupPrecalculatedData();
+     preprocess_prepare();
+ 
+@@ -58,48 +66,54 @@
+     */
+     mysrand(12345);
+ 
+-    init_game(&gamestate, &state);
++    init_game((gamestate_t*) qgetbndl(BND1), (state_t*) qgetbndl(BND0));
+ 
+-    initialize_hash(&state);
++    initialize_hash((state_t*) qgetbndl(BND0));
+ 
+     clear_tt();
+     clear_pawn_tt();
+ 
+-    state.ply = 0;
++    ((state_t*) qgetbndl(BND0))->ply = 0;
+ 
+-    gamestate.moves_to_tc =  40;
+-    gamestate.min_per_game = 15;
+-    gamestate.sec_per_game =  0;
+-    gamestate.time_left = 15 * 60 * 100;
++    ((gamestate_t*) qgetbndl(BND1))->moves_to_tc =  40;
++    ((gamestate_t*) qgetbndl(BND1))->min_per_game = 15;
++    ((gamestate_t*) qgetbndl(BND1))->sec_per_game =  0;
++    ((gamestate_t*) qgetbndl(BND1))->time_left = 15 * 60 * 100;
+ 
+     contempt = 0;
+ 
+-    gamestate.comp_color = 0;
++    ((gamestate_t*) qgetbndl(BND1))->comp_color = 0;
+     is_pondering = FALSE;
+     allow_pondering = TRUE;
+     is_analyzing = FALSE;
+-    gamestate.fixed_time = FALSE;
+-    gamestate.phase = OPENING;
+-    gamestate.root_to_move = WHITE;    
++    ((gamestate_t*) qgetbndl(BND1))->fixed_time = FALSE;
++    ((gamestate_t*) qgetbndl(BND1))->phase = OPENING;
++    ((gamestate_t*) qgetbndl(BND1))->root_to_move = WHITE;
+     time_check_log = 14;    // 16384
+ 
+-    gamestate.move_number = 0;
+-    memset(gamestate.game_history, 0, sizeof(gamestate.game_history));
+-    memset(gamestate.game_history_x, 0, sizeof(gamestate.game_history_x));
++    ((gamestate_t*) qgetbndl(BND1))->move_number = 0;
+ 
+-    state.hash_history[gamestate.move_number] = state.hash;
++    memset(((gamestate_t*) qgetbndl(BND1))->game_history,0,sizeof(((gamestate_t*) qgetbndl(BND1))->game_history));
++    memset(((gamestate_t*) qgetbndl(BND1))->game_history_x,0,sizeof(((gamestate_t*) qgetbndl(BND1))->game_history_x));
++
++    ((state_t*) qgetbndl(BND0))->hash_history[((gamestate_t*) qgetbndl(BND1))->move_number] = ((state_t*) qgetbndl(BND0))->hash;
+ 
+     memset(&buffered_command[0], 0, sizeof(buffered_command));
+     buffered_count = 0;
+     
+     /* SPEC version: take EPD testset from commandline */
+     if (argc == 2) {
+-        run_epd_testsuite(&gamestate, &state, argv[1]);    
++        run_epd_testsuite((gamestate_t*) qgetbndl(BND1),(state_t*) qgetbndl(BND0),argv[1]);
+     } else {
+         myprintf("Please specify the workfile.\n");
++        free((state_t*) qgetbndl(BND0));
++        free((gamestate_t*) qgetbndl(BND1));
++        process_specific_finish();
+         return EXIT_FAILURE;
+     }
+ 
++    free((state_t*) qgetbndl(BND0));
++    free((gamestate_t*) qgetbndl(BND1));
++    process_specific_finish();
+     return EXIT_SUCCESS;
+ }
+-
+diff -Naurb /home/matthew/cpu2017/benchspec/CPU/531.deepsjeng_r/src/state.cpp benchspec/CPU/531.deepsjeng_r/src/state.cpp
+--- /home/matthew/cpu2017/benchspec/CPU/531.deepsjeng_r/src/state.cpp	2009-05-26 11:05:12.000000000 -0400
++++ benchspec/CPU/531.deepsjeng_r/src/state.cpp	2018-02-28 17:24:42.250564260 -0500
+@@ -13,6 +13,8 @@
+ /* 
+     global state
+ */
+-state_t           state;
+-gamestate_t   gamestate;
++/*
++    state_t           state;  // Now in BND0
++    gamestate_t   gamestate;  // Now in BND1
++*/
+ scoreboard_t scoreboard;
+diff -Naurb /home/matthew/cpu2017/benchspec/CPU/531.deepsjeng_r/src/utils.cpp benchspec/CPU/531.deepsjeng_r/src/utils.cpp
+--- /home/matthew/cpu2017/benchspec/CPU/531.deepsjeng_r/src/utils.cpp	2015-10-29 15:03:55.000000000 -0400
++++ benchspec/CPU/531.deepsjeng_r/src/utils.cpp	2018-02-28 17:45:39.690102753 -0500
+@@ -25,6 +25,8 @@
+ #include <stdarg.h>
+ #include <limits.h>
+ 
++#include "simplex.h"
++
+ static unsigned int s1, s2, s3;
+ 
+ /* multipv information */
+@@ -119,44 +121,45 @@
+     /* 
+         sudden death time allocation: 
+     */
+-    if (!gamestate.moves_to_tc) {
++    if (!(((gamestate_t*) qgetbndl(BND1))->moves_to_tc)) {
+         if (allow_pondering) {
+             move_speed -= 3.0;
+         }
+ 
+-        if (gamestate.inc) {
++        if (((gamestate_t*) qgetbndl(BND1))->inc) {
+             move_speed -= 9.0;
+         }
+ 
+-        if (allow_pondering && gamestate.inc) {
++        if (allow_pondering && ((gamestate_t*) qgetbndl(BND1))->inc) {
+             move_speed -= 2.0;
+         }
+ 
+         /* allocate our base time: */
+-        allocated_time = gamestate.time_left / move_speed;
++        allocated_time = ((gamestate_t*) qgetbndl(BND1))->time_left / move_speed;
+ 
+         /* add our increment if applicable: */
+-        if (gamestate.inc) {
+-            if (gamestate.time_left - allocated_time - gamestate.inc > 500) {
+-                allocated_time += gamestate.inc;
+-            } else if (gamestate.time_left - allocated_time - (gamestate.inc * 2.0 / 3.0) > 100) {
+-                allocated_time += gamestate.inc * 2.0 / 3.0;
++        if (((gamestate_t*) qgetbndl(BND1))->inc) {
++            if (((gamestate_t*) qgetbndl(BND1))->time_left - allocated_time - (((gamestate_t*) qgetbndl(BND1))->inc) > 500) {
++                allocated_time += ((gamestate_t*) qgetbndl(BND1))->inc;
++            }
++            else if (((gamestate_t*) qgetbndl(BND1))->time_left - allocated_time - (((gamestate_t*) qgetbndl(BND1))->inc * 2.0 / 3.0) > 100) {
++                allocated_time += ((gamestate_t*) qgetbndl(BND1))->inc * 2.0 / 3.0;
+             }
+         }
+     }  else {
+         /* conventional clock time allocation: */
+-        mttc = gamestate.moves_to_tc + 1.0;
++        mttc = ((gamestate_t*) qgetbndl(BND1))->moves_to_tc + 1.0;
+         if (mttc > move_speed) {
+             mttc = move_speed + 1.0;
+         }
+         if (!uci_mode) {
+             allocated_time =
+                 (
+-                    ((double)gamestate.time_left - 100.) /
+-                    (double)(mttc - (((gamestate.move_number / 2) % gamestate.moves_to_tc)))
++                    ((double)((gamestate_t*) qgetbndl(BND1))->time_left - 100.) /
++                    (double)(mttc - (((((gamestate_t*) qgetbndl(BND1))->move_number / 2) % ((gamestate_t*) qgetbndl(BND1))->moves_to_tc)))
+                 );
+         } else {
+-            allocated_time = ((double)gamestate.time_left - 100.) / mttc;
++            allocated_time = ((double)((gamestate_t*) qgetbndl(BND1))->time_left - 100.) / mttc;
+         }
+ 
+         /* 
+@@ -168,11 +171,11 @@
+             use *2.5 with pondering, and *1.5 without
+         */
+         if (allow_pondering) {
+-            if (allocated_time * 2.5 < (gamestate.time_left - 100)) {
++            if (allocated_time * 2.5 < (((gamestate_t*) qgetbndl(BND1))->time_left - 100)) {
+                 allocated_time *= 2.5;
+             }
+         } else {
+-            if (allocated_time * 1.5 < (gamestate.time_left - 100)) {
++            if (allocated_time * 1.5 < (((gamestate_t*) qgetbndl(BND1))->time_left - 100)) {
+                 allocated_time *= 1.5;
+             }
+         }
+@@ -424,7 +427,7 @@
+     s->brrook_start = h8;
+     SetupCastleMasks(s);
+ 
+-    gamestate.result = no_result;    
++    ((gamestate_t*) qgetbndl(BND1))->result = no_result;
+ 
+     s->Material = 0;
+ 
+@@ -434,7 +437,7 @@
+     s->ply = 0;
+     s->threadid = 0;
+ 
+-    gamestate.phase = OPENING;    
++    ((gamestate_t*) qgetbndl(BND1))->phase = OPENING;
+ }
+ 
+ int is_move(char *str) {
+@@ -583,27 +586,27 @@
+     char hashpv[STR_BUFF];
+     int sign = 1;
+ 
+-    if (gamestate.i_depth <= MINDEPTH && gamestate.maxdepth > MINDEPTH) {
++    if (((gamestate_t*) qgetbndl(BND1))->i_depth <= MINDEPTH && ((gamestate_t*) qgetbndl(BND1))->maxdepth > MINDEPTH) {
+         return;
+     }
+     
+-    elapsed = rdifftime(rtime(), gamestate.start_time);
++    elapsed = rdifftime(rtime(), ((gamestate_t*) qgetbndl(BND1))->start_time);
+     
+     if (!uci_mode) {
+-        myprintf("%2d %7d %5d %8llu  ",gamestate.i_depth,score,elapsed,s->nodes);
++        myprintf("%2d %7d %5d %8llu  ",((gamestate_t*) qgetbndl(BND1))->i_depth,score,elapsed,s->nodes);
+     } else {
+         myprintf("info currmove %s currmovenumber %d\n",searching_move,mc);
+         
+         if (abs(score) < 10000) {
+             myprintf("info depth %d seldepth %d time %d nodes %llu tbhits %d score cp %d multipv 1 pv ",
+-                 gamestate.i_depth,s->maxply,elapsed * 10,s->nodes, EGTBHits, score);
++                 ((gamestate_t*) qgetbndl(BND1))->i_depth,s->maxply,elapsed * 10,s->nodes, EGTBHits, score);
+         } else {
+             if (score < 0) {
+                 score = -score;
+                 sign = -sign;
+             }
+             myprintf("info depth %d seldepth %d time %d nodes %llu tbhits %d score mate %d multipv 1 pv ",
+-                 gamestate.i_depth,s->maxply,elapsed * 10,s->nodes, EGTBHits, sign * (int)((MATE - score) / 2));
++                 ((gamestate_t*) qgetbndl(BND1))->i_depth,s->maxply,elapsed * 10,s->nodes, EGTBHits, sign * (int)((MATE - score) / 2));
+         }
+     }
+ 
+@@ -646,24 +649,24 @@
+     char output[STR_BUFF];
+     int sign = 1;
+ 
+-    if (gamestate.i_depth <= MINDEPTH && gamestate.maxdepth > MINDEPTH) {
++    if (((gamestate_t*) qgetbndl(BND1))->i_depth <= MINDEPTH && ((gamestate_t*) qgetbndl(BND1))->maxdepth > MINDEPTH) {
+         return;
+     }    
+ 
+-    elapsed = rdifftime(rtime(),gamestate.start_time);
++    elapsed = rdifftime(rtime(),((gamestate_t*) qgetbndl(BND1))->start_time);
+     if (!uci_mode) {
+-        myprintf("%2d %7d %5d %8llu  ",gamestate.i_depth,score,elapsed,s->nodes);
++        myprintf("%2d %7d %5d %8llu  ", ((gamestate_t*) qgetbndl(BND1))->i_depth,score,elapsed,s->nodes);
+     } else {
+         if (abs(score) < 10000) {
+             myprintf("info depth %d seldepth %d time %d nodes %llu tbhits %d score cp %d lowerbound multipv 1 pv ",
+-                 gamestate.i_depth,s->maxply,elapsed * 10,s->nodes,EGTBHits,score);
++                 ((gamestate_t*) qgetbndl(BND1))->i_depth,s->maxply,elapsed * 10,s->nodes,EGTBHits,score);
+         } else {
+             if (score < 0) {
+                 score = -score;
+                 sign = -sign;
+             }
+             myprintf("info depth %d seldepth %d time %d nodes %llu tbhits %d score cp %d lowerbound multipv 1 pv ",
+-                 gamestate.i_depth,s->maxply,elapsed * 10,s->nodes,EGTBHits,sign * (int)((MATE - score) / 2));
++                 ((gamestate_t*) qgetbndl(BND1))->i_depth,s->maxply,elapsed * 10,s->nodes,EGTBHits,sign * (int)((MATE - score) / 2));
+         }
+     }
+ 
+@@ -693,30 +696,29 @@
+     char output[STR_BUFF];
+     int sign = 1;
+ 
+-    if (gamestate.i_depth <= MINDEPTH && gamestate.maxdepth > MINDEPTH) {
++    if (((gamestate_t*) qgetbndl(BND1))->i_depth <= MINDEPTH && ((gamestate_t*) qgetbndl(BND1))->maxdepth > MINDEPTH) {
+         return;
+     }    
+ 
+     /* in xboard mode, follow xboard conventions for thinking output, otherwise
+      output the iterative depth, human readable score, and the pv */
+-    elapsed = rdifftime(rtime(), gamestate.start_time);
++    elapsed = rdifftime(rtime(), ((gamestate_t*) qgetbndl(BND1))->start_time);
+ if (!uci_mode)
+     {
+-        myprintf("%2d %7d %5d %8llu  ",gamestate.i_depth,score,elapsed,s->nodes);
++        myprintf("%2d %7d %5d %8llu  ",((gamestate_t*) qgetbndl(BND1))->i_depth,score,elapsed,s->nodes);
+     } else {
+         myprintf("info currmove %s currmovenumber %d\n",searching_move,mc);
+         if (abs(score) < 10000)
+         {
+             myprintf("info depth %d seldepth %d time %d nodes %llu tbhits %d score cp %d upperbound multipv 1 pv ",
+-                 gamestate.i_depth,s->maxply,elapsed * 10,s->nodes,EGTBHits,score);
++                ((gamestate_t*) qgetbndl(BND1))->i_depth,s->maxply,elapsed * 10,s->nodes,EGTBHits,score);
+         } else {
+             if (score < 0) {
+                 score = -score;
+                 sign = -sign;
+             }
+             myprintf("info depth %d seldepth %d time %d nodes %llu tbhits %d score cp %d upperbound multipv 1 pv ",
+-                 gamestate.i_depth,s->maxply,elapsed * 10,s->nodes,EGTBHits,sign * (int)((MATE - score) / 2));
+-
++                ((gamestate_t*) qgetbndl(BND1))->i_depth,s->maxply,elapsed * 10,s->nodes,EGTBHits,sign * (int)((MATE - score) / 2));
+         }
+     }
+ 
+@@ -765,7 +767,7 @@
+     char hashpv[STR_BUFF];
+     int sign = 1;
+ 
+-    if (gamestate.i_depth <= MINDEPTH && gamestate.maxdepth > MINDEPTH) {
++    if (((gamestate_t*) qgetbndl(BND1))->i_depth <= MINDEPTH && ((gamestate_t*) qgetbndl(BND1))->maxdepth > MINDEPTH) {
+         return;
+     }    
+     
+@@ -773,11 +775,11 @@
+ 
+     multipv_scores[mc] = score;
+ 
+-    elapsed = rdifftime(rtime(), gamestate.start_time);
++    elapsed = rdifftime(rtime(), ((gamestate_t*) qgetbndl(BND1))->start_time);
+ 
+     if (abs(score) < 10000) {
+         sprintf(multipv_strings[mc],
+-                "depth %d seldepth %d time %d nodes %llu tbhits %d score cp %d pv ", gamestate.i_depth,
++                "depth %d seldepth %d time %d nodes %llu tbhits %d score cp %d pv ", ((gamestate_t*) qgetbndl(BND1))->i_depth,
+                 s->maxply, elapsed * 10, s->nodes, EGTBHits, score);
+     } else {
+         if (score < 0) {
+@@ -785,7 +787,7 @@
+             sign = -sign;
+         }
+         sprintf(multipv_strings[mc],
+-                "depth %d seldepth %d time %d nodes %llu tbhits %d score mate %d pv ",gamestate.i_depth,
++                "depth %d seldepth %d time %d nodes %llu tbhits %d score mate %d pv ",((gamestate_t*) qgetbndl(BND1))->i_depth,
+                 s->maxply,elapsed * 10,s->nodes,EGTBHits, sign * (int)((MATE - score) / 2));
+     }
+ 
+@@ -985,8 +987,8 @@
+ 
+     if (c == 'p') {
+         /* ponderhit */
+-        elapsed = rdifftime(rtime(), gamestate.start_time);
+-        gamestate.time_for_move = allocate_time(&gamestate, FALSE);
++        elapsed = rdifftime(rtime(), ((gamestate_t*) qgetbndl(BND1))->start_time);
++        ((gamestate_t*) qgetbndl(BND1))->time_for_move = allocate_time((gamestate_t*) qgetbndl(BND1), FALSE);
+         ungetc(c,stdin);
+ 
+         /* we need this out of our buffer ! */
+@@ -994,15 +996,14 @@
+         buffered_count++;
+ 
+ #if !defined COPYPROTECTION
+-        if ((int)(((gamestate.time_for_move * 1.0 / 2.5) - elapsed) / 100) >= 0) {
++        if ((int)(((((gamestate_t*) qgetbndl(BND1))->time_for_move * 1.0 / 2.5) - elapsed) / 100) >= 0) {
+             myprintf("info string Time for move: %ds, elapsed: %ds, left: %ds, early break: %ds\n",
+-                 gamestate.time_for_move / 100,elapsed / 100,
+-                 (gamestate.time_for_move - elapsed) / 100,
+-                 (int)(((gamestate.time_for_move * 1.0 / 2.5) - elapsed) / 100));
++                 ((gamestate_t*) qgetbndl(BND1))->time_for_move / 100,elapsed / 100,
++                 (((gamestate_t*) qgetbndl(BND1))->time_for_move - elapsed) / 100,
++                 (int)(((((gamestate_t*) qgetbndl(BND1))->time_for_move * 1.0 / 2.5) - elapsed) / 100));
+         } else {
+             myprintf("info string Time for move: %ds, elapsed: %ds, left: %ds\n",
+-                 gamestate.time_for_move / 100,elapsed / 100,(gamestate.time_for_move - elapsed) / 100);
+-
++                ((gamestate_t*) qgetbndl(BND1))->time_for_move / 100,elapsed / 100,(((gamestate_t*) qgetbndl(BND1))->time_for_move - elapsed) / 100);
+         }
+ #endif        
+             
+@@ -1020,7 +1021,7 @@
+ 
+             if (!strncmp(buffered_command[buffered_count],"time",4)) {
+                 sscanf(buffered_command[buffered_count] + 5,"%d",&newtime);
+-                gamestate.time_left = newtime;
++                ((gamestate_t*) qgetbndl(BND1))->time_left = newtime;
+                 return 0;
+             } else if (!strncmp(buffered_command[buffered_count],"otim",4)) {
+                 buffered_count++;
+@@ -1106,4 +1107,3 @@
+     s2 |= 8;
+     s3 |= 16;
+ } 
+-

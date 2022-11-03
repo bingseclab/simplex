@@ -1,0 +1,286 @@
+runcpu v5825 started at 2018-04-27 09:31:34 on "roundtop"
+runcpu is: /home/matthew/git/simplex/cpu2017/bin/harness/runcpu
+runcpu: runcpu --config=gcc-linux-x86-simplex.cfg --action=clobber all
+toolset: linux-x86_64
+
+Locating benchmarks...found 47 benchmarks in 53 benchsets.
+Reading config file '/home/matthew/git/simplex/cpu2017/config/gcc-linux-x86-simplex.cfg'
+Reading included config file '/home/matthew/git/simplex/cpu2017/config/SUT.inc'
+
+4 configurations selected:
+
+Action    Run Mode   Workload      Report Type      Benchmarks
+-------   --------   --------   -----------------   ---------------------------
+clobber   rate       refrate    SPECrate2017_fp     fprate                     
+clobber   speed      refspeed   SPECspeed2017_fp    fpspeed                    
+clobber   rate       refrate    SPECrate2017_int    intrate                    
+clobber   speed      refspeed   SPECspeed2017_int   intspeed                   
+-------------------------------------------------------------------------------
+
+Setting up environment for running fprate...
+Starting runcpu for fprate...
+Running "specperl /home/matthew/git/simplex/cpu2017/bin/sysinfo" to gather system information.
+sysinfo: r5797 of 2017-06-14 (96c45e4568ad54c135fd618bcc091c0f)
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...trying to get DIMM info from dmidecode
+Read 106 info lines from the sysinfo program.
+ = "%{gcc_dir}/lib/:/lib64:%{ENV_LD_LIBRARY_PATH}"
+
+Benchmarks selected: 503.bwaves_r, 507.cactuBSSN_r, 508.namd_r, 510.parest_r, 511.povray_r, 519.lbm_r, 521.wrf_r, 526.blender_r, 527.cam4_r, 538.imagick_r, 544.nab_r, 549.fotonik3d_r, 554.roms_r, 997.specrand_fr
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/503.bwaves_r/exe/bwaves_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/507.cactuBSSN_r/exe/cactusBSSN_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/508.namd_r/exe/namd_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/510.parest_r/exe/parest_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/511.povray_r/exe/imagevalidate_511_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/511.povray_r/exe/povray_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/521.wrf_r/exe/diffwrf_521_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/521.wrf_r/exe/wrf_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/526.blender_r/exe/blender_r_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/526.blender_r/exe/imagevalidate_526_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/527.cam4_r/exe/cam4_r_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/527.cam4_r/exe/cam4_validate_527_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/538.imagick_r/exe/imagevalidate_538_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/538.imagick_r/exe/imagick_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/544.nab_r/exe/nab_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/549.fotonik3d_r/exe/fotonik3d_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/554.roms_r/exe/roms_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/997.specrand_fr/exe/specrand_fr_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/503.bwaves_r/exe/bwaves_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/507.cactuBSSN_r/exe/cactusBSSN_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/508.namd_r/exe/namd_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/510.parest_r/exe/parest_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/511.povray_r/exe/imagevalidate_511_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/511.povray_r/exe/povray_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/521.wrf_r/exe/diffwrf_521_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/521.wrf_r/exe/wrf_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/526.blender_r/exe/blender_r_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/526.blender_r/exe/imagevalidate_526_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/527.cam4_r/exe/cam4_r_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/527.cam4_r/exe/cam4_validate_527_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/538.imagick_r/exe/imagevalidate_538_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/538.imagick_r/exe/imagick_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/544.nab_r/exe/nab_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/549.fotonik3d_r/exe/fotonik3d_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/554.roms_r/exe/roms_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/997.specrand_fr/exe/specrand_fr_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+runcpu finished at 2018-04-27 09:31:35; 1 total seconds elapsed
+Info: file_tail(2924): file '/home/matthew/git/simplex/cpu2017/tmp/CPU2017.040/templogs/preenv.fprate.040.0.debug' was removed and will no longer be followed.  No action is required.
+-------------------------------------------------------------------------------
+
+Setting up environment for running fpspeed...
+Starting runcpu for fpspeed...
+Running "specperl /home/matthew/git/simplex/cpu2017/bin/sysinfo" to gather system information.
+sysinfo: r5797 of 2017-06-14 (96c45e4568ad54c135fd618bcc091c0f)
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...trying to get DIMM info from dmidecode
+Read 106 info lines from the sysinfo program.
+RARY_PATH}"
+OMP_STACKSIZE = "120M"
+
+Benchmarks selected: 603.bwaves_s, 607.cactuBSSN_s, 619.lbm_s, 621.wrf_s, 627.cam4_s, 628.pop2_s, 638.imagick_s, 644.nab_s, 649.fotonik3d_s, 654.roms_s, 996.specrand_fs
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/603.bwaves_s/exe/speed_bwaves_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/607.cactuBSSN_s/exe/cactuBSSN_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/619.lbm_s/exe/lbm_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/621.wrf_s/exe/diffwrf_621_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/621.wrf_s/exe/wrf_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/627.cam4_s/exe/cam4_s_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/627.cam4_s/exe/cam4_validate_627_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/628.pop2_s/exe/speed_pop2_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/638.imagick_s/exe/imagevalidate_638_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/638.imagick_s/exe/imagick_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/644.nab_s/exe/nab_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/649.fotonik3d_s/exe/fotonik3d_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/654.roms_s/exe/sroms_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/996.specrand_fs/exe/specrand_fs_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/603.bwaves_s/exe/speed_bwaves_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/607.cactuBSSN_s/exe/cactuBSSN_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/619.lbm_s/exe/lbm_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/621.wrf_s/exe/diffwrf_621_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/621.wrf_s/exe/wrf_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/627.cam4_s/exe/cam4_s_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/627.cam4_s/exe/cam4_validate_627_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/628.pop2_s/exe/speed_pop2_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/638.imagick_s/exe/imagevalidate_638_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/638.imagick_s/exe/imagick_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/644.nab_s/exe/nab_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/649.fotonik3d_s/exe/fotonik3d_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/654.roms_s/exe/sroms_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/996.specrand_fs/exe/specrand_fs_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+runcpu finished at 2018-04-27 09:31:37; 0 total seconds elapsed
+Info: file_tail(2992): file '/home/matthew/git/simplex/cpu2017/tmp/CPU2017.040/templogs/preenv.fpspeed.040.1.debug' was removed and will no longer be followed.  No action is required.
+-------------------------------------------------------------------------------
+
+Setting up environment for running intrate...
+Starting runcpu for intrate...
+Running "specperl /home/matthew/git/simplex/cpu2017/bin/sysinfo" to gather system information.
+sysinfo: r5797 of 2017-06-14 (96c45e4568ad54c135fd618bcc091c0f)
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...trying to get DIMM info from dmidecode
+Read 106 info lines from the sysinfo program.
+_LD_LIBRARY_PATH}"
+
+Benchmarks selected: 500.perlbench_r, 502.gcc_r, 505.mcf_r, 520.omnetpp_r, 523.xalancbmk_r, 525.x264_r, 531.deepsjeng_r, 541.leela_r, 548.exchange2_r, 557.xz_r, 999.specrand_ir
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/502.gcc_r/exe/cpugcc_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/505.mcf_r/exe/mcf_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/520.omnetpp_r/exe/omnetpp_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/523.xalancbmk_r/exe/cpuxalan_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/525.x264_r/exe/imagevalidate_525_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/525.x264_r/exe/ldecod_r_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/525.x264_r/exe/x264_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/541.leela_r/exe/leela_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/548.exchange2_r/exe/exchange2_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/557.xz_r/exe/xz_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/999.specrand_ir/exe/specrand_ir_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/502.gcc_r/exe/cpugcc_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/505.mcf_r/exe/mcf_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/520.omnetpp_r/exe/omnetpp_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/523.xalancbmk_r/exe/cpuxalan_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/525.x264_r/exe/imagevalidate_525_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/525.x264_r/exe/ldecod_r_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/525.x264_r/exe/x264_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/541.leela_r/exe/leela_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/548.exchange2_r/exe/exchange2_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/557.xz_r/exe/xz_r_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/999.specrand_ir/exe/specrand_ir_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+runcpu finished at 2018-04-27 09:31:38; 1 total seconds elapsed
+Info: file_tail(3060): file '/home/matthew/git/simplex/cpu2017/tmp/CPU2017.040/templogs/preenv.intrate.040.2.debug' was removed and will no longer be followed.  No action is required.
+-------------------------------------------------------------------------------
+
+Setting up environment for running intspeed...
+Starting runcpu for intspeed...
+Running "specperl /home/matthew/git/simplex/cpu2017/bin/sysinfo" to gather system information.
+sysinfo: r5797 of 2017-06-14 (96c45e4568ad54c135fd618bcc091c0f)
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...trying to get DIMM info from dmidecode
+Retrieving flags file (/home/matthew/git/simplex/cpu2017/config/flags/gcc.xml)...
+Verbosity = 5
+Action    = clobber
+Tune      = base
+Label     = gcc-linux-x86-simplex-m64
+Size      = refspeed
+benchmarks= 600.perlbench_s,602.gcc_s,605.mcf_s,620.omnetpp_s,623.xalancbmk_s,625.x264_s,631.deepsjeng_s,641.leela_s,648.exchange2_s,657.xz_s,998.specrand_is
+outputs   = rsf,txt,csv
+username  = matthew
+Environment settings:
+LD_LIBRARY_PATH = "%{gcc_dir}/lib/:/lib64:%{ENV_LD_LIBRARY_PATH}"
+
+Benchmarks selected: 600.perlbench_s, 602.gcc_s, 605.mcf_s, 620.omnetpp_s, 623.xalancbmk_s, 625.x264_s, 631.deepsjeng_s, 641.leela_s, 648.exchange2_s, 657.xz_s, 998.specrand_is
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/600.perlbench_s/exe/perlbench_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/602.gcc_s/exe/sgcc_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/605.mcf_s/exe/mcf_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/620.omnetpp_s/exe/omnetpp_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/623.xalancbmk_s/exe/xalancbmk_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/625.x264_s/exe/imagevalidate_625_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/625.x264_s/exe/ldecod_s_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/625.x264_s/exe/x264_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/631.deepsjeng_s/exe/deepsjeng_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/641.leela_s/exe/leela_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/648.exchange2_s/exe/exchange2_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/657.xz_s/exe/xz_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/998.specrand_is/exe/specrand_is_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/600.perlbench_s/exe/perlbench_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/602.gcc_s/exe/sgcc_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/605.mcf_s/exe/mcf_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/620.omnetpp_s/exe/omnetpp_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/623.xalancbmk_s/exe/xalancbmk_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/625.x264_s/exe/imagevalidate_625_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/625.x264_s/exe/ldecod_s_base.gcc-linux-x86-simplex-m64,/home/matthew/git/simplex/cpu2017/benchspec/CPU/625.x264_s/exe/x264_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/631.deepsjeng_s/exe/deepsjeng_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/641.leela_s/exe/leela_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/648.exchange2_s/exe/exchange2_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/657.xz_s/exe/xz_s_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/matthew/git/simplex/cpu2017/benchspec/CPU/998.specrand_is/exe/specrand_is_base.gcc-linux-x86-simplex-m64), no checksums were
+  found in the config file.  They will be installed after build.
+runcpu finished at 2018-04-27 09:31:39; 0 total seconds elapsed
+Info: file_tail(3128): file '/home/matthew/git/simplex/cpu2017/tmp/CPU2017.040/templogs/preenv.intspeed.040.3.debug' was removed and will no longer be followed.  No action is required.
+The log for this run is in /home/matthew/git/simplex/cpu2017/result/CPU2017.040.log
+
+runcpu finished at 2018-04-27 09:31:39; 5 total seconds elapsed

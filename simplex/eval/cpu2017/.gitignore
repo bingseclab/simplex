@@ -1,0 +1,16 @@
+*
+!.gitignore
+!*.patch
+!README.md
+!Makefile
+
+!config/**
+config/examples/
+config/flags/
+config/tiny-examples/
+
+!result/
+result/*
+!result/*.rsf
+!result/*.log
+result/*.log.debug

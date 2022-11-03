@@ -1,0 +1,51 @@
+fixture,name,parameters,iterations_per_run,disabled,runs,mean,std_dev,median,quartile_1,quartile_3,minimum,maximum
+LoadStoreFixture,baseline_store,,10000,FALSE,10,4.079,,1.425,1.210,1.596,1.147,16.084
+LoadStoreFixture,mpx_store,,10000,FALSE,10,1.511,,1.462,1.444,1.487,1.422,1.972
+LoadStoreFixture,baseline_load,,10000,FALSE,10,1.721,,0.449,0.42,0.455,0.328,13.059
+LoadStoreFixture,mpx_load,,10000,FALSE,10,4.929,,3.63,3.592,3.657,3.561,16.714
+TraversalFixture,baseline,std::size_t sz=4 * (1024),1000,FALSE,10,1060.021,,1059.136,1058.799,1060.394,1058.732,1064.206
+TraversalFixture,baseline,std::size_t sz=16 * (1048576),1000,FALSE,10,4281718.25,,4270075.332,4265830.732,4283170.856,4259990.64,4327801.726
+TraversalFixture,simplex,std::size_t sz=4 * (1024),1000,FALSE,10,3872.866,,3870.253,3865.325,3885.79,3848.16,3896.008
+TraversalFixture,simplex,std::size_t sz=16 * (1048576),1000,FALSE,10,15976723.35,,15988735.49,15964881.72,15998883.45,15911591.12,16017364.06
+StringFixture,memrnd,std::size_t sz=4 * (1024),1000,FALSE,10,93.463,,92.082,92.01,92.508,91.865,104.932
+StringFixture,memrnd,std::size_t sz=8 * (1024),1000,FALSE,10,91.025,,89.275,89.105,89.783,89.021,102.356
+StringFixture,memrnd,std::size_t sz=1 * (1048576),1000,FALSE,10,90.244,,88.904,88.806,88.997,88.793,101.97
+StringFixture,memrnd,std::size_t sz=16 * (1048576),1000,FALSE,10,93.599,,95.009,88.96,95.294,88.71,103.179
+StringFixture,libgcc_memcmp,std::size_t sz=4 * (1024),1000,FALSE,10,101.767,,100.085,99.775,100.314,99.279,113.2
+StringFixture,libgcc_memcmp,std::size_t sz=8 * (1024),1000,FALSE,10,100.229,,98.894,98.567,99.504,98.415,111.848
+StringFixture,libgcc_memcmp,std::size_t sz=1 * (1048576),1000,FALSE,10,103.925,,99.013,98.759,111.295,98.728,122.196
+StringFixture,libgcc_memcmp,std::size_t sz=16 * (1048576),1000,FALSE,10,101.366,,99.612,99.511,100.073,99.189,112.564
+StringFixture,simplex_memcmp,std::size_t sz=4 * (1024),1000,FALSE,10,124.265,,124.611,121.116,124.965,106.928,139.234
+StringFixture,simplex_memcmp,std::size_t sz=8 * (1024),1000,FALSE,10,126.153,,124.874,124.651,124.993,124.608,138.122
+StringFixture,simplex_memcmp,std::size_t sz=1 * (1048576),1000,FALSE,10,126.841,,124.454,124.219,124.974,121.78,139.479
+StringFixture,simplex_memcmp,std::size_t sz=16 * (1048576),1000,FALSE,10,110.124,,107.822,107.551,108.337,107.165,126.309
+StringFixture,libgcc_memcpy,std::size_t sz=4 * (1024),1000,FALSE,10,5266.207,,5246.801,5236.369,5306.687,5223.786,5332.907
+StringFixture,libgcc_memcpy,std::size_t sz=8 * (1024),1000,FALSE,10,10497.469,,10465.993,10410.907,10596.802,10354.994,10698.649
+StringFixture,libgcc_memcpy,std::size_t sz=1 * (1048576),1000,FALSE,10,1325434.556,,1327032.847,1315835.4,1333778.422,1314234.75,1336596.011
+StringFixture,libgcc_memcpy,std::size_t sz=16 * (1048576),1000,FALSE,10,21129818.06,,21083193.47,21058171.79,21219125.86,21049053.72,21282333.82
+StringFixture,simplex_memcpy,std::size_t sz=4 * (1024),1000,FALSE,10,5262.527,,5254.821,5215,5309.168,5204.25,5336.739
+StringFixture,simplex_memcpy,std::size_t sz=8 * (1024),1000,FALSE,10,10480.127,,10424.004,10370.308,10623.314,10327.631,10750.063
+StringFixture,simplex_memcpy,std::size_t sz=1 * (1048576),1000,FALSE,10,1316779.771,,1313183.102,1312807.009,1323119.502,1312517.493,1328244.267
+StringFixture,simplex_memcpy,std::size_t sz=16 * (1048576),1000,FALSE,10,21150963.35,,21128729.87,21118880.4,21171571.84,21068740.82,21308795.84
+StringFixture,libgcc_memmove,std::size_t sz=4 * (1024),1000,FALSE,10,27.173,,27.186,27.045,27.221,26.99,27.468
+StringFixture,libgcc_memmove,std::size_t sz=8 * (1024),1000,FALSE,10,53.312,,53.233,53.158,53.279,53.105,54.209
+StringFixture,libgcc_memmove,std::size_t sz=1 * (1048576),1000,FALSE,10,6838.204,,6836.56,6831.476,6843.597,6829.951,6852.125
+StringFixture,simplex_memmove,std::size_t sz=4 * (1024),1000,FALSE,10,27.381,,27.305,27.246,27.368,27.201,28.063
+StringFixture,simplex_memmove,std::size_t sz=8 * (1024),1000,FALSE,10,53.56,,53.425,53.35,53.641,53.239,54.658
+StringFixture,simplex_memmove,std::size_t sz=1 * (1048576),1000,FALSE,10,6838.919,,6833.887,6789.121,6846.16,6727.579,7098.473
+StringFixture,libgcc_memset,std::size_t sz=4 * (1024),1000,FALSE,10,5057.048,,5046.993,5009.915,5084.772,4976.658,5227.1
+StringFixture,libgcc_memset,std::size_t sz=8 * (1024),1000,FALSE,10,9932.256,,9918.566,9868.061,9982.319,9775.714,10115.618
+StringFixture,libgcc_memset,std::size_t sz=1 * (1048576),1000,FALSE,10,1235618.285,,1232588.944,1230932.641,1240354.374,1229938.023,1246327.899
+StringFixture,libgcc_memset,std::size_t sz=16 * (1048576),1000,FALSE,10,19750103.69,,19730145.31,19714627.58,19763317.08,19711901.14,19873220.87
+StringFixture,simplex_memset,std::size_t sz=4 * (1024),1000,FALSE,10,4984.455,,4994.231,4928.479,5020.748,4868.391,5105.981
+StringFixture,simplex_memset,std::size_t sz=8 * (1024),1000,FALSE,10,9920.501,,9893.408,9837.188,9959.792,9734.192,10259.357
+StringFixture,simplex_memset,std::size_t sz=1 * (1048576),1000,FALSE,10,1232160.146,,1232064.579,1230612.147,1233474.077,1230117.118,1235282.453
+StringFixture,simplex_memset,std::size_t sz=16 * (1048576),1000,FALSE,10,19967655.22,,19926758.03,19625291.25,19961566.83,19599055.43,21108180.1
+StringFixture,libgcc_memchr,std::size_t sz=4 * (1024),1000,FALSE,10,104.59,,100.355,100.138,112.86,99.892,117.254
+StringFixture,libgcc_memchr,std::size_t sz=8 * (1024),1000,FALSE,10,101.322,,100.051,100.02,100.074,99.842,112.924
+StringFixture,libgcc_memchr,std::size_t sz=1 * (1048576),1000,FALSE,10,103.63,,100.395,100.268,100.527,100.023,119.969
+StringFixture,libgcc_memchr,std::size_t sz=16 * (1048576),1000,FALSE,10,101.984,,100.348,100.236,100.727,100.162,114.125
+StringFixture,simplex_memchr,std::size_t sz=4 * (1024),1000,FALSE,10,103.675,,102.372,102.17,102.529,102.129,115.788
+StringFixture,simplex_memchr,std::size_t sz=8 * (1024),1000,FALSE,10,103.391,,102.082,101.765,102.605,101.598,115.021
+StringFixture,simplex_memchr,std::size_t sz=1 * (1048576),1000,FALSE,10,103.557,,101.913,101.799,102.63,101.665,114.599
+StringFixture,simplex_memchr,std::size_t sz=16 * (1048576),1000,FALSE,10,103.822,,102.411,102.012,102.815,101.879,116.196

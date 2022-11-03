@@ -1,0 +1,18 @@
+runcpu v5825 started at 2018-02-13 14:00:33 on "roundtop"
+runcpu is: /home/matthew/github/bingseclab/simplex/cpu2017/bin/harness/runcpu
+runcpu: runcpu --config=gcc-linux-x86-simplex.cfg --action trash
+toolset: linux-x86_64
+
+Locating benchmarks...found 47 benchmarks in 53 benchsets.
+Reading config file '/home/matthew/github/bingseclab/simplex/cpu2017/config/gcc-linux-x86-simplex.cfg'
+Reading included config file '/home/matthew/github/bingseclab/simplex/cpu2017/config/SUT.inc'
+
+No benchmark suite selected!  Expected one or more of 'fprate', 'fpspeed', 'intrate', 'intspeed' or 'all'.
+The log for this run is in /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.025.log
+The debug log for this run is in /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.025.log.debug
+*
+* Temporary files were NOT deleted; keeping temporaries such as
+* /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.025.log.debug
+* (These may be large!)
+*
+runcpu finished at 2018-02-13 14:00:34; 0 total seconds elapsed

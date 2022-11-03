@@ -1,0 +1,46 @@
+runcpu v5825 started at 2018-02-06 17:18:51 on "roundtop"
+runcpu is: /home/matthew/github/bingseclab/simplex/cpu2017/bin/harness/runcpu
+runcpu: runcpu --config=gcc-linux-x86-simplex.cfg --action=trash 519.lbm_r
+toolset: linux-x86_64
+
+Locating benchmarks...found 47 benchmarks in 53 benchsets.
+Reading config file '/home/matthew/github/bingseclab/simplex/cpu2017/config/gcc-linux-x86-simplex.cfg'
+Reading included config file '/home/matthew/github/bingseclab/simplex/cpu2017/config/SUT.inc'
+
+1 configuration selected:
+
+Action   Run Mode   Workload     Report Type     Benchmarks
+------   --------   --------   ---------------   ------------------------------
+trash    rate       refrate    SPECrate2017_fp   519.lbm_r                     
+-------------------------------------------------------------------------------
+
+Setting up environment for running 519.lbm_r...
+Starting runcpu for 519.lbm_r...
+Running "specperl /home/matthew/github/bingseclab/simplex/cpu2017/bin/sysinfo" to gather system information.
+sysinfo: r5797 of 2017-06-14 (96c45e4568ad54c135fd618bcc091c0f)
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...trying to get DIMM info from dmidecode
+Read 105 info lines from the sysinfo program.
+Retrieving flags file (/home/matthew/github/bingseclab/simplex/cpu2017/config/flags/gcc.xml)...
+Verbosity = 5
+Action    = trash
+Tune      = base
+Label     = gcc-linux-x86-simplex-m64
+Size      = refrate
+benchmarks= 519.lbm_r
+outputs   = rsf,txt,csv
+username  = matthew
+Environment settings:
+LD_LIBRARY_PATH = "%{gcc_dir}/lib/:/lib64:%{ENV_LD_LIBRARY_PATH}"
+
+Benchmarks selected: 519.lbm_r
+runcpu finished at 2018-02-06 17:18:52; 0 total seconds elapsed
+Info: file_tail(29728): file '/home/matthew/github/bingseclab/simplex/cpu2017/tmp/CPU2017.011/templogs/preenv.fprate.011.0.debug' was removed and will no longer be followed.  No action is required.
+The log for this run is in /home/matthew/github/bingseclab/simplex/cpu2017/result/CPU2017.011.log
+
+runcpu finished at 2018-02-06 17:18:53; 1 total seconds elapsed

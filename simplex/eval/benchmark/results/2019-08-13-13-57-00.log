@@ -1,0 +1,1052 @@
+[==========] Running 50 benchmarks.
+[ RUN      ] LoadStoreFixture.baseline_store (10 runs, 10000 iterations per run)
+[     DONE ] LoadStoreFixture.baseline_store (0.040791 ms)
+[   RUNS   ]        Average time: 4.079 us (~5.776 us)
+                    Fastest time: 1.147 us (-2.932 us / -71.881 %)
+                    Slowest time: 16.084 us (+12.005 us / +294.303 %)
+                     Median time: 1.425 us (1st quartile: 1.210 us | 3rd quartile: 1.596 us)
+                                  
+             Average performance: 245152.11689 runs/s
+                Best performance: 871839.58152 runs/s (+626687.46463 runs/s / +255.63208 %)
+               Worst performance: 62173.58866 runs/s (-182978.52823 runs/s / -74.63877 %)
+              Median performance: 701754.38596 runs/s (1st quartile: 826446.28099 | 3rd quartile: 626566.41604)
+                                  
+[ITERATIONS]        Average time: 0.000 us (~0.001 us)
+                    Fastest time: 0.000 us (-0.000 us / -71.881 %)
+                    Slowest time: 0.002 us (+0.001 us / +294.303 %)
+                     Median time: 0.000 us (1st quartile: 0.000 us | 3rd quartile: 0.000 us)
+                                  
+             Average performance: 2451521168.88529 iterations/s
+                Best performance: 8718395815.17001 iterations/s (+6266874646.28472 iterations/s / +255.63208 %)
+               Worst performance: 621735886.59537 iterations/s (-1829785282.28992 iterations/s / -74.63877 %)
+              Median performance: 7017543859.64912 iterations/s (1st quartile: 8264462809.91736 | 3rd quartile: 6265664160.40100)
+[ RUN      ] LoadStoreFixture.mpx_store (10 runs, 10000 iterations per run)
+[     DONE ] LoadStoreFixture.mpx_store (0.015110 ms)
+[   RUNS   ]        Average time: 1.511 us (~0.164 us)
+                    Fastest time: 1.422 us (-0.089 us / -5.890 %)
+                    Slowest time: 1.972 us (+0.461 us / +30.510 %)
+                     Median time: 1.462 us (1st quartile: 1.444 us | 3rd quartile: 1.487 us)
+                                  
+             Average performance: 661813.36863 runs/s
+                Best performance: 703234.88045 runs/s (+41421.51182 runs/s / +6.25879 %)
+               Worst performance: 507099.39148 runs/s (-154713.97715 runs/s / -23.37728 %)
+              Median performance: 684228.53233 runs/s (1st quartile: 692520.77562 | 3rd quartile: 672494.95629)
+                                  
+[ITERATIONS]        Average time: 0.000 us (~0.000 us)
+                    Fastest time: 0.000 us (-0.000 us / -5.890 %)
+                    Slowest time: 0.000 us (+0.000 us / +30.510 %)
+                     Median time: 0.000 us (1st quartile: 0.000 us | 3rd quartile: 0.000 us)
+                                  
+             Average performance: 6618133686.30046 iterations/s
+                Best performance: 7032348804.50070 iterations/s (+414215118.20024 iterations/s / +6.25879 %)
+               Worst performance: 5070993914.80730 iterations/s (-1547139771.49316 iterations/s / -23.37728 %)
+              Median performance: 6842285323.29798 iterations/s (1st quartile: 6925207756.23269 | 3rd quartile: 6724949562.87828)
+[ RUN      ] LoadStoreFixture.baseline_load (10 runs, 10000 iterations per run)
+[     DONE ] LoadStoreFixture.baseline_load (0.017212 ms)
+[   RUNS   ]        Average time: 1.721 us (~3.985 us)
+                    Fastest time: 0.328 us (-1.393 us / -80.944 %)
+                    Slowest time: 13.059 us (+11.338 us / +658.715 %)
+                     Median time: 0.449 us (1st quartile: 0.420 us | 3rd quartile: 0.455 us)
+                                  
+             Average performance: 580990.00697 runs/s
+                Best performance: 3048780.48780 runs/s (+2467790.48083 runs/s / +424.75610 %)
+               Worst performance: 76575.54177 runs/s (-504414.46520 runs/s / -86.81982 %)
+              Median performance: 2227171.49220 runs/s (1st quartile: 2380952.38095 | 3rd quartile: 2197802.19780)
+                                  
+[ITERATIONS]        Average time: 0.000 us (~0.000 us)
+                    Fastest time: 0.000 us (-0.000 us / -80.944 %)
+                    Slowest time: 0.001 us (+0.001 us / +658.715 %)
+                     Median time: 0.000 us (1st quartile: 0.000 us | 3rd quartile: 0.000 us)
+                                  
+             Average performance: 5809900069.71880 iterations/s
+                Best performance: 30487804878.04878 iterations/s (+24677904808.32998 iterations/s / +424.75610 %)
+               Worst performance: 765755417.71958 iterations/s (-5044144651.99922 iterations/s / -86.81982 %)
+              Median performance: 22271714922.04900 iterations/s (1st quartile: 23809523809.52381 | 3rd quartile: 21978021978.02198)
+[ RUN      ] LoadStoreFixture.mpx_load (10 runs, 10000 iterations per run)
+[     DONE ] LoadStoreFixture.mpx_load (0.049295 ms)
+[   RUNS   ]        Average time: 4.929 us (~4.141 us)
+                    Fastest time: 3.561 us (-1.369 us / -27.761 %)
+                    Slowest time: 16.714 us (+11.784 us / +239.061 %)
+                     Median time: 3.630 us (1st quartile: 3.592 us | 3rd quartile: 3.657 us)
+                                  
+             Average performance: 202860.33066 runs/s
+                Best performance: 280819.99438 runs/s (+77959.66372 runs/s / +38.43022 %)
+               Worst performance: 59830.08257 runs/s (-143030.24810 runs/s / -70.50676 %)
+              Median performance: 275482.09366 runs/s (1st quartile: 278396.43653 | 3rd quartile: 273448.18157)
+                                  
+[ITERATIONS]        Average time: 0.000 us (~0.000 us)
+                    Fastest time: 0.000 us (-0.000 us / -27.761 %)
+                    Slowest time: 0.002 us (+0.001 us / +239.061 %)
+                     Median time: 0.000 us (1st quartile: 0.000 us | 3rd quartile: 0.000 us)
+                                  
+             Average performance: 2028603306.62339 iterations/s
+                Best performance: 2808199943.83600 iterations/s (+779596637.21261 iterations/s / +38.43022 %)
+               Worst performance: 598300825.65514 iterations/s (-1430302480.96825 iterations/s / -70.50676 %)
+              Median performance: 2754820936.63912 iterations/s (1st quartile: 2783964365.25612 | 3rd quartile: 2734481815.69593)
+[ RUN      ] TraversalFixture.baseline(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] TraversalFixture.baseline(std::size_t sz = 4 * (1024)) (10.600206 ms)
+[   RUNS   ]        Average time: 1060.021 us (~1.842 us)
+                    Fastest time: 1058.732 us (-1.289 us / -0.122 %)
+                    Slowest time: 1064.206 us (+4.185 us / +0.395 %)
+                     Median time: 1059.136 us (1st quartile: 1058.799 us | 3rd quartile: 1060.394 us)
+                                  
+             Average performance: 943.37789 runs/s
+                Best performance: 944.52609 runs/s (+1.14820 runs/s / +0.12171 %)
+               Worst performance: 939.66770 runs/s (-3.71020 runs/s / -0.39329 %)
+              Median performance: 944.16581 runs/s (1st quartile: 944.46632 | 3rd quartile: 943.04570)
+                                  
+[ITERATIONS]        Average time: 1.060 us (~0.002 us)
+                    Fastest time: 1.059 us (-0.001 us / -0.122 %)
+                    Slowest time: 1.064 us (+0.004 us / +0.395 %)
+                     Median time: 1.059 us (1st quartile: 1.059 us | 3rd quartile: 1.060 us)
+                                  
+             Average performance: 943377.89284 iterations/s
+                Best performance: 944526.09348 iterations/s (+1148.20063 iterations/s / +0.12171 %)
+               Worst performance: 939667.69592 iterations/s (-3710.19693 iterations/s / -0.39329 %)
+              Median performance: 944165.81062 iterations/s (1st quartile: 944466.32458 | 3rd quartile: 943045.69811)
+[ RUN      ] TraversalFixture.baseline(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] TraversalFixture.baseline(std::size_t sz = 16 * (1048576)) (42817.182501 ms)
+[   RUNS   ]        Average time: 4281718.250 us (~25310.820 us)
+                    Fastest time: 4259990.640 us (-21727.610 us / -0.507 %)
+                    Slowest time: 4327801.726 us (+46083.476 us / +1.076 %)
+                     Median time: 4270075.332 us (1st quartile: 4265830.732 us | 3rd quartile: 4283170.856 us)
+                                  
+             Average performance: 0.23355 runs/s
+                Best performance: 0.23474 runs/s (+0.00119 runs/s / +0.51004 %)
+               Worst performance: 0.23106 runs/s (-0.00249 runs/s / -1.06482 %)
+              Median performance: 0.23419 runs/s (1st quartile: 0.23442 | 3rd quartile: 0.23347)
+                                  
+[ITERATIONS]        Average time: 4281.718 us (~25.311 us)
+                    Fastest time: 4259.991 us (-21.728 us / -0.507 %)
+                    Slowest time: 4327.802 us (+46.083 us / +1.076 %)
+                     Median time: 4270.075 us (1st quartile: 4265.831 us | 3rd quartile: 4283.171 us)
+                                  
+             Average performance: 233.55110 iterations/s
+                Best performance: 234.74230 iterations/s (+1.19120 iterations/s / +0.51004 %)
+               Worst performance: 231.06419 iterations/s (-2.48691 iterations/s / -1.06482 %)
+              Median performance: 234.18791 iterations/s (1st quartile: 234.42093 | 3rd quartile: 233.47189)
+[ RUN      ] TraversalFixture.simplex(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] TraversalFixture.simplex(std::size_t sz = 4 * (1024)) (38.728656 ms)
+[   RUNS   ]        Average time: 3872.866 us (~14.871 us)
+                    Fastest time: 3848.160 us (-24.706 us / -0.638 %)
+                    Slowest time: 3896.008 us (+23.142 us / +0.598 %)
+                     Median time: 3870.253 us (1st quartile: 3865.325 us | 3rd quartile: 3885.790 us)
+                                  
+             Average performance: 258.20674 runs/s
+                Best performance: 259.86445 runs/s (+1.65771 runs/s / +0.64201 %)
+               Worst performance: 256.67298 runs/s (-1.53376 runs/s / -0.59400 %)
+              Median performance: 258.38101 runs/s (1st quartile: 258.71046 | 3rd quartile: 257.34793)
+                                  
+[ITERATIONS]        Average time: 3.873 us (~0.015 us)
+                    Fastest time: 3.848 us (-0.025 us / -0.638 %)
+                    Slowest time: 3.896 us (+0.023 us / +0.598 %)
+                     Median time: 3.870 us (1st quartile: 3.865 us | 3rd quartile: 3.886 us)
+                                  
+             Average performance: 258206.73973 iterations/s
+                Best performance: 259864.45470 iterations/s (+1657.71497 iterations/s / +0.64201 %)
+               Worst performance: 256672.98424 iterations/s (-1533.75549 iterations/s / -0.59400 %)
+              Median performance: 258381.00786 iterations/s (1st quartile: 258710.45772 | 3rd quartile: 257347.92668)
+[ RUN      ] TraversalFixture.simplex(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] TraversalFixture.simplex(std::size_t sz = 16 * (1048576)) (159767.233516 ms)
+[   RUNS   ]        Average time: 15976723.352 us (~33341.012 us)
+                    Fastest time: 15911591.121 us (-65132.231 us / -0.408 %)
+                    Slowest time: 16017364.062 us (+40640.710 us / +0.254 %)
+                     Median time: 15988735.489 us (1st quartile: 15964881.717 us | 3rd quartile: 15998883.450 us)
+                                  
+             Average performance: 0.06259 runs/s
+                Best performance: 0.06285 runs/s (+0.00026 runs/s / +0.40934 %)
+               Worst performance: 0.06243 runs/s (-0.00016 runs/s / -0.25373 %)
+              Median performance: 0.06254 runs/s (1st quartile: 0.06264 | 3rd quartile: 0.06250)
+                                  
+[ITERATIONS]        Average time: 15976.723 us (~33.341 us)
+                    Fastest time: 15911.591 us (-65.132 us / -0.408 %)
+                    Slowest time: 16017.364 us (+40.641 us / +0.254 %)
+                     Median time: 15988.735 us (1st quartile: 15964.882 us | 3rd quartile: 15998.883 us)
+                                  
+             Average performance: 62.59106 iterations/s
+                Best performance: 62.84727 iterations/s (+0.25621 iterations/s / +0.40934 %)
+               Worst performance: 62.43225 iterations/s (-0.15881 iterations/s / -0.25373 %)
+              Median performance: 62.54403 iterations/s (1st quartile: 62.63748 | 3rd quartile: 62.50436)
+[ RUN      ] StringFixture.memrnd(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.memrnd(std::size_t sz = 4 * (1024)) (0.934633 ms)
+[   RUNS   ]        Average time: 93.463 us (~4.038 us)
+                    Fastest time: 91.865 us (-1.598 us / -1.710 %)
+                    Slowest time: 104.932 us (+11.469 us / +12.271 %)
+                     Median time: 92.082 us (1st quartile: 92.010 us | 3rd quartile: 92.508 us)
+                                  
+             Average performance: 10699.38682 runs/s
+                Best performance: 10885.53856 runs/s (+186.15174 runs/s / +1.73984 %)
+               Worst performance: 9529.98132 runs/s (-1169.40550 runs/s / -10.92965 %)
+              Median performance: 10859.94472 runs/s (1st quartile: 10868.38387 | 3rd quartile: 10809.87590)
+                                  
+[ITERATIONS]        Average time: 0.093 us (~0.004 us)
+                    Fastest time: 0.092 us (-0.002 us / -1.710 %)
+                    Slowest time: 0.105 us (+0.011 us / +12.271 %)
+                     Median time: 0.092 us (1st quartile: 0.092 us | 3rd quartile: 0.093 us)
+                                  
+             Average performance: 10699386.81814 iterations/s
+                Best performance: 10885538.56202 iterations/s (+186151.74388 iterations/s / +1.73984 %)
+               Worst performance: 9529981.32124 iterations/s (-1169405.49690 iterations/s / -10.92965 %)
+              Median performance: 10859944.72288 iterations/s (1st quartile: 10868383.87132 | 3rd quartile: 10809875.90262)
+[ RUN      ] StringFixture.memrnd(std::size_t sz = 8 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.memrnd(std::size_t sz = 8 * (1024)) (0.910246 ms)
+[   RUNS   ]        Average time: 91.025 us (~4.203 us)
+                    Fastest time: 89.021 us (-2.004 us / -2.201 %)
+                    Slowest time: 102.356 us (+11.331 us / +12.449 %)
+                     Median time: 89.275 us (1st quartile: 89.105 us | 3rd quartile: 89.783 us)
+                                  
+             Average performance: 10986.04114 runs/s
+                Best performance: 11233.30450 runs/s (+247.26337 runs/s / +2.25070 %)
+               Worst performance: 9769.82297 runs/s (-1216.21817 runs/s / -11.07058 %)
+              Median performance: 11201.40690 runs/s (1st quartile: 11222.71477 | 3rd quartile: 11137.96598)
+                                  
+[ITERATIONS]        Average time: 0.091 us (~0.004 us)
+                    Fastest time: 0.089 us (-0.002 us / -2.201 %)
+                    Slowest time: 0.102 us (+0.011 us / +12.449 %)
+                     Median time: 0.089 us (1st quartile: 0.089 us | 3rd quartile: 0.090 us)
+                                  
+             Average performance: 10986041.13613 iterations/s
+                Best performance: 11233304.50119 iterations/s (+247263.36505 iterations/s / +2.25070 %)
+               Worst performance: 9769822.97081 iterations/s (-1216218.16532 iterations/s / -11.07058 %)
+              Median performance: 11201406.89671 iterations/s (1st quartile: 11222714.77470 | 3rd quartile: 11137965.98465)
+[ RUN      ] StringFixture.memrnd(std::size_t sz = 1 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.memrnd(std::size_t sz = 1 * (1048576)) (0.902441 ms)
+[   RUNS   ]        Average time: 90.244 us (~4.125 us)
+                    Fastest time: 88.793 us (-1.451 us / -1.608 %)
+                    Slowest time: 101.970 us (+11.726 us / +12.994 %)
+                     Median time: 88.904 us (1st quartile: 88.806 us | 3rd quartile: 88.997 us)
+                                  
+             Average performance: 11081.05682 runs/s
+                Best performance: 11262.14904 runs/s (+181.09222 runs/s / +1.63425 %)
+               Worst performance: 9806.80592 runs/s (-1274.25090 runs/s / -11.49936 %)
+              Median performance: 11248.02457 runs/s (1st quartile: 11260.50042 | 3rd quartile: 11236.33381)
+                                  
+[ITERATIONS]        Average time: 0.090 us (~0.004 us)
+                    Fastest time: 0.089 us (-0.001 us / -1.608 %)
+                    Slowest time: 0.102 us (+0.012 us / +12.994 %)
+                     Median time: 0.089 us (1st quartile: 0.089 us | 3rd quartile: 0.089 us)
+                                  
+             Average performance: 11081056.82255 iterations/s
+                Best performance: 11262149.04328 iterations/s (+181092.22073 iterations/s / +1.63425 %)
+               Worst performance: 9806805.92331 iterations/s (-1274250.89924 iterations/s / -11.49936 %)
+              Median performance: 11248024.56569 iterations/s (1st quartile: 11260500.41664 | 3rd quartile: 11236333.80900)
+[ RUN      ] StringFixture.memrnd(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.memrnd(std::size_t sz = 16 * (1048576)) (0.935990 ms)
+[   RUNS   ]        Average time: 93.599 us (~4.691 us)
+                    Fastest time: 88.710 us (-4.889 us / -5.223 %)
+                    Slowest time: 103.179 us (+9.580 us / +10.235 %)
+                     Median time: 95.009 us (1st quartile: 88.960 us | 3rd quartile: 95.294 us)
+                                  
+             Average performance: 10683.87483 runs/s
+                Best performance: 11272.68628 runs/s (+588.81145 runs/s / +5.51122 %)
+               Worst performance: 9691.89467 runs/s (-991.98016 runs/s / -9.28484 %)
+              Median performance: 10525.31865 runs/s (1st quartile: 11241.00719 | 3rd quartile: 10493.84012)
+                                  
+[ITERATIONS]        Average time: 0.094 us (~0.005 us)
+                    Fastest time: 0.089 us (-0.005 us / -5.223 %)
+                    Slowest time: 0.103 us (+0.010 us / +10.235 %)
+                     Median time: 0.095 us (1st quartile: 0.089 us | 3rd quartile: 0.095 us)
+                                  
+             Average performance: 10683874.82772 iterations/s
+                Best performance: 11272686.28114 iterations/s (+588811.45342 iterations/s / +5.51122 %)
+               Worst performance: 9691894.66849 iterations/s (-991980.15923 iterations/s / -9.28484 %)
+              Median performance: 10525318.65402 iterations/s (1st quartile: 11241007.19424 | 3rd quartile: 10493840.11585)
+[ RUN      ] StringFixture.libgcc_memcmp(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memcmp(std::size_t sz = 4 * (1024)) (1.017670 ms)
+[   RUNS   ]        Average time: 101.767 us (~4.358 us)
+                    Fastest time: 99.279 us (-2.488 us / -2.445 %)
+                    Slowest time: 113.200 us (+11.433 us / +11.234 %)
+                     Median time: 100.085 us (1st quartile: 99.775 us | 3rd quartile: 100.314 us)
+                                  
+             Average performance: 9826.36808 runs/s
+                Best performance: 10072.62362 runs/s (+246.25554 runs/s / +2.50607 %)
+               Worst performance: 8833.92226 runs/s (-992.44581 runs/s / -10.09982 %)
+              Median performance: 9991.45730 runs/s (1st quartile: 10022.55074 | 3rd quartile: 9968.69829)
+                                  
+[ITERATIONS]        Average time: 0.102 us (~0.004 us)
+                    Fastest time: 0.099 us (-0.002 us / -2.445 %)
+                    Slowest time: 0.113 us (+0.011 us / +11.234 %)
+                     Median time: 0.100 us (1st quartile: 0.100 us | 3rd quartile: 0.100 us)
+                                  
+             Average performance: 9826368.07610 iterations/s
+                Best performance: 10072623.61627 iterations/s (+246255.54018 iterations/s / +2.50607 %)
+               Worst performance: 8833922.26148 iterations/s (-992445.81461 iterations/s / -10.09982 %)
+              Median performance: 9991457.30401 iterations/s (1st quartile: 10022550.73916 | 3rd quartile: 9968698.28738)
+[ RUN      ] StringFixture.libgcc_memcmp(std::size_t sz = 8 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memcmp(std::size_t sz = 8 * (1024)) (1.002287 ms)
+[   RUNS   ]        Average time: 100.229 us (~4.105 us)
+                    Fastest time: 98.415 us (-1.814 us / -1.810 %)
+                    Slowest time: 111.848 us (+11.619 us / +11.593 %)
+                     Median time: 98.894 us (1st quartile: 98.567 us | 3rd quartile: 99.504 us)
+                                  
+             Average performance: 9977.18218 runs/s
+                Best performance: 10161.05269 runs/s (+183.87050 runs/s / +1.84291 %)
+               Worst performance: 8940.70524 runs/s (-1036.47694 runs/s / -10.38847 %)
+              Median performance: 10111.78579 runs/s (1st quartile: 10145.38334 | 3rd quartile: 10049.84724)
+                                  
+[ITERATIONS]        Average time: 0.100 us (~0.004 us)
+                    Fastest time: 0.098 us (-0.002 us / -1.810 %)
+                    Slowest time: 0.112 us (+0.012 us / +11.593 %)
+                     Median time: 0.099 us (1st quartile: 0.099 us | 3rd quartile: 0.100 us)
+                                  
+             Average performance: 9977182.18434 iterations/s
+                Best performance: 10161052.68506 iterations/s (+183870.50071 iterations/s / +1.84291 %)
+               Worst performance: 8940705.24283 iterations/s (-1036476.94151 iterations/s / -10.38847 %)
+              Median performance: 10111785.79193 iterations/s (1st quartile: 10145383.34331 | 3rd quartile: 10049847.24232)
+[ RUN      ] StringFixture.libgcc_memcmp(std::size_t sz = 1 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memcmp(std::size_t sz = 1 * (1048576)) (1.039251 ms)
+[   RUNS   ]        Average time: 103.925 us (~8.355 us)
+                    Fastest time: 98.728 us (-5.197 us / -5.001 %)
+                    Slowest time: 122.196 us (+18.271 us / +17.581 %)
+                     Median time: 99.013 us (1st quartile: 98.759 us | 3rd quartile: 111.295 us)
+                                  
+             Average performance: 9622.31453 runs/s
+                Best performance: 10128.83883 runs/s (+506.52430 runs/s / +5.26406 %)
+               Worst performance: 8183.57393 runs/s (-1438.74060 runs/s / -14.95213 %)
+              Median performance: 10099.73488 runs/s (1st quartile: 10125.65943 | 3rd quartile: 8985.12961)
+                                  
+[ITERATIONS]        Average time: 0.104 us (~0.008 us)
+                    Fastest time: 0.099 us (-0.005 us / -5.001 %)
+                    Slowest time: 0.122 us (+0.018 us / +17.581 %)
+                     Median time: 0.099 us (1st quartile: 0.099 us | 3rd quartile: 0.111 us)
+                                  
+             Average performance: 9622314.53229 iterations/s
+                Best performance: 10128838.82992 iterations/s (+506524.29762 iterations/s / +5.26406 %)
+               Worst performance: 8183573.93041 iterations/s (-1438740.60189 iterations/s / -14.95213 %)
+              Median performance: 10099734.88196 iterations/s (1st quartile: 10125659.43357 | 3rd quartile: 8985129.61049)
+[ RUN      ] StringFixture.libgcc_memcmp(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memcmp(std::size_t sz = 16 * (1048576)) (1.013656 ms)
+[   RUNS   ]        Average time: 101.366 us (~4.198 us)
+                    Fastest time: 99.189 us (-2.177 us / -2.147 %)
+                    Slowest time: 112.564 us (+11.198 us / +11.048 %)
+                     Median time: 99.612 us (1st quartile: 99.511 us | 3rd quartile: 100.073 us)
+                                  
+             Average performance: 9865.27974 runs/s
+                Best performance: 10081.76310 runs/s (+216.48336 runs/s / +2.19440 %)
+               Worst performance: 8883.83497 runs/s (-981.44477 runs/s / -9.94847 %)
+              Median performance: 10039.00152 runs/s (1st quartile: 10049.14030 | 3rd quartile: 9992.70533)
+                                  
+[ITERATIONS]        Average time: 0.101 us (~0.004 us)
+                    Fastest time: 0.099 us (-0.002 us / -2.147 %)
+                    Slowest time: 0.113 us (+0.011 us / +11.048 %)
+                     Median time: 0.100 us (1st quartile: 0.100 us | 3rd quartile: 0.100 us)
+                                  
+             Average performance: 9865279.73987 iterations/s
+                Best performance: 10081763.09873 iterations/s (+216483.35886 iterations/s / +2.19440 %)
+               Worst performance: 8883834.97388 iterations/s (-981444.76599 iterations/s / -9.94847 %)
+              Median performance: 10039001.52091 iterations/s (1st quartile: 10049140.29605 | 3rd quartile: 9992705.32511)
+[ RUN      ] StringFixture.simplex_memcmp(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memcmp(std::size_t sz = 4 * (1024)) (1.242649 ms)
+[   RUNS   ]        Average time: 124.265 us (~9.516 us)
+                    Fastest time: 106.928 us (-17.337 us / -13.952 %)
+                    Slowest time: 139.234 us (+14.969 us / +12.046 %)
+                     Median time: 124.611 us (1st quartile: 121.116 us | 3rd quartile: 124.965 us)
+                                  
+             Average performance: 8047.32471 runs/s
+                Best performance: 9352.08739 runs/s (+1304.76268 runs/s / +16.21362 %)
+               Worst performance: 7182.15378 runs/s (-865.17092 runs/s / -10.75104 %)
+              Median performance: 8024.97372 runs/s (1st quartile: 8256.54744 | 3rd quartile: 8002.24063)
+                                  
+[ITERATIONS]        Average time: 0.124 us (~0.010 us)
+                    Fastest time: 0.107 us (-0.017 us / -13.952 %)
+                    Slowest time: 0.139 us (+0.015 us / +12.046 %)
+                     Median time: 0.125 us (1st quartile: 0.121 us | 3rd quartile: 0.125 us)
+                                  
+             Average performance: 8047324.70714 iterations/s
+                Best performance: 9352087.38590 iterations/s (+1304762.67877 iterations/s / +16.21362 %)
+               Worst performance: 7182153.78428 iterations/s (-865170.92286 iterations/s / -10.75104 %)
+              Median performance: 8024973.71821 iterations/s (1st quartile: 8256547.44212 | 3rd quartile: 8002240.62738)
+[ RUN      ] StringFixture.simplex_memcmp(std::size_t sz = 8 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memcmp(std::size_t sz = 8 * (1024)) (1.261526 ms)
+[   RUNS   ]        Average time: 126.153 us (~4.209 us)
+                    Fastest time: 124.608 us (-1.545 us / -1.224 %)
+                    Slowest time: 138.122 us (+11.969 us / +9.488 %)
+                     Median time: 124.874 us (1st quartile: 124.651 us | 3rd quartile: 124.993 us)
+                                  
+             Average performance: 7926.90757 runs/s
+                Best performance: 8025.16692 runs/s (+98.25935 runs/s / +1.23957 %)
+               Worst performance: 7239.97625 runs/s (-686.93132 runs/s / -8.66582 %)
+              Median performance: 8008.10420 runs/s (1st quartile: 8022.39854 | 3rd quartile: 8000.44803)
+                                  
+[ITERATIONS]        Average time: 0.126 us (~0.004 us)
+                    Fastest time: 0.125 us (-0.002 us / -1.224 %)
+                    Slowest time: 0.138 us (+0.012 us / +9.488 %)
+                     Median time: 0.125 us (1st quartile: 0.125 us | 3rd quartile: 0.125 us)
+                                  
+             Average performance: 7926907.57067 iterations/s
+                Best performance: 8025166.92347 iterations/s (+98259.35280 iterations/s / +1.23957 %)
+               Worst performance: 7239976.25288 iterations/s (-686931.31779 iterations/s / -8.66582 %)
+              Median performance: 8008104.20145 iterations/s (1st quartile: 8022398.53671 | 3rd quartile: 8000448.02509)
+[ RUN      ] StringFixture.simplex_memcmp(std::size_t sz = 1 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memcmp(std::size_t sz = 1 * (1048576)) (1.268405 ms)
+[   RUNS   ]        Average time: 126.841 us (~6.410 us)
+                    Fastest time: 121.780 us (-5.061 us / -3.990 %)
+                    Slowest time: 139.479 us (+12.639 us / +9.964 %)
+                     Median time: 124.454 us (1st quartile: 124.219 us | 3rd quartile: 124.974 us)
+                                  
+             Average performance: 7883.91720 runs/s
+                Best performance: 8211.52899 runs/s (+327.61178 runs/s / +4.15544 %)
+               Worst performance: 7169.53807 runs/s (-714.37914 runs/s / -9.06122 %)
+              Median performance: 8035.09731 runs/s (1st quartile: 8050.29826 | 3rd quartile: 8001.66435)
+                                  
+[ITERATIONS]        Average time: 0.127 us (~0.006 us)
+                    Fastest time: 0.122 us (-0.005 us / -3.990 %)
+                    Slowest time: 0.139 us (+0.013 us / +9.964 %)
+                     Median time: 0.124 us (1st quartile: 0.124 us | 3rd quartile: 0.125 us)
+                                  
+             Average performance: 7883917.20310 iterations/s
+                Best performance: 8211528.98670 iterations/s (+327611.78360 iterations/s / +4.15544 %)
+               Worst performance: 7169538.06666 iterations/s (-714379.13644 iterations/s / -9.06122 %)
+              Median performance: 8035097.30503 iterations/s (1st quartile: 8050298.26355 | 3rd quartile: 8001664.34618)
+[ RUN      ] StringFixture.simplex_memcmp(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memcmp(std::size_t sz = 16 * (1048576)) (1.101243 ms)
+[   RUNS   ]        Average time: 110.124 us (~5.930 us)
+                    Fastest time: 107.165 us (-2.959 us / -2.687 %)
+                    Slowest time: 126.309 us (+16.185 us / +14.697 %)
+                     Median time: 107.822 us (1st quartile: 107.551 us | 3rd quartile: 108.337 us)
+                                  
+             Average performance: 9080.64796 runs/s
+                Best performance: 9331.40484 runs/s (+250.75688 runs/s / +2.76144 %)
+               Worst performance: 7917.09221 runs/s (-1163.55575 runs/s / -12.81358 %)
+              Median performance: 9274.58809 runs/s (1st quartile: 9297.91448 | 3rd quartile: 9230.45682)
+                                  
+[ITERATIONS]        Average time: 0.110 us (~0.006 us)
+                    Fastest time: 0.107 us (-0.003 us / -2.687 %)
+                    Slowest time: 0.126 us (+0.016 us / +14.697 %)
+                     Median time: 0.108 us (1st quartile: 0.108 us | 3rd quartile: 0.108 us)
+                                  
+             Average performance: 9080647.95872 iterations/s
+                Best performance: 9331404.84300 iterations/s (+250756.88428 iterations/s / +2.76144 %)
+               Worst performance: 7917092.21037 iterations/s (-1163555.74834 iterations/s / -12.81358 %)
+              Median performance: 9274588.09236 iterations/s (1st quartile: 9297914.47778 | 3rd quartile: 9230456.81531)
+[ RUN      ] StringFixture.libgcc_memcpy(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memcpy(std::size_t sz = 4 * (1024)) (52.662067 ms)
+[   RUNS   ]        Average time: 5266.207 us (~39.265 us)
+                    Fastest time: 5223.786 us (-42.421 us / -0.806 %)
+                    Slowest time: 5332.907 us (+66.700 us / +1.267 %)
+                     Median time: 5246.801 us (1st quartile: 5236.369 us | 3rd quartile: 5306.687 us)
+                                  
+             Average performance: 189.89000 runs/s
+                Best performance: 191.43204 runs/s (+1.54204 runs/s / +0.81207 %)
+               Worst performance: 187.51499 runs/s (-2.37501 runs/s / -1.25073 %)
+              Median performance: 190.59231 runs/s (1st quartile: 190.97203 | 3rd quartile: 188.44149)
+                                  
+[ITERATIONS]        Average time: 5.266 us (~0.039 us)
+                    Fastest time: 5.224 us (-0.042 us / -0.806 %)
+                    Slowest time: 5.333 us (+0.067 us / +1.267 %)
+                     Median time: 5.247 us (1st quartile: 5.236 us | 3rd quartile: 5.307 us)
+                                  
+             Average performance: 189890.00185 iterations/s
+                Best performance: 191432.03799 iterations/s (+1542.03614 iterations/s / +0.81207 %)
+               Worst performance: 187514.98948 iterations/s (-2375.01237 iterations/s / -1.25073 %)
+              Median performance: 190592.30657 iterations/s (1st quartile: 190972.02661 | 3rd quartile: 188441.48901)
+[ RUN      ] StringFixture.libgcc_memcpy(std::size_t sz = 8 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memcpy(std::size_t sz = 8 * (1024)) (104.974685 ms)
+[   RUNS   ]        Average time: 10497.469 us (~111.088 us)
+                    Fastest time: 10354.994 us (-142.475 us / -1.357 %)
+                    Slowest time: 10698.649 us (+201.180 us / +1.916 %)
+                     Median time: 10465.993 us (1st quartile: 10410.907 us | 3rd quartile: 10596.802 us)
+                                  
+             Average performance: 95.26106 runs/s
+                Best performance: 96.57176 runs/s (+1.31070 runs/s / +1.37590 %)
+               Worst performance: 93.46975 runs/s (-1.79132 runs/s / -1.88043 %)
+              Median performance: 95.54755 runs/s (1st quartile: 96.05311 | 3rd quartile: 94.36809)
+                                  
+[ITERATIONS]        Average time: 10.497 us (~0.111 us)
+                    Fastest time: 10.355 us (-0.142 us / -1.357 %)
+                    Slowest time: 10.699 us (+0.201 us / +1.916 %)
+                     Median time: 10.466 us (1st quartile: 10.411 us | 3rd quartile: 10.597 us)
+                                  
+             Average performance: 95261.06223 iterations/s
+                Best performance: 96571.76045 iterations/s (+1310.69822 iterations/s / +1.37590 %)
+               Worst performance: 93469.74557 iterations/s (-1791.31665 iterations/s / -1.88043 %)
+              Median performance: 95547.55101 iterations/s (1st quartile: 96053.11045 | 3rd quartile: 94368.09332)
+[ RUN      ] StringFixture.libgcc_memcpy(std::size_t sz = 1 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memcpy(std::size_t sz = 1 * (1048576)) (13254.345560 ms)
+[   RUNS   ]        Average time: 1325434.556 us (~8886.021 us)
+                    Fastest time: 1314234.750 us (-11199.806 us / -0.845 %)
+                    Slowest time: 1336596.011 us (+11161.455 us / +0.842 %)
+                     Median time: 1327032.847 us (1st quartile: 1315835.400 us | 3rd quartile: 1333778.422 us)
+                                  
+             Average performance: 0.75447 runs/s
+                Best performance: 0.76090 runs/s (+0.00643 runs/s / +0.85219 %)
+               Worst performance: 0.74817 runs/s (-0.00630 runs/s / -0.83507 %)
+              Median performance: 0.75356 runs/s (1st quartile: 0.75997 | 3rd quartile: 0.74975)
+                                  
+[ITERATIONS]        Average time: 1325.435 us (~8.886 us)
+                    Fastest time: 1314.235 us (-11.200 us / -0.845 %)
+                    Slowest time: 1336.596 us (+11.161 us / +0.842 %)
+                     Median time: 1327.033 us (1st quartile: 1315.835 us | 3rd quartile: 1333.778 us)
+                                  
+             Average performance: 754.46954 iterations/s
+                Best performance: 760.89907 iterations/s (+6.42953 iterations/s / +0.85219 %)
+               Worst performance: 748.16922 iterations/s (-6.30032 iterations/s / -0.83507 %)
+              Median performance: 753.56085 iterations/s (1st quartile: 759.97347 | 3rd quartile: 749.74972)
+[ RUN      ] StringFixture.libgcc_memcpy(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memcpy(std::size_t sz = 16 * (1048576)) (211298.180627 ms)
+[   RUNS   ]        Average time: 21129818.063 us (~88018.300 us)
+                    Fastest time: 21049053.724 us (-80764.339 us / -0.382 %)
+                    Slowest time: 21282333.815 us (+152515.752 us / +0.722 %)
+                     Median time: 21083193.473 us (1st quartile: 21058171.789 us | 3rd quartile: 21219125.857 us)
+                                  
+             Average performance: 0.04733 runs/s
+                Best performance: 0.04751 runs/s (+0.00018 runs/s / +0.38370 %)
+               Worst performance: 0.04699 runs/s (-0.00034 runs/s / -0.71663 %)
+              Median performance: 0.04743 runs/s (1st quartile: 0.04749 | 3rd quartile: 0.04713)
+                                  
+[ITERATIONS]        Average time: 21129.818 us (~88.018 us)
+                    Fastest time: 21049.054 us (-80.764 us / -0.382 %)
+                    Slowest time: 21282.334 us (+152.516 us / +0.722 %)
+                     Median time: 21083.193 us (1st quartile: 21058.172 us | 3rd quartile: 21219.126 us)
+                                  
+             Average performance: 47.32648 iterations/s
+                Best performance: 47.50807 iterations/s (+0.18159 iterations/s / +0.38370 %)
+               Worst performance: 46.98733 iterations/s (-0.33916 iterations/s / -0.71663 %)
+              Median performance: 47.43114 iterations/s (1st quartile: 47.48750 | 3rd quartile: 47.12729)
+[ RUN      ] StringFixture.simplex_memcpy(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memcpy(std::size_t sz = 4 * (1024)) (52.625269 ms)
+[   RUNS   ]        Average time: 5262.527 us (~47.354 us)
+                    Fastest time: 5204.250 us (-58.277 us / -1.107 %)
+                    Slowest time: 5336.739 us (+74.212 us / +1.410 %)
+                     Median time: 5254.821 us (1st quartile: 5215.000 us | 3rd quartile: 5309.168 us)
+                                  
+             Average performance: 190.02278 runs/s
+                Best performance: 192.15065 runs/s (+2.12786 runs/s / +1.11979 %)
+               Worst performance: 187.38035 runs/s (-2.64244 runs/s / -1.39059 %)
+              Median performance: 190.30144 runs/s (1st quartile: 191.75455 | 3rd quartile: 188.35343)
+                                  
+[ITERATIONS]        Average time: 5.263 us (~0.047 us)
+                    Fastest time: 5.204 us (-0.058 us / -1.107 %)
+                    Slowest time: 5.337 us (+0.074 us / +1.410 %)
+                     Median time: 5.255 us (1st quartile: 5.215 us | 3rd quartile: 5.309 us)
+                                  
+             Average performance: 190022.78164 iterations/s
+                Best performance: 192150.64611 iterations/s (+2127.86447 iterations/s / +1.11979 %)
+               Worst performance: 187380.34594 iterations/s (-2642.43570 iterations/s / -1.39059 %)
+              Median performance: 190301.43938 iterations/s (1st quartile: 191754.55417 | 3rd quartile: 188353.42939)
+[ RUN      ] StringFixture.simplex_memcpy(std::size_t sz = 8 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memcpy(std::size_t sz = 8 * (1024)) (104.801265 ms)
+[   RUNS   ]        Average time: 10480.127 us (~152.281 us)
+                    Fastest time: 10327.631 us (-152.496 us / -1.455 %)
+                    Slowest time: 10750.063 us (+269.936 us / +2.576 %)
+                     Median time: 10424.004 us (1st quartile: 10370.308 us | 3rd quartile: 10623.314 us)
+                                  
+             Average performance: 95.41870 runs/s
+                Best performance: 96.82763 runs/s (+1.40893 runs/s / +1.47658 %)
+               Worst performance: 93.02271 runs/s (-2.39598 runs/s / -2.51102 %)
+              Median performance: 95.93242 runs/s (1st quartile: 96.42915 | 3rd quartile: 94.13258)
+                                  
+[ITERATIONS]        Average time: 10.480 us (~0.152 us)
+                    Fastest time: 10.328 us (-0.152 us / -1.455 %)
+                    Slowest time: 10.750 us (+0.270 us / +2.576 %)
+                     Median time: 10.424 us (1st quartile: 10.370 us | 3rd quartile: 10.623 us)
+                                  
+             Average performance: 95418.69557 iterations/s
+                Best performance: 96827.62678 iterations/s (+1408.93121 iterations/s / +1.47658 %)
+               Worst performance: 93022.71066 iterations/s (-2395.98491 iterations/s / -2.51102 %)
+              Median performance: 95932.42213 iterations/s (1st quartile: 96429.15138 | 3rd quartile: 94132.58424)
+[ RUN      ] StringFixture.simplex_memcpy(std::size_t sz = 1 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memcpy(std::size_t sz = 1 * (1048576)) (13167.797710 ms)
+[   RUNS   ]        Average time: 1316779.771 us (~6158.623 us)
+                    Fastest time: 1312517.493 us (-4262.278 us / -0.324 %)
+                    Slowest time: 1328244.267 us (+11464.496 us / +0.871 %)
+                     Median time: 1313183.102 us (1st quartile: 1312807.009 us | 3rd quartile: 1323119.502 us)
+                                  
+             Average performance: 0.75943 runs/s
+                Best performance: 0.76189 runs/s (+0.00247 runs/s / +0.32474 %)
+               Worst performance: 0.75287 runs/s (-0.00655 runs/s / -0.86313 %)
+              Median performance: 0.76151 runs/s (1st quartile: 0.76173 | 3rd quartile: 0.75579)
+                                  
+[ITERATIONS]        Average time: 1316.780 us (~6.159 us)
+                    Fastest time: 1312.517 us (-4.262 us / -0.324 %)
+                    Slowest time: 1328.244 us (+11.464 us / +0.871 %)
+                     Median time: 1313.183 us (1st quartile: 1312.807 us | 3rd quartile: 1323.120 us)
+                                  
+             Average performance: 759.42843 iterations/s
+                Best performance: 761.89461 iterations/s (+2.46617 iterations/s / +0.32474 %)
+               Worst performance: 752.87357 iterations/s (-6.55487 iterations/s / -0.86313 %)
+              Median performance: 761.50843 iterations/s (1st quartile: 761.72659 | 3rd quartile: 755.78963)
+[ RUN      ] StringFixture.simplex_memcpy(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memcpy(std::size_t sz = 16 * (1048576)) (211509.633516 ms)
+[   RUNS   ]        Average time: 21150963.352 us (~63884.441 us)
+                    Fastest time: 21068740.815 us (-82222.537 us / -0.389 %)
+                    Slowest time: 21308795.840 us (+157832.488 us / +0.746 %)
+                     Median time: 21128729.865 us (1st quartile: 21118880.399 us | 3rd quartile: 21171571.837 us)
+                                  
+             Average performance: 0.04728 runs/s
+                Best performance: 0.04746 runs/s (+0.00018 runs/s / +0.39026 %)
+               Worst performance: 0.04693 runs/s (-0.00035 runs/s / -0.74069 %)
+              Median performance: 0.04733 runs/s (1st quartile: 0.04735 | 3rd quartile: 0.04723)
+                                  
+[ITERATIONS]        Average time: 21150.963 us (~63.884 us)
+                    Fastest time: 21068.741 us (-82.223 us / -0.389 %)
+                    Slowest time: 21308.796 us (+157.832 us / +0.746 %)
+                     Median time: 21128.730 us (1st quartile: 21118.880 us | 3rd quartile: 21171.572 us)
+                                  
+             Average performance: 47.27917 iterations/s
+                Best performance: 47.46368 iterations/s (+0.18451 iterations/s / +0.39026 %)
+               Worst performance: 46.92898 iterations/s (-0.35019 iterations/s / -0.74069 %)
+              Median performance: 47.32892 iterations/s (1st quartile: 47.35099 | 3rd quartile: 47.23315)
+[ RUN      ] StringFixture.libgcc_memmove(std::size_t sz = 4 * (1024)) (10 runs, 10 iterations per run)
+[     DONE ] StringFixture.libgcc_memmove(std::size_t sz = 4 * (1024)) (0.271728 ms)
+[   RUNS   ]        Average time: 27.173 us (~0.134 us)
+                    Fastest time: 26.990 us (-0.183 us / -0.673 %)
+                    Slowest time: 27.468 us (+0.295 us / +1.086 %)
+                     Median time: 27.186 us (1st quartile: 27.045 us | 3rd quartile: 27.221 us)
+                                  
+             Average performance: 36801.50739 runs/s
+                Best performance: 37050.75954 runs/s (+249.25215 runs/s / +0.67729 %)
+               Worst performance: 36405.99971 runs/s (-395.50768 runs/s / -1.07471 %)
+              Median performance: 36784.31517 runs/s (1st quartile: 36975.41135 | 3rd quartile: 36736.34326)
+                                  
+[ITERATIONS]        Average time: 2.717 us (~0.013 us)
+                    Fastest time: 2.699 us (-0.018 us / -0.673 %)
+                    Slowest time: 2.747 us (+0.030 us / +1.086 %)
+                     Median time: 2.719 us (1st quartile: 2.704 us | 3rd quartile: 2.722 us)
+                                  
+             Average performance: 368015.07390 iterations/s
+                Best performance: 370507.59541 iterations/s (+2492.52151 iterations/s / +0.67729 %)
+               Worst performance: 364059.99709 iterations/s (-3955.07681 iterations/s / -1.07471 %)
+              Median performance: 367843.15168 iterations/s (1st quartile: 369754.11351 | 3rd quartile: 367363.43264)
+[ RUN      ] StringFixture.libgcc_memmove(std::size_t sz = 8 * (1024)) (10 runs, 10 iterations per run)
+[     DONE ] StringFixture.libgcc_memmove(std::size_t sz = 8 * (1024)) (0.533120 ms)
+[   RUNS   ]        Average time: 53.312 us (~0.321 us)
+                    Fastest time: 53.105 us (-0.207 us / -0.388 %)
+                    Slowest time: 54.209 us (+0.897 us / +1.683 %)
+                     Median time: 53.233 us (1st quartile: 53.158 us | 3rd quartile: 53.279 us)
+                                  
+             Average performance: 18757.50300 runs/s
+                Best performance: 18830.61859 runs/s (+73.11558 runs/s / +0.38979 %)
+               Worst performance: 18447.12133 runs/s (-310.38167 runs/s / -1.65471 %)
+              Median performance: 18785.33992 runs/s (1st quartile: 18811.84394 | 3rd quartile: 18769.12104)
+                                  
+[ITERATIONS]        Average time: 5.331 us (~0.032 us)
+                    Fastest time: 5.311 us (-0.021 us / -0.388 %)
+                    Slowest time: 5.421 us (+0.090 us / +1.683 %)
+                     Median time: 5.323 us (1st quartile: 5.316 us | 3rd quartile: 5.328 us)
+                                  
+             Average performance: 187575.03001 iterations/s
+                Best performance: 188306.18586 iterations/s (+731.15585 iterations/s / +0.38979 %)
+               Worst performance: 184471.21327 iterations/s (-3103.81674 iterations/s / -1.65471 %)
+              Median performance: 187853.39921 iterations/s (1st quartile: 188118.43937 | 3rd quartile: 187691.21042)
+[ RUN      ] StringFixture.libgcc_memmove(std::size_t sz = 1 * (1048576)) (10 runs, 10 iterations per run)
+[     DONE ] StringFixture.libgcc_memmove(std::size_t sz = 1 * (1048576)) (68.382036 ms)
+[   RUNS   ]        Average time: 6838.204 us (~7.613 us)
+                    Fastest time: 6829.951 us (-8.253 us / -0.121 %)
+                    Slowest time: 6852.125 us (+13.921 us / +0.204 %)
+                     Median time: 6836.560 us (1st quartile: 6831.476 us | 3rd quartile: 6843.597 us)
+                                  
+             Average performance: 146.23724 runs/s
+                Best performance: 146.41393 runs/s (+0.17670 runs/s / +0.12083 %)
+               Worst performance: 145.94013 runs/s (-0.29711 runs/s / -0.20317 %)
+              Median performance: 146.27238 runs/s (1st quartile: 146.38125 | 3rd quartile: 146.12199)
+                                  
+[ITERATIONS]        Average time: 683.820 us (~0.761 us)
+                    Fastest time: 682.995 us (-0.825 us / -0.121 %)
+                    Slowest time: 685.212 us (+1.392 us / +0.204 %)
+                     Median time: 683.656 us (1st quartile: 683.148 us | 3rd quartile: 684.360 us)
+                                  
+             Average performance: 1462.37237 iterations/s
+                Best performance: 1464.13935 iterations/s (+1.76698 iterations/s / +0.12083 %)
+               Worst performance: 1459.40128 iterations/s (-2.97109 iterations/s / -0.20317 %)
+              Median performance: 1462.72384 iterations/s (1st quartile: 1463.81251 | 3rd quartile: 1461.21988)
+[ RUN      ] StringFixture.simplex_memmove(std::size_t sz = 4 * (1024)) (10 runs, 10 iterations per run)
+[     DONE ] StringFixture.simplex_memmove(std::size_t sz = 4 * (1024)) (0.273808 ms)
+[   RUNS   ]        Average time: 27.381 us (~0.254 us)
+                    Fastest time: 27.201 us (-0.180 us / -0.657 %)
+                    Slowest time: 28.063 us (+0.682 us / +2.492 %)
+                     Median time: 27.305 us (1st quartile: 27.246 us | 3rd quartile: 27.368 us)
+                                  
+             Average performance: 36521.94238 runs/s
+                Best performance: 36763.35429 runs/s (+241.41191 runs/s / +0.66101 %)
+               Worst performance: 35634.10897 runs/s (-887.83341 runs/s / -2.43096 %)
+              Median performance: 36622.65844 runs/s (1st quartile: 36702.63525 | 3rd quartile: 36539.02368)
+                                  
+[ITERATIONS]        Average time: 2.738 us (~0.025 us)
+                    Fastest time: 2.720 us (-0.018 us / -0.657 %)
+                    Slowest time: 2.806 us (+0.068 us / +2.492 %)
+                     Median time: 2.731 us (1st quartile: 2.725 us | 3rd quartile: 2.737 us)
+                                  
+             Average performance: 365219.42383 iterations/s
+                Best performance: 367633.54288 iterations/s (+2414.11905 iterations/s / +0.66101 %)
+               Worst performance: 356341.08969 iterations/s (-8878.33414 iterations/s / -2.43096 %)
+              Median performance: 366226.58439 iterations/s (1st quartile: 367026.35249 | 3rd quartile: 365390.23677)
+[ RUN      ] StringFixture.simplex_memmove(std::size_t sz = 8 * (1024)) (10 runs, 10 iterations per run)
+[     DONE ] StringFixture.simplex_memmove(std::size_t sz = 8 * (1024)) (0.535600 ms)
+[   RUNS   ]        Average time: 53.560 us (~0.413 us)
+                    Fastest time: 53.239 us (-0.321 us / -0.599 %)
+                    Slowest time: 54.658 us (+1.098 us / +2.050 %)
+                     Median time: 53.425 us (1st quartile: 53.350 us | 3rd quartile: 53.641 us)
+                                  
+             Average performance: 18670.64974 runs/s
+                Best performance: 18783.22283 runs/s (+112.57309 runs/s / +0.60294 %)
+               Worst performance: 18295.58345 runs/s (-375.06629 runs/s / -2.00886 %)
+              Median performance: 18717.82873 runs/s (1st quartile: 18744.14246 | 3rd quartile: 18642.45633)
+                                  
+[ITERATIONS]        Average time: 5.356 us (~0.041 us)
+                    Fastest time: 5.324 us (-0.032 us / -0.599 %)
+                    Slowest time: 5.466 us (+0.110 us / +2.050 %)
+                     Median time: 5.343 us (1st quartile: 5.335 us | 3rd quartile: 5.364 us)
+                                  
+             Average performance: 186706.49739 iterations/s
+                Best performance: 187832.22825 iterations/s (+1125.73087 iterations/s / +0.60294 %)
+               Worst performance: 182955.83446 iterations/s (-3750.66292 iterations/s / -2.00886 %)
+              Median performance: 187178.28732 iterations/s (1st quartile: 187441.42455 | 3rd quartile: 186424.56330)
+[ RUN      ] StringFixture.simplex_memmove(std::size_t sz = 1 * (1048576)) (10 runs, 10 iterations per run)
+[     DONE ] StringFixture.simplex_memmove(std::size_t sz = 1 * (1048576)) (68.389188 ms)
+[   RUNS   ]        Average time: 6838.919 us (~101.045 us)
+                    Fastest time: 6727.579 us (-111.340 us / -1.628 %)
+                    Slowest time: 7098.473 us (+259.554 us / +3.795 %)
+                     Median time: 6833.887 us (1st quartile: 6789.121 us | 3rd quartile: 6846.160 us)
+                                  
+             Average performance: 146.22194 runs/s
+                Best performance: 148.64188 runs/s (+2.41994 runs/s / +1.65498 %)
+               Worst performance: 140.87537 runs/s (-5.34658 runs/s / -3.65648 %)
+              Median performance: 146.32961 runs/s (1st quartile: 147.29447 | 3rd quartile: 146.06728)
+                                  
+[ITERATIONS]        Average time: 683.892 us (~10.105 us)
+                    Fastest time: 672.758 us (-11.134 us / -1.628 %)
+                    Slowest time: 709.847 us (+25.955 us / +3.795 %)
+                     Median time: 683.389 us (1st quartile: 678.912 us | 3rd quartile: 684.616 us)
+                                  
+             Average performance: 1462.21944 iterations/s
+                Best performance: 1486.41881 iterations/s (+24.19938 iterations/s / +1.65498 %)
+               Worst performance: 1408.75369 iterations/s (-53.46575 iterations/s / -3.65648 %)
+              Median performance: 1463.29607 iterations/s (1st quartile: 1472.94473 | 3rd quartile: 1460.67284)
+[ RUN      ] StringFixture.libgcc_memset(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memset(std::size_t sz = 4 * (1024)) (50.570477 ms)
+[   RUNS   ]        Average time: 5057.048 us (~71.937 us)
+                    Fastest time: 4976.658 us (-80.390 us / -1.590 %)
+                    Slowest time: 5227.100 us (+170.052 us / +3.363 %)
+                     Median time: 5046.993 us (1st quartile: 5009.915 us | 3rd quartile: 5084.772 us)
+                                  
+             Average performance: 197.74383 runs/s
+                Best performance: 200.93806 runs/s (+3.19423 runs/s / +1.61534 %)
+               Worst performance: 191.31067 runs/s (-6.43316 runs/s / -3.25328 %)
+              Median performance: 198.13776 runs/s (1st quartile: 199.60418 | 3rd quartile: 196.66565)
+                                  
+[ITERATIONS]        Average time: 5.057 us (~0.072 us)
+                    Fastest time: 4.977 us (-0.080 us / -1.590 %)
+                    Slowest time: 5.227 us (+0.170 us / +3.363 %)
+                     Median time: 5.047 us (1st quartile: 5.010 us | 3rd quartile: 5.085 us)
+                                  
+             Average performance: 197743.83382 iterations/s
+                Best performance: 200938.05924 iterations/s (+3194.22542 iterations/s / +1.61534 %)
+               Worst performance: 191310.66940 iterations/s (-6433.16442 iterations/s / -3.25328 %)
+              Median performance: 198137.76261 iterations/s (1st quartile: 199604.18490 | 3rd quartile: 196665.65187)
+[ RUN      ] StringFixture.libgcc_memset(std::size_t sz = 8 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memset(std::size_t sz = 8 * (1024)) (99.322564 ms)
+[   RUNS   ]        Average time: 9932.256 us (~96.858 us)
+                    Fastest time: 9775.714 us (-156.542 us / -1.576 %)
+                    Slowest time: 10115.618 us (+183.362 us / +1.846 %)
+                     Median time: 9918.566 us (1st quartile: 9868.061 us | 3rd quartile: 9982.319 us)
+                                  
+             Average performance: 100.68206 runs/s
+                Best performance: 102.29432 runs/s (+1.61226 runs/s / +1.60134 %)
+               Worst performance: 98.85703 runs/s (-1.82502 runs/s / -1.81266 %)
+              Median performance: 100.82103 runs/s (1st quartile: 101.33703 | 3rd quartile: 100.17712)
+                                  
+[ITERATIONS]        Average time: 9.932 us (~0.097 us)
+                    Fastest time: 9.776 us (-0.157 us / -1.576 %)
+                    Slowest time: 10.116 us (+0.183 us / +1.846 %)
+                     Median time: 9.919 us (1st quartile: 9.868 us | 3rd quartile: 9.982 us)
+                                  
+             Average performance: 100682.05650 iterations/s
+                Best performance: 102294.31835 iterations/s (+1612.26185 iterations/s / +1.60134 %)
+               Worst performance: 98857.03474 iterations/s (-1825.02176 iterations/s / -1.81266 %)
+              Median performance: 100821.03103 iterations/s (1st quartile: 101337.03065 | 3rd quartile: 100177.12317)
+[ RUN      ] StringFixture.libgcc_memset(std::size_t sz = 1 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memset(std::size_t sz = 1 * (1048576)) (12356.182855 ms)
+[   RUNS   ]        Average time: 1235618.285 us (~6323.266 us)
+                    Fastest time: 1229938.023 us (-5680.262 us / -0.460 %)
+                    Slowest time: 1246327.899 us (+10709.613 us / +0.867 %)
+                     Median time: 1232588.944 us (1st quartile: 1230932.641 us | 3rd quartile: 1240354.374 us)
+                                  
+             Average performance: 0.80931 runs/s
+                Best performance: 0.81305 runs/s (+0.00374 runs/s / +0.46183 %)
+               Worst performance: 0.80236 runs/s (-0.00695 runs/s / -0.85929 %)
+              Median performance: 0.81130 runs/s (1st quartile: 0.81239 | 3rd quartile: 0.80622)
+                                  
+[ITERATIONS]        Average time: 1235.618 us (~6.323 us)
+                    Fastest time: 1229.938 us (-5.680 us / -0.460 %)
+                    Slowest time: 1246.328 us (+10.710 us / +0.867 %)
+                     Median time: 1232.589 us (1st quartile: 1230.933 us | 3rd quartile: 1240.354 us)
+                                  
+             Average performance: 809.31143 iterations/s
+                Best performance: 813.04910 iterations/s (+3.73767 iterations/s / +0.46183 %)
+               Worst performance: 802.35707 iterations/s (-6.95436 iterations/s / -0.85929 %)
+              Median performance: 811.30048 iterations/s (1st quartile: 812.39214 | 3rd quartile: 806.22121)
+[ RUN      ] StringFixture.libgcc_memset(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memset(std::size_t sz = 16 * (1048576)) (197501.036930 ms)
+[   RUNS   ]        Average time: 19750103.693 us (~52379.823 us)
+                    Fastest time: 19711901.144 us (-38202.549 us / -0.193 %)
+                    Slowest time: 19873220.867 us (+123117.174 us / +0.623 %)
+                     Median time: 19730145.310 us (1st quartile: 19714627.583 us | 3rd quartile: 19763317.078 us)
+                                  
+             Average performance: 0.05063 runs/s
+                Best performance: 0.05073 runs/s (+0.00010 runs/s / +0.19380 %)
+               Worst performance: 0.05032 runs/s (-0.00031 runs/s / -0.61951 %)
+              Median performance: 0.05068 runs/s (1st quartile: 0.05072 | 3rd quartile: 0.05060)
+                                  
+[ITERATIONS]        Average time: 19750.104 us (~52.380 us)
+                    Fastest time: 19711.901 us (-38.203 us / -0.193 %)
+                    Slowest time: 19873.221 us (+123.117 us / +0.623 %)
+                     Median time: 19730.145 us (1st quartile: 19714.628 us | 3rd quartile: 19763.317 us)
+                                  
+             Average performance: 50.63265 iterations/s
+                Best performance: 50.73077 iterations/s (+0.09813 iterations/s / +0.19380 %)
+               Worst performance: 50.31897 iterations/s (-0.31368 iterations/s / -0.61951 %)
+              Median performance: 50.68386 iterations/s (1st quartile: 50.72376 | 3rd quartile: 50.59879)
+[ RUN      ] StringFixture.simplex_memset(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memset(std::size_t sz = 4 * (1024)) (49.844546 ms)
+[   RUNS   ]        Average time: 4984.455 us (~72.210 us)
+                    Fastest time: 4868.391 us (-116.064 us / -2.329 %)
+                    Slowest time: 5105.981 us (+121.526 us / +2.438 %)
+                     Median time: 4994.231 us (1st quartile: 4928.479 us | 3rd quartile: 5020.748 us)
+                                  
+             Average performance: 200.62376 runs/s
+                Best performance: 205.40667 runs/s (+4.78292 runs/s / +2.38402 %)
+               Worst performance: 195.84875 runs/s (-4.77500 runs/s / -2.38008 %)
+              Median performance: 200.23101 runs/s (1st quartile: 202.90236 | 3rd quartile: 199.17351)
+                                  
+[ITERATIONS]        Average time: 4.984 us (~0.072 us)
+                    Fastest time: 4.868 us (-0.116 us / -2.329 %)
+                    Slowest time: 5.106 us (+0.122 us / +2.438 %)
+                     Median time: 4.994 us (1st quartile: 4.928 us | 3rd quartile: 5.021 us)
+                                  
+             Average performance: 200623.75531 iterations/s
+                Best performance: 205406.67338 iterations/s (+4782.91807 iterations/s / +2.38402 %)
+               Worst performance: 195848.75071 iterations/s (-4775.00459 iterations/s / -2.38008 %)
+              Median performance: 200231.00651 iterations/s (1st quartile: 202902.35588 | 3rd quartile: 199173.50960)
+[ RUN      ] StringFixture.simplex_memset(std::size_t sz = 8 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memset(std::size_t sz = 8 * (1024)) (99.205014 ms)
+[   RUNS   ]        Average time: 9920.501 us (~150.216 us)
+                    Fastest time: 9734.192 us (-186.309 us / -1.878 %)
+                    Slowest time: 10259.357 us (+338.856 us / +3.416 %)
+                     Median time: 9893.408 us (1st quartile: 9837.188 us | 3rd quartile: 9959.792 us)
+                                  
+             Average performance: 100.80136 runs/s
+                Best performance: 102.73066 runs/s (+1.92931 runs/s / +1.91397 %)
+               Worst performance: 97.47200 runs/s (-3.32936 runs/s / -3.30289 %)
+              Median performance: 101.07740 runs/s (1st quartile: 101.65507 | 3rd quartile: 100.40370)
+                                  
+[ITERATIONS]        Average time: 9.921 us (~0.150 us)
+                    Fastest time: 9.734 us (-0.186 us / -1.878 %)
+                    Slowest time: 10.259 us (+0.339 us / +3.416 %)
+                     Median time: 9.893 us (1st quartile: 9.837 us | 3rd quartile: 9.960 us)
+                                  
+             Average performance: 100801.35667 iterations/s
+                Best performance: 102730.66321 iterations/s (+1929.30654 iterations/s / +1.91397 %)
+               Worst performance: 97471.99556 iterations/s (-3329.36111 iterations/s / -3.30289 %)
+              Median performance: 101077.40427 iterations/s (1st quartile: 101655.06647 | 3rd quartile: 100403.70321)
+[ RUN      ] StringFixture.simplex_memset(std::size_t sz = 1 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memset(std::size_t sz = 1 * (1048576)) (12321.601455 ms)
+[   RUNS   ]        Average time: 1232160.146 us (~1769.711 us)
+                    Fastest time: 1230117.118 us (-2043.028 us / -0.166 %)
+                    Slowest time: 1235282.453 us (+3122.307 us / +0.253 %)
+                     Median time: 1232064.579 us (1st quartile: 1230612.147 us | 3rd quartile: 1233474.077 us)
+                                  
+             Average performance: 0.81158 runs/s
+                Best performance: 0.81293 runs/s (+0.00135 runs/s / +0.16608 %)
+               Worst performance: 0.80953 runs/s (-0.00205 runs/s / -0.25276 %)
+              Median performance: 0.81165 runs/s (1st quartile: 0.81260 | 3rd quartile: 0.81072)
+                                  
+[ITERATIONS]        Average time: 1232.160 us (~1.770 us)
+                    Fastest time: 1230.117 us (-2.043 us / -0.166 %)
+                    Slowest time: 1235.282 us (+3.122 us / +0.253 %)
+                     Median time: 1232.065 us (1st quartile: 1230.612 us | 3rd quartile: 1233.474 us)
+                                  
+             Average performance: 811.58282 iterations/s
+                Best performance: 812.93072 iterations/s (+1.34791 iterations/s / +0.16608 %)
+               Worst performance: 809.53145 iterations/s (-2.05136 iterations/s / -0.25276 %)
+              Median performance: 811.64577 iterations/s (1st quartile: 812.60371 | 3rd quartile: 810.71829)
+[ RUN      ] StringFixture.simplex_memset(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memset(std::size_t sz = 16 * (1048576)) (199676.552228 ms)
+[   RUNS   ]        Average time: 19967655.223 us (~437857.829 us)
+                    Fastest time: 19599055.432 us (-368599.791 us / -1.846 %)
+                    Slowest time: 21108180.098 us (+1140524.875 us / +5.712 %)
+                     Median time: 19926758.025 us (1st quartile: 19625291.246 us | 3rd quartile: 19961566.834 us)
+                                  
+             Average performance: 0.05008 runs/s
+                Best performance: 0.05102 runs/s (+0.00094 runs/s / +1.88070 %)
+               Worst performance: 0.04737 runs/s (-0.00271 runs/s / -5.40324 %)
+              Median performance: 0.05018 runs/s (1st quartile: 0.05095 | 3rd quartile: 0.05010)
+                                  
+[ITERATIONS]        Average time: 19967.655 us (~437.858 us)
+                    Fastest time: 19599.055 us (-368.600 us / -1.846 %)
+                    Slowest time: 21108.180 us (+1140.525 us / +5.712 %)
+                     Median time: 19926.758 us (1st quartile: 19625.291 us | 3rd quartile: 19961.567 us)
+                                  
+             Average performance: 50.08099 iterations/s
+                Best performance: 51.02287 iterations/s (+0.94187 iterations/s / +1.88070 %)
+               Worst performance: 47.37500 iterations/s (-2.70599 iterations/s / -5.40324 %)
+              Median performance: 50.18378 iterations/s (1st quartile: 50.95466 | 3rd quartile: 50.09627)
+[ RUN      ] StringFixture.libgcc_memchr(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memchr(std::size_t sz = 4 * (1024)) (1.045898 ms)
+[   RUNS   ]        Average time: 104.590 us (~7.147 us)
+                    Fastest time: 99.892 us (-4.698 us / -4.492 %)
+                    Slowest time: 117.254 us (+12.664 us / +12.108 %)
+                     Median time: 100.355 us (1st quartile: 100.138 us | 3rd quartile: 112.860 us)
+                                  
+             Average performance: 9561.16180 runs/s
+                Best performance: 10010.81168 runs/s (+449.64988 runs/s / +4.70288 %)
+               Worst performance: 8528.49370 runs/s (-1032.66810 runs/s / -10.80065 %)
+              Median performance: 9964.67523 runs/s (1st quartile: 9986.21902 | 3rd quartile: 8860.53518)
+                                  
+[ITERATIONS]        Average time: 0.105 us (~0.007 us)
+                    Fastest time: 0.100 us (-0.005 us / -4.492 %)
+                    Slowest time: 0.117 us (+0.013 us / +12.108 %)
+                     Median time: 0.100 us (1st quartile: 0.100 us | 3rd quartile: 0.113 us)
+                                  
+             Average performance: 9561161.79589 iterations/s
+                Best performance: 10010811.67661 iterations/s (+449649.88072 iterations/s / +4.70288 %)
+               Worst performance: 8528493.69744 iterations/s (-1032668.09845 iterations/s / -10.80065 %)
+              Median performance: 9964675.22632 iterations/s (1st quartile: 9986219.01776 | 3rd quartile: 8860535.17632)
+[ RUN      ] StringFixture.libgcc_memchr(std::size_t sz = 8 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memchr(std::size_t sz = 8 * (1024)) (1.013217 ms)
+[   RUNS   ]        Average time: 101.322 us (~4.078 us)
+                    Fastest time: 99.842 us (-1.480 us / -1.460 %)
+                    Slowest time: 112.924 us (+11.602 us / +11.451 %)
+                     Median time: 100.051 us (1st quartile: 100.020 us | 3rd quartile: 100.074 us)
+                                  
+             Average performance: 9869.55410 runs/s
+                Best performance: 10015.82500 runs/s (+146.27090 runs/s / +1.48204 %)
+               Worst performance: 8855.51344 runs/s (-1014.04066 runs/s / -10.27443 %)
+              Median performance: 9994.90260 runs/s (1st quartile: 9998.00040 | 3rd quartile: 9992.60547)
+                                  
+[ITERATIONS]        Average time: 0.101 us (~0.004 us)
+                    Fastest time: 0.100 us (-0.001 us / -1.460 %)
+                    Slowest time: 0.113 us (+0.012 us / +11.451 %)
+                     Median time: 0.100 us (1st quartile: 0.100 us | 3rd quartile: 0.100 us)
+                                  
+             Average performance: 9869554.10342 iterations/s
+                Best performance: 10015825.00351 iterations/s (+146270.90009 iterations/s / +1.48204 %)
+               Worst performance: 8855513.44267 iterations/s (-1014040.66075 iterations/s / -10.27443 %)
+              Median performance: 9994902.59967 iterations/s (1st quartile: 9998000.39992 | 3rd quartile: 9992605.47195)
+[ RUN      ] StringFixture.libgcc_memchr(std::size_t sz = 1 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memchr(std::size_t sz = 1 * (1048576)) (1.036305 ms)
+[   RUNS   ]        Average time: 103.630 us (~7.110 us)
+                    Fastest time: 100.023 us (-3.608 us / -3.481 %)
+                    Slowest time: 119.969 us (+16.338 us / +15.766 %)
+                     Median time: 100.395 us (1st quartile: 100.268 us | 3rd quartile: 100.527 us)
+                                  
+             Average performance: 9649.66878 runs/s
+                Best performance: 9997.70053 runs/s (+348.03175 runs/s / +3.60667 %)
+               Worst performance: 8335.48667 runs/s (-1314.18211 runs/s / -13.61893 %)
+              Median performance: 9960.60580 runs/s (1st quartile: 9973.27163 | 3rd quartile: 9947.57627)
+                                  
+[ITERATIONS]        Average time: 0.104 us (~0.007 us)
+                    Fastest time: 0.100 us (-0.004 us / -3.481 %)
+                    Slowest time: 0.120 us (+0.016 us / +15.766 %)
+                     Median time: 0.100 us (1st quartile: 0.100 us | 3rd quartile: 0.101 us)
+                                  
+             Average performance: 9649668.77512 iterations/s
+                Best performance: 9997700.52888 iterations/s (+348031.75376 iterations/s / +3.60667 %)
+               Worst performance: 8335486.66739 iterations/s (-1314182.10773 iterations/s / -13.61893 %)
+              Median performance: 9960605.80405 iterations/s (1st quartile: 9973271.63203 | 3rd quartile: 9947576.27304)
+[ RUN      ] StringFixture.libgcc_memchr(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.libgcc_memchr(std::size_t sz = 16 * (1048576)) (1.019842 ms)
+[   RUNS   ]        Average time: 101.984 us (~4.352 us)
+                    Fastest time: 100.162 us (-1.822 us / -1.787 %)
+                    Slowest time: 114.125 us (+12.141 us / +11.905 %)
+                     Median time: 100.348 us (1st quartile: 100.236 us | 3rd quartile: 100.727 us)
+                                  
+             Average performance: 9805.44045 runs/s
+                Best performance: 9983.82620 runs/s (+178.38575 runs/s / +1.81925 %)
+               Worst performance: 8762.32202 runs/s (-1043.11844 runs/s / -10.63816 %)
+              Median performance: 9965.32068 runs/s (1st quartile: 9976.45556 | 3rd quartile: 9927.82471)
+                                  
+[ITERATIONS]        Average time: 0.102 us (~0.004 us)
+                    Fastest time: 0.100 us (-0.002 us / -1.787 %)
+                    Slowest time: 0.114 us (+0.012 us / +11.905 %)
+                     Median time: 0.100 us (1st quartile: 0.100 us | 3rd quartile: 0.101 us)
+                                  
+             Average performance: 9805440.45058 iterations/s
+                Best performance: 9983826.20155 iterations/s (+178385.75097 iterations/s / +1.81925 %)
+               Worst performance: 8762322.01533 iterations/s (-1043118.43525 iterations/s / -10.63816 %)
+              Median performance: 9965320.68402 iterations/s (1st quartile: 9976455.56487 | 3rd quartile: 9927824.71433)
+[ RUN      ] StringFixture.simplex_memchr(std::size_t sz = 4 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memchr(std::size_t sz = 4 * (1024)) (1.036752 ms)
+[   RUNS   ]        Average time: 103.675 us (~4.259 us)
+                    Fastest time: 102.129 us (-1.546 us / -1.491 %)
+                    Slowest time: 115.788 us (+12.113 us / +11.683 %)
+                     Median time: 102.372 us (1st quartile: 102.170 us | 3rd quartile: 102.529 us)
+                                  
+             Average performance: 9645.50828 runs/s
+                Best performance: 9791.53815 runs/s (+146.02987 runs/s / +1.51397 %)
+               Worst performance: 8636.47356 runs/s (-1009.03472 runs/s / -10.46119 %)
+              Median performance: 9768.29602 runs/s (1st quartile: 9787.60889 | 3rd quartile: 9753.33808)
+                                  
+[ITERATIONS]        Average time: 0.104 us (~0.004 us)
+                    Fastest time: 0.102 us (-0.002 us / -1.491 %)
+                    Slowest time: 0.116 us (+0.012 us / +11.683 %)
+                     Median time: 0.102 us (1st quartile: 0.102 us | 3rd quartile: 0.103 us)
+                                  
+             Average performance: 9645508.27970 iterations/s
+                Best performance: 9791538.15273 iterations/s (+146029.87302 iterations/s / +1.51397 %)
+               Worst performance: 8636473.55512 iterations/s (-1009034.72459 iterations/s / -10.46119 %)
+              Median performance: 9768296.01844 iterations/s (1st quartile: 9787608.88715 | 3rd quartile: 9753338.07996)
+[ RUN      ] StringFixture.simplex_memchr(std::size_t sz = 8 * (1024)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memchr(std::size_t sz = 8 * (1024)) (1.033908 ms)
+[   RUNS   ]        Average time: 103.391 us (~4.107 us)
+                    Fastest time: 101.598 us (-1.793 us / -1.734 %)
+                    Slowest time: 115.021 us (+11.630 us / +11.249 %)
+                     Median time: 102.082 us (1st quartile: 101.765 us | 3rd quartile: 102.605 us)
+                                  
+             Average performance: 9672.04045 runs/s
+                Best performance: 9842.71344 runs/s (+170.67299 runs/s / +1.76460 %)
+               Worst performance: 8694.06456 runs/s (-977.97589 runs/s / -10.11137 %)
+              Median performance: 9796.04632 runs/s (1st quartile: 9826.56119 | 3rd quartile: 9746.11374)
+                                  
+[ITERATIONS]        Average time: 0.103 us (~0.004 us)
+                    Fastest time: 0.102 us (-0.002 us / -1.734 %)
+                    Slowest time: 0.115 us (+0.012 us / +11.249 %)
+                     Median time: 0.102 us (1st quartile: 0.102 us | 3rd quartile: 0.103 us)
+                                  
+             Average performance: 9672040.45234 iterations/s
+                Best performance: 9842713.43924 iterations/s (+170672.98690 iterations/s / +1.76460 %)
+               Worst performance: 8694064.56212 iterations/s (-977975.89022 iterations/s / -10.11137 %)
+              Median performance: 9796046.31571 iterations/s (1st quartile: 9826561.19491 | 3rd quartile: 9746113.73715)
+[ RUN      ] StringFixture.simplex_memchr(std::size_t sz = 1 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memchr(std::size_t sz = 1 * (1048576)) (1.035573 ms)
+[   RUNS   ]        Average time: 103.557 us (~4.005 us)
+                    Fastest time: 101.665 us (-1.892 us / -1.827 %)
+                    Slowest time: 114.599 us (+11.042 us / +10.662 %)
+                     Median time: 101.913 us (1st quartile: 101.799 us | 3rd quartile: 102.630 us)
+                                  
+             Average performance: 9656.48969 runs/s
+                Best performance: 9836.22682 runs/s (+179.73713 runs/s / +1.86131 %)
+               Worst performance: 8726.07963 runs/s (-930.41006 runs/s / -9.63508 %)
+              Median performance: 9812.29088 runs/s (1st quartile: 9823.27921 | 3rd quartile: 9743.73965)
+                                  
+[ITERATIONS]        Average time: 0.104 us (~0.004 us)
+                    Fastest time: 0.102 us (-0.002 us / -1.827 %)
+                    Slowest time: 0.115 us (+0.011 us / +10.662 %)
+                     Median time: 0.102 us (1st quartile: 0.102 us | 3rd quartile: 0.103 us)
+                                  
+             Average performance: 9656489.69218 iterations/s
+                Best performance: 9836226.82339 iterations/s (+179737.13121 iterations/s / +1.86131 %)
+               Worst performance: 8726079.63420 iterations/s (-930410.05798 iterations/s / -9.63508 %)
+              Median performance: 9812290.87555 iterations/s (1st quartile: 9823279.20706 | 3rd quartile: 9743739.64728)
+[ RUN      ] StringFixture.simplex_memchr(std::size_t sz = 16 * (1048576)) (10 runs, 1000 iterations per run)
+[     DONE ] StringFixture.simplex_memchr(std::size_t sz = 16 * (1048576)) (1.038220 ms)
+[   RUNS   ]        Average time: 103.822 us (~4.385 us)
+                    Fastest time: 101.879 us (-1.943 us / -1.871 %)
+                    Slowest time: 116.196 us (+12.374 us / +11.918 %)
+                     Median time: 102.411 us (1st quartile: 102.012 us | 3rd quartile: 102.815 us)
+                                  
+             Average performance: 9631.86993 runs/s
+                Best performance: 9815.56552 runs/s (+183.69559 runs/s / +1.90716 %)
+               Worst performance: 8606.14823 runs/s (-1025.72170 runs/s / -10.64925 %)
+              Median performance: 9764.57607 runs/s (1st quartile: 9802.76830 | 3rd quartile: 9726.20727)
+                                  
+[ITERATIONS]        Average time: 0.104 us (~0.004 us)
+                    Fastest time: 0.102 us (-0.002 us / -1.871 %)
+                    Slowest time: 0.116 us (+0.012 us / +11.918 %)
+                     Median time: 0.102 us (1st quartile: 0.102 us | 3rd quartile: 0.103 us)
+                                  
+             Average performance: 9631869.93123 iterations/s
+                Best performance: 9815565.52381 iterations/s (+183695.59258 iterations/s / +1.90716 %)
+               Worst performance: 8606148.23230 iterations/s (-1025721.69893 iterations/s / -10.64925 %)
+              Median performance: 9764576.07093 iterations/s (1st quartile: 9802768.30177 | 3rd quartile: 9726207.26548)
+[==========] Ran 50 benchmarks.
