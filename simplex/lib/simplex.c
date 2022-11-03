@@ -33,11 +33,16 @@
 #define UPPER (0xFFFFFFFFFFFFFFFFULL << 64)
 
 ///
-/// \brief      { function_description }
+/// \section Accessors
 ///
-/// \param[in]  reg   The register
+
 ///
-/// \return     { description_of_the_return_value }
+/// \brief      { Get contents of lower half of a bounds register }
+///
+/// \param[in]  reg   The bounds register
+///
+/// \return     { The contents of the lower 64 bits of the bounds register }
+/// 
 uint64_t getbndl(bndreg_t reg) {
   uint64_t val;
 
@@ -85,11 +90,12 @@ uint64_t getbndl(bndreg_t reg) {
 }
 
 ///
-/// \brief      { function_description }
+/// \brief      { Get contents of the upper half of a bounds register}
 ///
-/// \param[in]  reg   The register
+/// \param[in]  reg   The bounds register
 ///
-/// \return     { description_of_the_return_value }
+/// \return     { The contents of the upper 64 bits of the bounds register }
+/// 
 uint64_t getbndu(bndreg_t reg) {
   uint64_t val;
 
@@ -137,6 +143,15 @@ uint64_t getbndu(bndreg_t reg) {
   return ~val;
 }
 
+///
+/// \brief      { Get the contents of a bounds register as a single 
+///               value. The upper half is converted from its stored 
+///               one's compliment value. }
+///
+/// \param[in]  reg   The bounds register
+///
+/// \return     { The contents of the entire 128 bits of the bounds register }
+/// 
 uint128_t getbnd(bndreg_t reg) {
   uint128_t val;
   uint64_t lower;
@@ -190,6 +205,15 @@ uint128_t getbnd(bndreg_t reg) {
   return val;
 }
 
+///
+/// \brief      { Get the contents of the lower 64 bits of a bounds register 
+///               without attempting to sanitize the spilled values from the 
+///               stack }
+///
+/// \param[in]  reg   The bounds register
+///
+/// \return     { The contents of the lower 64 bits of the bounds register }
+/// 
 uint64_t qgetbndl(bndreg_t reg) {
   uint64_t val;
 
@@ -232,12 +256,18 @@ uint64_t qgetbndl(bndreg_t reg) {
   return val;
 }
 
-/************
- * Mutators *
- ************/
+///
+/// \section Mutators
+/// 
 
+///
+///\brief      { Set the contents of the lower 64 bits of a bounds register, 
+///              while preserving the upper 64 bits }
+///
+///\param[in]  reg   The bounds register
+///\param[in]  val   The value to be set
+///
 void setbndl(bndreg_t reg, uint64_t val) {
-
   // Capture original value of bndn.upper,
   // then adjust it for sib-address expression
   uint64_t upper = getbndu(reg);
@@ -274,8 +304,15 @@ void setbndl(bndreg_t reg, uint64_t val) {
   }
 }
 
+///
+///\brief      { Set the contents of the upper 64 bits of a bounds register, 
+///              while preserving the lower 64 bits. The value is stored as its 
+///              one's complement }
+///
+///\param[in]  reg   The bounds register
+///\param[in]  val   The value to be set
+///
 void setbndu(bndreg_t reg, uint64_t val) {
-
   // Capture original value of bndn.lower,
   // then adjust for sib-addressing
   uint64_t lower = getbndl(reg);
@@ -312,6 +349,14 @@ void setbndu(bndreg_t reg, uint64_t val) {
   }
 }
 
+///
+///\brief      { Set the contents of a bounds register as a single value. The
+///            upper half value is stored within the register as its one's
+///            complement. }
+///
+///\param[in]  reg   The register
+///\param[in]  val   The value
+///
 void setbnd(bndreg_t reg, uint128_t val) {
   // calculate displacement for bndmk
   uint64_t lower = (uint64_t)(val & LOWER);
@@ -349,6 +394,13 @@ void setbnd(bndreg_t reg, uint128_t val) {
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// \brief      { Set the contents of the lower 64 bits of a bounds register, 
+///               without preserving the upper 64 bits of the register. }
+///
+/// \param[in]  reg   The register
+/// \param[in]  val   The value
+////////////////////////////////////////////////////////////////////////////////
 void qsetbndl(bndreg_t reg, uint64_t val) {
   // Set bndn by bndmk
   switch (reg) {

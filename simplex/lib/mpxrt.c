@@ -72,8 +72,8 @@
 
 #define __STDC_FORMAT_MACROS
 
-/* Following vars are initialized at process startup only
-   and thus are considered to be thread safe.  */
+// Following vars are initialized at process startup only
+//   and thus are considered to be thread safe.
 static void *l1base = NULL;
 static int bndpreserve = 1;
 static int enable = 1;
@@ -107,6 +107,13 @@ static inline uint64_t xgetbv(uint32_t index) {
   return eax + ((uint64_t)edx << 32);
 }
 
+///
+/// \brief      { Check whether a CPU can support Simplex operations. 
+/// 
+///               This function does not modify CPU context. }
+///
+/// \return     { Return true if the CPU supports Simplex, false otherwise. }
+///
 static bool check_mpx_support(void) {
   unsigned int eax, ebx, ecx, edx;
   unsigned int max_level = __get_cpuid_max(0, NULL);
@@ -184,20 +191,34 @@ static void disable_mpx(void) {
   xrstor_state(xsave_buf, 0x10);
 }
 
+///
+///\brief      { Enable MPX context usage for a single process. }
+///
+///\return     { Return true if the process is ready for Simplex library usage,
+///            return false otherwise.
+///
+///If the CPU does not support Simplex, this function returns false. }
+///
 bool process_specific_init(void) {
   if (!check_mpx_support())
     return false;
-
   enable_mpx();
-
   return true;
 }
 
+///
+/// \brief      { Disable MPX context usage for a single process. }
+///
+/// \return     { Return true if Simplex usage is now disabled, 
+///               return false otherwise. 
+///               
+///               If the CPU does not support Simplex, 
+///               this function returns false even though Simplex is not (and 
+///               was not ever) supported. }
+///
 bool process_specific_finish(void) {
   if (!check_mpx_support())
     return false;
-
   disable_mpx();
-
   return true;
 }
