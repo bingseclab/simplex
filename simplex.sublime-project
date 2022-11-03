@@ -22,9 +22,9 @@
 				"CMAKE_BUILD_TYPE": "Debug",
 				"CMAKE_EXPORT_COMPILE_COMMANDS": true,
 				"SIMPLEX_BUILD_TESTS": true,
-				// "SIMPLEX_BUILD_EVALS": true
+				"SIMPLEX_BUILD_EVALS": true,
 			},
-			"generator": "Ninja",
+			"generator": "Unix Makefiles",
 		},
 		"DoxyDoxygen": 
 		{
@@ -73,177 +73,69 @@
 		{
 			"file_regex": "(.+[^:]):(\\d+):(\\d+): (?:fatal )?((?:error|warning): .+)$",
 			"name": "simplex (Linux)",
-			"shell_cmd": "cmake --build .",
-			"syntax": "Packages/CMakeBuilder/Syntax/Ninja.sublime-syntax",
+			"shell_cmd": "make -j8",
+			"syntax": "Packages/CMakeBuilder/Syntax/Make.sublime-syntax",
 			"variants":
 			[
 				{
-					"name": "package",
-					"shell_cmd": "cmake --build . --target package",
-				},
-				{
-					"name": "package_source",
-					"shell_cmd": "cmake --build . --target package_source",
-				},
-				{
-					"name": "rebuild_cache",
-					"shell_cmd": "cmake --build . --target rebuild_cache",
-				},
-				{
-					"name": "list_install_components",
-					"shell_cmd": "cmake --build . --target list_install_components",
-				},
-				{
-					"name": "install",
-					"shell_cmd": "cmake --build . --target install",
-				},
-				{
-					"name": "install/local",
-					"shell_cmd": "cmake --build . --target install/local",
-				},
-				{
-					"name": "install/strip",
-					"shell_cmd": "cmake --build . --target install/strip",
-				},
-				{
-					"name": "cunit/CUnit/package",
-					"shell_cmd": "cmake --build . --target cunit/CUnit/package",
-				},
-				{
-					"name": "cunit/CUnit/package_source",
-					"shell_cmd": "cmake --build . --target cunit/CUnit/package_source",
-				},
-				{
-					"name": "cunit/CUnit/rebuild_cache",
-					"shell_cmd": "cmake --build . --target cunit/CUnit/rebuild_cache",
-				},
-				{
-					"name": "cunit/CUnit/list_install_components",
-					"shell_cmd": "cmake --build . --target cunit/CUnit/list_install_components",
-				},
-				{
-					"name": "cunit/CUnit/install",
-					"shell_cmd": "cmake --build . --target cunit/CUnit/install",
-				},
-				{
-					"name": "cunit/CUnit/install/local",
-					"shell_cmd": "cmake --build . --target cunit/CUnit/install/local",
-				},
-				{
-					"name": "cunit/CUnit/install/strip",
-					"shell_cmd": "cmake --build . --target cunit/CUnit/install/strip",
-				},
-				{
-					"name": "simplex/package",
-					"shell_cmd": "cmake --build . --target simplex/package",
-				},
-				{
-					"name": "simplex/package_source",
-					"shell_cmd": "cmake --build . --target simplex/package_source",
-				},
-				{
-					"name": "simplex/rebuild_cache",
-					"shell_cmd": "cmake --build . --target simplex/rebuild_cache",
-				},
-				{
-					"name": "simplex/list_install_components",
-					"shell_cmd": "cmake --build . --target simplex/list_install_components",
-				},
-				{
-					"name": "simplex/install",
-					"shell_cmd": "cmake --build . --target simplex/install"
-				},
-				{
-					"name": "simplex/install/local",
-					"shell_cmd": "cmake --build . --target simplex/install/local"
-				},
-				{
-					"name": "simplex/install/strip",
-					"shell_cmd": "cmake --build . --target simplex/install/strip"
-				},
-				{
-					"name": "simplex/lib/package",
-					"shell_cmd": "cmake --build . --target simplex/lib/package"
-				},
-				{
-					"name": "simplex/lib/package_source",
-					"shell_cmd": "cmake --build . --target simplex/lib/package_source"
-				},
-				{
-					"name": "simplex/lib/rebuild_cache",
-					"shell_cmd": "cmake --build . --target simplex/lib/rebuild_cache"
-				},
-				{
-					"name": "simplex/lib/list_install_components",
-					"shell_cmd": "cmake --build . --target simplex/lib/list_install_components"
-				},
-				{
-					"name": "simplex/lib/install",
-					"shell_cmd": "cmake --build . --target simplex/lib/install"
-				},
-				{
-					"name": "simplex/lib/install/local",
-					"shell_cmd": "cmake --build . --target simplex/lib/install/local"
-				},
-				{
-					"name": "simplex/lib/install/strip",
-					"shell_cmd": "cmake --build . --target simplex/lib/install/strip"
-				},
-				{
-					"name": "simplex/test/package",
-					"shell_cmd": "cmake --build . --target simplex/test/package"
-				},
-				{
-					"name": "simplex/test/package_source",
-					"shell_cmd": "cmake --build . --target simplex/test/package_source"
-				},
-				{
-					"name": "simplex/test/rebuild_cache",
-					"shell_cmd": "cmake --build . --target simplex/test/rebuild_cache"
-				},
-				{
-					"name": "simplex/test/list_install_components",
-					"shell_cmd": "cmake --build . --target simplex/test/list_install_components"
-				},
-				{
-					"name": "simplex/test/install",
-					"shell_cmd": "cmake --build . --target simplex/test/install"
-				},
-				{
-					"name": "simplex/test/install/local",
-					"shell_cmd": "cmake --build . --target simplex/test/install/local"
-				},
-				{
-					"name": "simplex/test/install/strip",
-					"shell_cmd": "cmake --build . --target simplex/test/install/strip"
-				},
-				{
-					"name": "cunit",
-					"shell_cmd": "cmake --build . --target cunit"
-				},
-				{
-					"name": "cunit_test",
-					"shell_cmd": "cmake --build . --target cunit_test"
-				},
-				{
-					"name": "libcunit.a",
-					"shell_cmd": "cmake --build . --target libcunit.a"
-				},
-				{
-					"name": "libsimplex.a",
-					"shell_cmd": "cmake --build . --target libsimplex.a"
-				},
-				{
-					"name": "simplex",
-					"shell_cmd": "cmake --build . --target simplex"
-				},
-				{
-					"name": "simplex_test",
-					"shell_cmd": "cmake --build . --target simplex_test"
+					"name": "ing .profile",
+					"shell_cmd": "make -j8 ing .profile",
 				},
 				{
 					"name": "clean",
-					"shell_cmd": "cmake --build . --target clean"
+					"shell_cmd": "make -j8 clean",
+				},
+				{
+					"name": "install",
+					"shell_cmd": "make -j8 install",
+				},
+				{
+					"name": "install/local",
+					"shell_cmd": "make -j8 install/local",
+				},
+				{
+					"name": "install/strip",
+					"shell_cmd": "make -j8 install/strip",
+				},
+				{
+					"name": "list_install_components",
+					"shell_cmd": "make -j8 list_install_components",
+				},
+				{
+					"name": "package",
+					"shell_cmd": "make -j8 package",
+				},
+				{
+					"name": "package_source",
+					"shell_cmd": "make -j8 package_source",
+				},
+				{
+					"name": "rebuild_cache",
+					"shell_cmd": "make -j8 rebuild_cache",
+				},
+				{
+					"name": "cunit",
+					"shell_cmd": "make -j8 cunit",
+				},
+				{
+					"name": "cunit_test",
+					"shell_cmd": "make -j8 cunit_test",
+				},
+				{
+					"name": "hayai_main",
+					"shell_cmd": "make -j8 hayai_main",
+				},
+				{
+					"name": "simplex",
+					"shell_cmd": "make -j8 simplex",
+				},
+				{
+					"name": "simplex_benchmark",
+					"shell_cmd": "make -j8 simplex_benchmark",
+				},
+				{
+					"name": "simplex_test",
+					"shell_cmd": "make -j8 simplex_test",
 				},
 			],
 			"working_dir": "$folder/build",

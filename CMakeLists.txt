@@ -4,6 +4,12 @@ project (simplex)
 set (Simplex_VERSION_MAJOR 1)
 set (Simplex_VERSION_MINOR 0)
 
+# Set build type
+if (NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release CACHE
+      STRING "Build type (default Release):" FORCE)
+endif()
+
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
@@ -29,6 +35,11 @@ print_status("  Building evaluations:  " ${SIMPLEX_BUILD_EVALS})
 print_status("  Building tests:        " ${SIMPLEX_BUILD_TESTS})
 message(STATUS "")
 
+# Add subtargets
+# This is done last so that all definitions and link/include paths 
+# are available for subprojects
+add_subdirectory(simplex)
+
 if(SIMPLEX_BUILD_EVALS)
 add_subdirectory(hayai)
 endif(SIMPLEX_BUILD_EVALS)
@@ -36,5 +47,3 @@ endif(SIMPLEX_BUILD_EVALS)
 if(SIMPLEX_BUILD_TESTS)
 add_subdirectory(cunit/CUnit)
 endif(SIMPLEX_BUILD_TESTS)
-
-add_subdirectory(simplex)
