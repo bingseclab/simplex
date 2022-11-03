@@ -80,3 +80,6 @@ simplex.sublime-workspace
 # Build environment
 build/
 install/
+
+# Exported compile commands
+.cache
