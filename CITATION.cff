@@ -1,32 +1,19 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite both the article from preferred-citation and the software itself."
+title: bingseclab/simplex
+message: >-
+  If you use this software, please cite both the article
+  from preferred-citation and the software itself.
+type: software
 authors:
-- family-names: "Cole"
-  given-names: "Matthew"
-  orcid: "0000-0003-1743-1504"
-- family-names: "Prakash"
-  given-names: "Aravind"
-title: "bingseclab/simplex"
-version: 1.0
-date-released: 2023-12-02
-url: "https://github.com/bingseclab/simplex"
-preferred-citation:
-  authors:
-    - family-names: "Cole"
-      given-names: "Matthew
-      orcid: "0000-0003-1743-1504"
-    - family-names: "Prakash"
-      given_names: "Aravind"
-  conference:
-    name: "Nordic Conference on Secure IT Systems 2022 (NordSec '22)"
-  doi: "10.1007/978-3-031-22295-5_12"
-  editors:
-    - family-names: "Reiser"
-      given-names: "Hans P."
-    - family-names: "Kyas"
-      given-names: "Marcel"
-  isbn: "978-3-031-22295-5"
-  pages: "215--233"
-  title: "SIMPLEX: Repurposing Intel Memory Protection Extensions for Secure Storage"
-  type: article
-  year: 2022
+  - given-names: Matthew
+    family-names: Cole
+    email: mcole8@binghamton.edu
+    orcid: 'https://orcid.org/0000-0003-1743-1504'
+    affiliation: Binghamton University
+  - given-names: Aravind
+    family-names: Prakash
+    email: aprakash@binghamton.edu
+    affiliation: Binghamton University
+identifiers:
+  - type: url
+    value: 'https://github.com/bingseclab/simplex'
