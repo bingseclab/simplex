@@ -1,19 +1,52 @@
 cff-version: 1.2.0
 title: bingseclab/simplex
 message: >-
-  If you use this software, please cite both the article
-  from preferred-citation and the software itself.
+  If you use this software, please cite it using the
+  metadata from this file.
 type: software
 authors:
   - given-names: Matthew
     family-names: Cole
     email: mcole8@binghamton.edu
-    orcid: 'https://orcid.org/0000-0003-1743-1504'
     affiliation: Binghamton University
+    orcid: 'https://orcid.org/0000-0003-1743-1504'
   - given-names: Aravind
     family-names: Prakash
     email: aprakash@binghamton.edu
     affiliation: Binghamton University
-identifiers:
-  - type: url
-    value: 'https://github.com/bingseclab/simplex'
+repository-code: 'https://github.com/bingseclab/simplex'
+keywords:
+  - information hiding
+  - hardware security
+  - Intel MPX
+license: LGPL-2.1-or-later
+commit: 7c7d56e4e6b5ae76a53857445fb10fc9c14989a1
+version: '1.0'
+date-released: '2023-10-29'
+references:
+  - type: article
+    scope: Cite this paper if you want to reference the general concepts of the software.
+    authors:
+      - given-names: Matthew
+        family-names: Cole
+        email: mcole8@binghamton.edu
+        affiliation: Binghamton University
+        orcid: 'https://orcid.org/0000-0003-1743-1504'
+      - given-names: Aravind
+        family-names: Prakash
+        email: aprakash@binghamton.edu
+        affiliation: Binghamton University
+    editors: 
+      - given-names: Hans P. 
+        family-names: Reiser
+      - given-names: Marcel 
+        family-names: Kyas
+    title: "Simplex: Repurposing Intel Memory Protection Extensions for Secure Storage"
+    year: 2022
+    publisher: 
+        name: "Springer International Publishing"
+        address: Cham
+    journal: Secure IT Systems
+    pages: 215--233
+    isbn: 978-3-031-22295-5
+    doi: 10.1007/978-3-031-22295-5_12
